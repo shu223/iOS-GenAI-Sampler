@@ -63,7 +63,9 @@ The frames collectively depict a segment from an Apple developer session, where 
 
 A multimodal example that provides a description of a video in realtime by GPT-4o.
 
-[<img src="images/video-und_thumb.png" width="300">](https://www.youtube.com/watch?v=bF5CW3b47Ss)
+![](images/realtime1.gif
+
+https://www.youtube.com/watch?v=bF5CW3b47Ss
 
 
 ### TBD
