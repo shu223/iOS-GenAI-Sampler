@@ -32,8 +32,11 @@ struct RealtimeCameraView: View {
                     .font(.system(size: 20))
                     .padding(16)
 
+                Spacer()
+
                 Toggle(isOn: $captureManager.useJP) {
                     Text(captureManager.useJP ? "日本語" : "English")
+                        .foregroundColor(.white)
                 }
                 .padding()
             }
