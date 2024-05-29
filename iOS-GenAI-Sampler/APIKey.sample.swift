@@ -1,6 +1,6 @@
 //
 //  APIKey.swift
-//  iOS-OpenAI-Sampler
+//  iOS-GenAI-Sampler
 //
 //  Created by Shuichi Tsutsumi.
 //
