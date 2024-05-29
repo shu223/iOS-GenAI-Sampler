@@ -1,0 +1,616 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 60;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8A6A401F2BF6CA380027DBB9 /* InputImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */; };
+		8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */; };
+		8A6A402D2BF7458D0027DBB9 /* wwdc_test_60s.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */; };
+		8A6A402E2BF7458D0027DBB9 /* VideoUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A402C2BF7458C0027DBB9 /* VideoUtils.swift */; };
+		8A6A40322BFAFC770027DBB9 /* RealtimeCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40312BFAFC770027DBB9 /* RealtimeCameraView.swift */; };
+		8A6A40392BFB0BF90027DBB9 /* AVCaptureDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40342BFB0BF90027DBB9 /* AVCaptureDevice+Extension.swift */; };
+		8A6A403A2BFB0BF90027DBB9 /* VideoCameraType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40352BFB0BF90027DBB9 /* VideoCameraType.swift */; };
+		8A6A403B2BFB0BF90027DBB9 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40362BFB0BF90027DBB9 /* VideoCapture.swift */; };
+		8A6A403C2BFB0BF90027DBB9 /* VideoCapture+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40372BFB0BF90027DBB9 /* VideoCapture+UIKit.swift */; };
+		8A90AA852C02CB56007B2E24 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90AA842C02CB56007B2E24 /* InputTextView.swift */; };
+		8AE11A382BFB68D6008C269A /* CIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE11A372BFB68D6008C269A /* CIImageExtension.swift */; };
+		8AE11A3A2BFB6905008C269A /* RealtimeCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE11A392BFB6905008C269A /* RealtimeCameraManager.swift */; };
+		8AE5B4352C07C06100CE893D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8AE5B4342C07C06100CE893D /* README.md */; };
+		8AF4995C2BF5F9C1001EE586 /* iOS_GenAI_SamplerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4995B2BF5F9C1001EE586 /* iOS_GenAI_SamplerApp.swift */; };
+		8AF4995E2BF5F9C1001EE586 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4995D2BF5F9C1001EE586 /* ContentView.swift */; };
+		8AF499602BF5F9C2001EE586 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF4995F2BF5F9C2001EE586 /* Assets.xcassets */; };
+		8AF499642BF5F9C2001EE586 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AF499632BF5F9C2001EE586 /* Preview Assets.xcassets */; };
+		8AF4996E2BF5F9C3001EE586 /* iOS_GenAI_SamplerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4996D2BF5F9C3001EE586 /* iOS_GenAI_SamplerTests.swift */; };
+		8AF499882BF5FD70001EE586 /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF499872BF5FD70001EE586 /* OpenAIClient.swift */; };
+		8AF4998B2BF5FDDE001EE586 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF4998A2BF5FDDE001EE586 /* OpenAI */; };
+		8AF4998D2BF5FE5A001EE586 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4998C2BF5FE5A001EE586 /* APIKey.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8AF4996A2BF5F9C3001EE586 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AF499502BF5F9C1001EE586 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8AF499572BF5F9C1001EE586;
+			remoteInfo = "iOS-GenAI-Sampler";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputImageView.swift; sourceTree = "<group>"; };
+		8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputVideoView.swift; sourceTree = "<group>"; };
+		8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wwdc_test_60s.mp4; sourceTree = "<group>"; };
+		8A6A402C2BF7458C0027DBB9 /* VideoUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUtils.swift; sourceTree = "<group>"; };
+		8A6A40312BFAFC770027DBB9 /* RealtimeCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeCameraView.swift; sourceTree = "<group>"; };
+		8A6A40342BFB0BF90027DBB9 /* AVCaptureDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AVCaptureDevice+Extension.swift"; sourceTree = "<group>"; };
+		8A6A40352BFB0BF90027DBB9 /* VideoCameraType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCameraType.swift; sourceTree = "<group>"; };
+		8A6A40362BFB0BF90027DBB9 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
+		8A6A40372BFB0BF90027DBB9 /* VideoCapture+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VideoCapture+UIKit.swift"; sourceTree = "<group>"; };
+		8A90AA842C02CB56007B2E24 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
+		8AE11A372BFB68D6008C269A /* CIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIImageExtension.swift; sourceTree = "<group>"; };
+		8AE11A392BFB6905008C269A /* RealtimeCameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeCameraManager.swift; sourceTree = "<group>"; };
+		8AE5B4342C07C06100CE893D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8AF499582BF5F9C1001EE586 /* iOS-GenAI-Sampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-GenAI-Sampler.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AF4995B2BF5F9C1001EE586 /* iOS_GenAI_SamplerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_GenAI_SamplerApp.swift; sourceTree = "<group>"; };
+		8AF4995D2BF5F9C1001EE586 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8AF4995F2BF5F9C2001EE586 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8AF499612BF5F9C2001EE586 /* iOS_GenAI_Sampler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOS_GenAI_Sampler.entitlements; sourceTree = "<group>"; };
+		8AF499632BF5F9C2001EE586 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8AF499692BF5F9C3001EE586 /* iOS-GenAI-SamplerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "iOS-GenAI-SamplerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AF4996D2BF5F9C3001EE586 /* iOS_GenAI_SamplerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_GenAI_SamplerTests.swift; sourceTree = "<group>"; };
+		8AF499872BF5FD70001EE586 /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
+		8AF4998C2BF5FE5A001EE586 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8AF499552BF5F9C1001EE586 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AF4998B2BF5FDDE001EE586 /* OpenAI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AF499662BF5F9C3001EE586 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8A6A402B2BF7458C0027DBB9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8A6A40332BFAFC850027DBB9 /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				8A90AA842C02CB56007B2E24 /* InputTextView.swift */,
+				8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */,
+				8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */,
+				8A6A40312BFAFC770027DBB9 /* RealtimeCameraView.swift */,
+				8AE11A392BFB6905008C269A /* RealtimeCameraManager.swift */,
+			);
+			path = Samples;
+			sourceTree = "<group>";
+		};
+		8A6A40382BFB0BF90027DBB9 /* VideoCapture */ = {
+			isa = PBXGroup;
+			children = (
+				8A6A40342BFB0BF90027DBB9 /* AVCaptureDevice+Extension.swift */,
+				8A6A40352BFB0BF90027DBB9 /* VideoCameraType.swift */,
+				8A6A40362BFB0BF90027DBB9 /* VideoCapture.swift */,
+				8A6A40372BFB0BF90027DBB9 /* VideoCapture+UIKit.swift */,
+			);
+			path = VideoCapture;
+			sourceTree = "<group>";
+		};
+		8AF4994F2BF5F9C1001EE586 = {
+			isa = PBXGroup;
+			children = (
+				8AE5B4342C07C06100CE893D /* README.md */,
+				8AF4995A2BF5F9C1001EE586 /* iOS-GenAI-Sampler */,
+				8AF4996C2BF5F9C3001EE586 /* iOS-GenAI-SamplerTests */,
+				8AF499592BF5F9C1001EE586 /* Products */,
+				8AF499892BF5FDDE001EE586 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8AF499592BF5F9C1001EE586 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8AF499582BF5F9C1001EE586 /* iOS-GenAI-Sampler.app */,
+				8AF499692BF5F9C3001EE586 /* iOS-GenAI-SamplerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8AF4995A2BF5F9C1001EE586 /* iOS-GenAI-Sampler */ = {
+			isa = PBXGroup;
+			children = (
+				8AF499612BF5F9C2001EE586 /* iOS_GenAI_Sampler.entitlements */,
+				8AF4995F2BF5F9C2001EE586 /* Assets.xcassets */,
+				8AF499622BF5F9C2001EE586 /* Preview Content */,
+				8A6A402B2BF7458C0027DBB9 /* Resources */,
+				8A6A40382BFB0BF90027DBB9 /* VideoCapture */,
+				8AF4995B2BF5F9C1001EE586 /* iOS_GenAI_SamplerApp.swift */,
+				8AF4995D2BF5F9C1001EE586 /* ContentView.swift */,
+				8AF499872BF5FD70001EE586 /* OpenAIClient.swift */,
+				8AF4998C2BF5FE5A001EE586 /* APIKey.swift */,
+				8A6A40332BFAFC850027DBB9 /* Samples */,
+				8A6A402C2BF7458C0027DBB9 /* VideoUtils.swift */,
+				8AE11A372BFB68D6008C269A /* CIImageExtension.swift */,
+			);
+			path = "iOS-GenAI-Sampler";
+			sourceTree = "<group>";
+		};
+		8AF499622BF5F9C2001EE586 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8AF499632BF5F9C2001EE586 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8AF4996C2BF5F9C3001EE586 /* iOS-GenAI-SamplerTests */ = {
+			isa = PBXGroup;
+			children = (
+				8AF4996D2BF5F9C3001EE586 /* iOS_GenAI_SamplerTests.swift */,
+			);
+			path = "iOS-GenAI-SamplerTests";
+			sourceTree = "<group>";
+		};
+		8AF499892BF5FDDE001EE586 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8AF499572BF5F9C1001EE586 /* iOS-GenAI-Sampler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AF4997D2BF5F9C3001EE586 /* Build configuration list for PBXNativeTarget "iOS-GenAI-Sampler" */;
+			buildPhases = (
+				8AF499542BF5F9C1001EE586 /* Sources */,
+				8AF499552BF5F9C1001EE586 /* Frameworks */,
+				8AF499562BF5F9C1001EE586 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS-GenAI-Sampler";
+			packageProductDependencies = (
+				8AF4998A2BF5FDDE001EE586 /* OpenAI */,
+			);
+			productName = "iOS-GenAI-Sampler";
+			productReference = 8AF499582BF5F9C1001EE586 /* iOS-GenAI-Sampler.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8AF499682BF5F9C3001EE586 /* iOS-GenAI-SamplerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AF499802BF5F9C3001EE586 /* Build configuration list for PBXNativeTarget "iOS-GenAI-SamplerTests" */;
+			buildPhases = (
+				8AF499652BF5F9C3001EE586 /* Sources */,
+				8AF499662BF5F9C3001EE586 /* Frameworks */,
+				8AF499672BF5F9C3001EE586 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8AF4996B2BF5F9C3001EE586 /* PBXTargetDependency */,
+			);
+			name = "iOS-GenAI-SamplerTests";
+			productName = "iOS-GenAI-SamplerTests";
+			productReference = 8AF499692BF5F9C3001EE586 /* iOS-GenAI-SamplerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8AF499502BF5F9C1001EE586 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					8AF499572BF5F9C1001EE586 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					8AF499682BF5F9C3001EE586 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 8AF499572BF5F9C1001EE586;
+					};
+				};
+			};
+			buildConfigurationList = 8AF499532BF5F9C1001EE586 /* Build configuration list for PBXProject "iOS-GenAI-Sampler" */;
+			compatibilityVersion = "Xcode 15.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8AF4994F2BF5F9C1001EE586;
+			packageReferences = (
+				8AF499862BF5FC47001EE586 /* XCRemoteSwiftPackageReference "OpenAI" */,
+			);
+			productRefGroup = 8AF499592BF5F9C1001EE586 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8AF499572BF5F9C1001EE586 /* iOS-GenAI-Sampler */,
+				8AF499682BF5F9C3001EE586 /* iOS-GenAI-SamplerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8AF499562BF5F9C1001EE586 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AF499642BF5F9C2001EE586 /* Preview Assets.xcassets in Resources */,
+				8A6A402D2BF7458D0027DBB9 /* wwdc_test_60s.mp4 in Resources */,
+				8AE5B4352C07C06100CE893D /* README.md in Resources */,
+				8AF499602BF5F9C2001EE586 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AF499672BF5F9C3001EE586 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8AF499542BF5F9C1001EE586 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A6A403C2BFB0BF90027DBB9 /* VideoCapture+UIKit.swift in Sources */,
+				8AF4995E2BF5F9C1001EE586 /* ContentView.swift in Sources */,
+				8AE11A382BFB68D6008C269A /* CIImageExtension.swift in Sources */,
+				8A6A40322BFAFC770027DBB9 /* RealtimeCameraView.swift in Sources */,
+				8AF4995C2BF5F9C1001EE586 /* iOS_GenAI_SamplerApp.swift in Sources */,
+				8A6A40392BFB0BF90027DBB9 /* AVCaptureDevice+Extension.swift in Sources */,
+				8A90AA852C02CB56007B2E24 /* InputTextView.swift in Sources */,
+				8A6A403B2BFB0BF90027DBB9 /* VideoCapture.swift in Sources */,
+				8AF4998D2BF5FE5A001EE586 /* APIKey.swift in Sources */,
+				8A6A403A2BFB0BF90027DBB9 /* VideoCameraType.swift in Sources */,
+				8A6A402E2BF7458D0027DBB9 /* VideoUtils.swift in Sources */,
+				8A6A401F2BF6CA380027DBB9 /* InputImageView.swift in Sources */,
+				8AF499882BF5FD70001EE586 /* OpenAIClient.swift in Sources */,
+				8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */,
+				8AE11A3A2BFB6905008C269A /* RealtimeCameraManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AF499652BF5F9C3001EE586 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AF4996E2BF5F9C3001EE586 /* iOS_GenAI_SamplerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8AF4996B2BF5F9C3001EE586 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8AF499572BF5F9C1001EE586 /* iOS-GenAI-Sampler */;
+			targetProxy = 8AF4996A2BF5F9C3001EE586 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8AF4997B2BF5F9C3001EE586 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8AF4997C2BF5F9C3001EE586 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		8AF4997E2BF5F9C3001EE586 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "iOS-GenAI-Sampler/iOS_GenAI_Sampler.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"iOS-GenAI-Sampler/Preview Content\"";
+				DEVELOPMENT_TEAM = 9Z86A4AWDE;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = hogehogehoge;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shu223.iOS-GenAI-Sampler";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8AF4997F2BF5F9C3001EE586 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "iOS-GenAI-Sampler/iOS_GenAI_Sampler.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"iOS-GenAI-Sampler/Preview Content\"";
+				DEVELOPMENT_TEAM = 9Z86A4AWDE;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = hogehogehoge;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shu223.iOS-GenAI-Sampler";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8AF499812BF5F9C3001EE586 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9Z86A4AWDE;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shu223.iOS-GenAI-SamplerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOS-GenAI-Sampler.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iOS-GenAI-Sampler";
+			};
+			name = Debug;
+		};
+		8AF499822BF5F9C3001EE586 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9Z86A4AWDE;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MACOSX_DEPLOYMENT_TARGET = 14.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.shu223.iOS-GenAI-SamplerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iOS-GenAI-Sampler.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/iOS-GenAI-Sampler";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8AF499532BF5F9C1001EE586 /* Build configuration list for PBXProject "iOS-GenAI-Sampler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AF4997B2BF5F9C3001EE586 /* Debug */,
+				8AF4997C2BF5F9C3001EE586 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8AF4997D2BF5F9C3001EE586 /* Build configuration list for PBXNativeTarget "iOS-GenAI-Sampler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AF4997E2BF5F9C3001EE586 /* Debug */,
+				8AF4997F2BF5F9C3001EE586 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8AF499802BF5F9C3001EE586 /* Build configuration list for PBXNativeTarget "iOS-GenAI-SamplerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AF499812BF5F9C3001EE586 /* Debug */,
+				8AF499822BF5F9C3001EE586 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8AF499862BF5FC47001EE586 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8AF4998A2BF5FDDE001EE586 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF499862BF5FC47001EE586 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 8AF499502BF5F9C1001EE586 /* Project object */;
+}
