@@ -18,38 +18,45 @@ struct InputVideoView: View {
 
     var body: some View {
         VStack(spacing: 32) {
-            VStack(spacing: 16) {
-                VideoPlayer(player: AVPlayer(url: videoURL))
-                    .frame(height: 200)
+            inputSection
+            resultSection
+        }
+        .padding()
+    }
 
-                Text("Prompt: \(promptText)")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+    private var inputSection: some View {
+        VStack(spacing: 16) {
+            VideoPlayer(player: AVPlayer(url: videoURL))
+                .frame(height: 200)
 
-                Button("Send", systemImage: "paperplane", action: {
-                    summarizeVideo()
-                })
+            Text("Prompt: \(promptText)")
                 .frame(maxWidth: .infinity, alignment: .trailing)
-                .imageScale(.large)
-            }
 
-            VStack(spacing: 8) {
-                Text("Result:")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                ScrollView {
-                    if isLoading {
-                        ProgressView()
-                            .frame(alignment: .center)
-                    } else {
-                        Text("\(resultText)")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    Spacer()
+            Button("Send", systemImage: "paperplane", action: {
+                summarizeVideo()
+            })
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .imageScale(.large)
+        }
+    }
+
+    private var resultSection: some View {
+        VStack(spacing: 8) {
+            Text("Result:")
+                .frame(maxWidth: .infinity, alignment: .leading)
+            ScrollView {
+                if isLoading {
+                    ProgressView()
+                        .frame(alignment: .center)
+                } else {
+                    Text("\(resultText)")
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
-                .frame(maxWidth: .infinity)
+                Spacer()
             }
             .frame(maxWidth: .infinity)
         }
-        .padding()
+        .frame(maxWidth: .infinity)
     }
 
     func summarizeVideo() {

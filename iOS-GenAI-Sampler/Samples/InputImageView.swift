@@ -23,65 +23,78 @@ struct InputImageView: View {
 
     var body: some View {
         VStack(spacing: 32) {
-            Picker("Options", selection: $selectedSegment) {
-                Text("Image Data").tag(0)
-                Text("Image URL").tag(1)
-            }
-            .pickerStyle(SegmentedPickerStyle())
-
-            VStack(alignment: .leading, spacing: 16) {
-                if selectedSegment == 0 {
-                    Text("Filename: \(imageName).jpg")
-                    Image(uiImage: inputImage)
-                        .resizable()
-                        .scaledToFit()
-                } else if selectedSegment == 1 {
-                    Text("URL: \(imageURL)")
-                        .lineLimit(1)
-                        .truncationMode(.tail)
-                    AsyncImage(url: inputURL) { image in
-                        image
-                            .resizable()
-                            .scaledToFit()
-                    } placeholder: {
-                        Image(systemName: "photo")
-                            .resizable()
-                            .scaledToFit()
-                    }
-                }
-            }
-
-            VStack(alignment: .trailing, spacing: 16) {
-                Text("Prompt: \(promptText)")
-
-                Button("Send", systemImage: "paperplane", action: {
-                    sendMessage()
-                })
-                .imageScale(.large)
-            }
-            .frame(maxWidth: .infinity, alignment: .trailing)
-
-            VStack(spacing: 8) {
-                Text("Result:")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                ScrollView {
-                    if isLoading {
-                        ProgressView()
-                            .frame(alignment: .center)
-                    } else {
-                        Text("\(resultText)")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                }
-                .frame(maxWidth: .infinity)
-                Spacer()
-            }
-            .frame(maxWidth: .infinity)
+            pickerSection
+            imageSection
+            sendSection
+            resultSection
         }
         .padding()
     }
 
-    func sendMessage() {
+    private var pickerSection: some View {
+        Picker("Options", selection: $selectedSegment) {
+            Text("Image Data").tag(0)
+            Text("Image URL").tag(1)
+        }
+        .pickerStyle(SegmentedPickerStyle())
+    }
+
+    private var imageSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            if selectedSegment == 0 {
+                Text("Filename: \(imageName).jpg")
+                Image(uiImage: inputImage)
+                    .resizable()
+                    .scaledToFit()
+            } else if selectedSegment == 1 {
+                Text("URL: \(imageURL)")
+                    .lineLimit(1)
+                    .truncationMode(.tail)
+                AsyncImage(url: inputURL) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                } placeholder: {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                }
+            }
+        }
+    }
+
+    private var sendSection: some View {
+        VStack(alignment: .trailing, spacing: 16) {
+            Text("Prompt: \(promptText)")
+
+            Button("Send", systemImage: "paperplane", action: {
+                sendMessage()
+            })
+            .imageScale(.large)
+        }
+        .frame(maxWidth: .infinity, alignment: .trailing)
+    }
+
+    private var resultSection: some View {
+        VStack(spacing: 8) {
+            Text("Result:")
+                .frame(maxWidth: .infinity, alignment: .leading)
+            ScrollView {
+                if isLoading {
+                    ProgressView()
+                        .frame(alignment: .center)
+                } else {
+                    Text("\(resultText)")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+    }
+
+    private func sendMessage() {
         isLoading = true
         Task {
             do {
@@ -91,20 +104,24 @@ struct InputImageView: View {
                 } else if selectedSegment == 1 {
                     chatResult = OpenAIClient().sendMessage(text: promptText, image: .url(inputURL))
                 } else { fatalError() }
-                for try await result in chatResult {
-                    guard let choice = result.choices.first else { return }
-                    guard let message = choice.delta.content else { return }
-                    Task.detached { @MainActor in
-                        isLoading = false
-                        resultText += message
-                    }
-                    if let finishReason = choice.finishReason {
-                        print("Stream finished with reason:\(finishReason).")
-                        break
-                    }
-                }
+                try await processChatResult(chatResult)
             } catch {
                 fatalError("Failed to send chat stream with error: \(error)")
+            }
+        }
+    }
+
+    private func processChatResult(_ chatResult: AsyncThrowingStream<ChatStreamResult, Error>) async throws {
+        for try await result in chatResult {
+            guard let choice = result.choices.first else { return }
+            guard let message = choice.delta.content else { return }
+            Task.detached { @MainActor in
+                isLoading = false
+                resultText += message
+            }
+            if let finishReason = choice.finishReason {
+                print("Stream finished with reason: \(finishReason).")
+                break
             }
         }
     }
