@@ -1,6 +1,15 @@
 {
-  "originHash" : "c351aabe13067917247f7926404d096603b95663248b51124280feb61a2edf30",
+  "originHash" : "0d90a2012b5b9f48ddaa0436c537feeae259ac42007f2e1b614c377b2535685b",
   "pins" : [
+    {
+      "identity" : "llama.cpp",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ggerganov/llama.cpp",
+      "state" : {
+        "branch" : "master",
+        "revision" : "0541f06296753dbc59a57379eb54cec865a4c9f9"
+      }
+    },
     {
       "identity" : "openai",
       "kind" : "remoteSourceControl",

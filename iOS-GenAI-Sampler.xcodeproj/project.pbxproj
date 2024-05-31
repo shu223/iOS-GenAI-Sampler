@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A3F569F2C09F3A600E182AA /* LlamaCppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F569E2C09F3A600E182AA /* LlamaCppState.swift */; };
+		8A3F56A12C09F41800E182AA /* LlamaCppDownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A02C09F41800E182AA /* LlamaCppDownloadButton.swift */; };
+		8A3F56A32C09FFF800E182AA /* LlamaCppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A22C09FFF800E182AA /* LlamaCppModel.swift */; };
+		8A3F56A52C0A009400E182AA /* MistralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A42C0A009400E182AA /* MistralView.swift */; };
 		8A6A401F2BF6CA380027DBB9 /* InputImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */; };
 		8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */; };
 		8A6A402D2BF7458D0027DBB9 /* wwdc_test_60s.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */; };
@@ -28,6 +32,8 @@
 		8AF499882BF5FD70001EE586 /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF499872BF5FD70001EE586 /* OpenAIClient.swift */; };
 		8AF4998B2BF5FDDE001EE586 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF4998A2BF5FDDE001EE586 /* OpenAI */; };
 		8AF4998D2BF5FE5A001EE586 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF4998C2BF5FE5A001EE586 /* APIKey.swift */; };
+		8AF9CFF52C098EC00050F693 /* llama in Frameworks */ = {isa = PBXBuildFile; productRef = 8AF9CFF42C098EC00050F693 /* llama */; };
+		8AF9D0052C0993F40050F693 /* LibLlama.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9D0042C0993F40050F693 /* LibLlama.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A3F569E2C09F3A600E182AA /* LlamaCppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppState.swift; sourceTree = "<group>"; };
+		8A3F56A02C09F41800E182AA /* LlamaCppDownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppDownloadButton.swift; sourceTree = "<group>"; };
+		8A3F56A22C09FFF800E182AA /* LlamaCppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppModel.swift; sourceTree = "<group>"; };
+		8A3F56A42C0A009400E182AA /* MistralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistralView.swift; sourceTree = "<group>"; };
 		8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputImageView.swift; sourceTree = "<group>"; };
 		8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputVideoView.swift; sourceTree = "<group>"; };
 		8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wwdc_test_60s.mp4; sourceTree = "<group>"; };
@@ -64,6 +74,7 @@
 		8AF4996D2BF5F9C3001EE586 /* iOS_GenAI_SamplerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_GenAI_SamplerTests.swift; sourceTree = "<group>"; };
 		8AF499872BF5FD70001EE586 /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
 		8AF4998C2BF5FE5A001EE586 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		8AF9D0042C0993F40050F693 /* LibLlama.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibLlama.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AF9CFF52C098EC00050F693 /* llama in Frameworks */,
 				8AF4998B2BF5FDDE001EE586 /* OpenAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +113,7 @@
 				8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */,
 				8A6A40312BFAFC770027DBB9 /* RealtimeCameraView.swift */,
 				8AE11A392BFB6905008C269A /* RealtimeCameraManager.swift */,
+				8A3F56A42C0A009400E182AA /* MistralView.swift */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -148,6 +161,7 @@
 				8AF4995D2BF5F9C1001EE586 /* ContentView.swift */,
 				8AF499872BF5FD70001EE586 /* OpenAIClient.swift */,
 				8AF4998C2BF5FE5A001EE586 /* APIKey.swift */,
+				8AF9D0062C0996EE0050F693 /* llama.cpp */,
 				8A6A40332BFAFC850027DBB9 /* Samples */,
 				8A6A402C2BF7458C0027DBB9 /* VideoUtils.swift */,
 				8AE11A372BFB68D6008C269A /* CIImageExtension.swift */,
@@ -178,6 +192,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8AF9D0062C0996EE0050F693 /* llama.cpp */ = {
+			isa = PBXGroup;
+			children = (
+				8AF9D0042C0993F40050F693 /* LibLlama.swift */,
+				8A3F569E2C09F3A600E182AA /* LlamaCppState.swift */,
+				8A3F56A02C09F41800E182AA /* LlamaCppDownloadButton.swift */,
+				8A3F56A22C09FFF800E182AA /* LlamaCppModel.swift */,
+			);
+			path = llama.cpp;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -196,6 +221,7 @@
 			name = "iOS-GenAI-Sampler";
 			packageProductDependencies = (
 				8AF4998A2BF5FDDE001EE586 /* OpenAI */,
+				8AF9CFF42C098EC00050F693 /* llama */,
 			);
 			productName = "iOS-GenAI-Sampler";
 			productReference = 8AF499582BF5F9C1001EE586 /* iOS-GenAI-Sampler.app */;
@@ -249,6 +275,7 @@
 			mainGroup = 8AF4994F2BF5F9C1001EE586;
 			packageReferences = (
 				8AF499862BF5FC47001EE586 /* XCRemoteSwiftPackageReference "OpenAI" */,
+				8AF9CFF32C098EC00050F693 /* XCRemoteSwiftPackageReference "llama" */,
 			);
 			productRefGroup = 8AF499592BF5F9C1001EE586 /* Products */;
 			projectDirPath = "";
@@ -288,6 +315,7 @@
 			files = (
 				8A6A403C2BFB0BF90027DBB9 /* VideoCapture+UIKit.swift in Sources */,
 				8AF4995E2BF5F9C1001EE586 /* ContentView.swift in Sources */,
+				8AF9D0052C0993F40050F693 /* LibLlama.swift in Sources */,
 				8AE11A382BFB68D6008C269A /* CIImageExtension.swift in Sources */,
 				8A6A40322BFAFC770027DBB9 /* RealtimeCameraView.swift in Sources */,
 				8AF4995C2BF5F9C1001EE586 /* iOS_GenAI_SamplerApp.swift in Sources */,
@@ -295,10 +323,14 @@
 				8A90AA852C02CB56007B2E24 /* InputTextView.swift in Sources */,
 				8A6A403B2BFB0BF90027DBB9 /* VideoCapture.swift in Sources */,
 				8AF4998D2BF5FE5A001EE586 /* APIKey.swift in Sources */,
+				8A3F569F2C09F3A600E182AA /* LlamaCppState.swift in Sources */,
 				8A6A403A2BFB0BF90027DBB9 /* VideoCameraType.swift in Sources */,
 				8A6A402E2BF7458D0027DBB9 /* VideoUtils.swift in Sources */,
 				8A6A401F2BF6CA380027DBB9 /* InputImageView.swift in Sources */,
 				8AF499882BF5FD70001EE586 /* OpenAIClient.swift in Sources */,
+				8A3F56A52C0A009400E182AA /* MistralView.swift in Sources */,
+				8A3F56A12C09F41800E182AA /* LlamaCppDownloadButton.swift in Sources */,
+				8A3F56A32C09FFF800E182AA /* LlamaCppModel.swift in Sources */,
 				8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */,
 				8AE11A3A2BFB6905008C269A /* RealtimeCameraManager.swift in Sources */,
 			);
@@ -602,6 +634,14 @@
 				minimumVersion = 0.2.9;
 			};
 		};
+		8AF9CFF32C098EC00050F693 /* XCRemoteSwiftPackageReference "llama" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ggerganov/llama.cpp";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -609,6 +649,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF499862BF5FC47001EE586 /* XCRemoteSwiftPackageReference "OpenAI" */;
 			productName = OpenAI;
+		};
+		8AF9CFF42C098EC00050F693 /* llama */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AF9CFF32C098EC00050F693 /* XCRemoteSwiftPackageReference "llama" */;
+			productName = llama;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -27,6 +27,9 @@ struct ContentView: View {
                     NavigationLink("Input Video", destination: InputVideoView())
                     NavigationLink("Realtime Camera", destination: RealtimeCameraView())
                 }
+                Section(header: SectionHeaderView(title: "Local LLM (llama.cpp based)")) {
+                    NavigationLink("Mistral", destination: MistralView())
+                }
             }
             .listStyle(.insetGrouped)
             .navigationTitle("GenAI Sampler")
