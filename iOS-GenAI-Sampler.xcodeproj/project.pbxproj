@@ -11,6 +11,8 @@
 		8A3F56A12C09F41800E182AA /* LlamaCppDownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A02C09F41800E182AA /* LlamaCppDownloadButton.swift */; };
 		8A3F56A32C09FFF800E182AA /* LlamaCppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A22C09FFF800E182AA /* LlamaCppModel.swift */; };
 		8A3F56A52C0A009400E182AA /* MistralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A42C0A009400E182AA /* MistralView.swift */; };
+		8A3F56A72C0A233500E182AA /* LlamaCppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A62C0A233500E182AA /* LlamaCppView.swift */; };
+		8A3F56A92C0A249800E182AA /* Phi2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A82C0A249800E182AA /* Phi2View.swift */; };
 		8A6A401F2BF6CA380027DBB9 /* InputImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */; };
 		8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */; };
 		8A6A402D2BF7458D0027DBB9 /* wwdc_test_60s.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */; };
@@ -51,6 +53,8 @@
 		8A3F56A02C09F41800E182AA /* LlamaCppDownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppDownloadButton.swift; sourceTree = "<group>"; };
 		8A3F56A22C09FFF800E182AA /* LlamaCppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppModel.swift; sourceTree = "<group>"; };
 		8A3F56A42C0A009400E182AA /* MistralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistralView.swift; sourceTree = "<group>"; };
+		8A3F56A62C0A233500E182AA /* LlamaCppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppView.swift; sourceTree = "<group>"; };
+		8A3F56A82C0A249800E182AA /* Phi2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phi2View.swift; sourceTree = "<group>"; };
 		8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputImageView.swift; sourceTree = "<group>"; };
 		8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputVideoView.swift; sourceTree = "<group>"; };
 		8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wwdc_test_60s.mp4; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 				8A6A40312BFAFC770027DBB9 /* RealtimeCameraView.swift */,
 				8AE11A392BFB6905008C269A /* RealtimeCameraManager.swift */,
 				8A3F56A42C0A009400E182AA /* MistralView.swift */,
+				8A3F56A62C0A233500E182AA /* LlamaCppView.swift */,
+				8A3F56A82C0A249800E182AA /* Phi2View.swift */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -323,12 +329,14 @@
 				8A90AA852C02CB56007B2E24 /* InputTextView.swift in Sources */,
 				8A6A403B2BFB0BF90027DBB9 /* VideoCapture.swift in Sources */,
 				8AF4998D2BF5FE5A001EE586 /* APIKey.swift in Sources */,
+				8A3F56A72C0A233500E182AA /* LlamaCppView.swift in Sources */,
 				8A3F569F2C09F3A600E182AA /* LlamaCppState.swift in Sources */,
 				8A6A403A2BFB0BF90027DBB9 /* VideoCameraType.swift in Sources */,
 				8A6A402E2BF7458D0027DBB9 /* VideoUtils.swift in Sources */,
 				8A6A401F2BF6CA380027DBB9 /* InputImageView.swift in Sources */,
 				8AF499882BF5FD70001EE586 /* OpenAIClient.swift in Sources */,
 				8A3F56A52C0A009400E182AA /* MistralView.swift in Sources */,
+				8A3F56A92C0A249800E182AA /* Phi2View.swift in Sources */,
 				8A3F56A12C09F41800E182AA /* LlamaCppDownloadButton.swift in Sources */,
 				8A3F56A32C09FFF800E182AA /* LlamaCppModel.swift in Sources */,
 				8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */,

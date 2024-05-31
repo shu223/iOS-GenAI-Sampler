@@ -29,6 +29,7 @@ struct ContentView: View {
                 }
                 Section(header: SectionHeaderView(title: "Local LLM (llama.cpp based)")) {
                     NavigationLink("Mistral", destination: MistralView())
+                    NavigationLink("Phi-2", destination: Phi2View())
                 }
             }
             .listStyle(.insetGrouped)

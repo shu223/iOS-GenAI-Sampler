@@ -14,21 +14,27 @@ struct LlamaCppModel: Identifiable {
     var filename: String
     var status: String?
 
-    static let tinyLlama1_1B_Q4 = LlamaCppModel(
-        name: "TinyLlama-1.1B (Q4_0, 0.6 GiB)",
+    static let tinyLlama_1_1B_Q4 = LlamaCppModel(
+        name: "TinyLlama-1.1B (Q4_0, 0.6 GB)",
         url: "https://huggingface.co/TheBloke/TinyLlama-1.1B-1T-OpenOrca-GGUF/resolve/main/tinyllama-1.1b-1t-openorca.Q4_0.gguf?download=true",
         filename: "tinyllama-1.1b-1t-openorca.Q4_0.gguf", status: "download"
     )
 
-    static let tinyLlama1_1B_Chat_Q8 = LlamaCppModel(
-        name: "TinyLlama-1.1B Chat (Q8_0, 1.1 GiB)",
+    static let tinyLlama_1_1B_Chat_Q8 = LlamaCppModel(
+        name: "TinyLlama-1.1B Chat (Q8_0, 1.1 GB)",
         url: "https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q8_0.gguf?download=true",
         filename: "tinyllama-1.1b-chat-v1.0.Q8_0.gguf", status: "download"
     )
 
-    static let mistral7B_Q4 = LlamaCppModel(
-        name: "Mistral-7B-v0.1 (Q4_K_S, 4.1 GiB)",
+    static let mistral_7B_Q4 = LlamaCppModel(
+        name: "Mistral-7B-v0.1 (Q4_K_S, 4.1 GB)",
         url: "https://huggingface.co/TheBloke/Mistral-7B-v0.1-GGUF/resolve/main/mistral-7b-v0.1.Q4_K_S.gguf?download=true",
         filename: "mistral-7b-v0.1.Q4_K_S.gguf", status: "download"
+    )
+
+    static let phi2_Q4 = LlamaCppModel(
+        name: "Phi-2 2.7B (Q4_0, 1.6 GB)",
+        url: "https://huggingface.co/ggml-org/models/resolve/main/phi-2/ggml-model-q4_0.gguf?download=true",
+        filename: "phi-2-q4_0.gguf", status: "download"
     )
 }

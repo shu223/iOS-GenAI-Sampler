@@ -55,6 +55,8 @@ class LlamaCppState: ObservableObject {
 
         completionLog += "\nHeat up took \(t_heat)s"
 
+        resultText += "\(text)"
+
         while await llamaContext.n_cur < llamaContext.n_len {
             let result = await llamaContext.completion_loop()
             resultText += "\(result)"
