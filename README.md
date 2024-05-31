@@ -8,7 +8,7 @@ A collection of Generative AI examples on iOS.
 2. Build and run.
   - Please run on your iPhone or iPad. (The realtime sample doesn't work on simulators.)
 
-## Examples
+## Contents
 
 ### GPT-4o Multimodal Examples
 
@@ -66,6 +66,15 @@ A multimodal example that provides a description of a video in realtime by GPT-4
 ![](images/realtime1.gif)
 
 https://www.youtube.com/watch?v=bF5CW3b47Ss
+
+
+### Local LLMs Examples
+
+#### Mistral-7B (llama.cpp)
+
+A local LLM example using Mistral-7B v0.1 - GGUF.
+
+<img src="images/mistral.png" width="300">
 
 
 ### TBD
