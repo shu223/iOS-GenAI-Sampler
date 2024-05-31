@@ -16,7 +16,7 @@ class LlamaCppState: ObservableObject {
 
     private let NS_PER_S = 1_000_000_000.0
 
-    private var llamaContext: LlamaContext?
+    @Published private(set) var llamaContext: LlamaContext?
 
     static func modelDownloaded(filename: String) -> Bool {
         let fileURL = getFileURL(filename: filename)
