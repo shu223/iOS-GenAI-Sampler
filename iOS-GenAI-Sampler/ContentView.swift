@@ -27,7 +27,7 @@ struct ContentView: View {
                     NavigationLink("Input Video", destination: InputVideoView())
                     NavigationLink("Realtime Camera", destination: RealtimeCameraView())
                 }
-                Section(header: SectionHeaderView(title: "Local LLM (llama.cpp based)")) {
+                Section(header: SectionHeaderView(title: "Local LLM - llama.cpp")) {
                     NavigationLink("Mistral", destination: MistralView())
                     NavigationLink("Phi-2", destination: Phi2View())
                 }

@@ -70,11 +70,17 @@ https://www.youtube.com/watch?v=bF5CW3b47Ss
 
 ### Local LLMs Examples
 
-#### Mistral-7B (llama.cpp)
+#### Mistral 7B (llama.cpp)
 
 A local LLM example using Mistral-7B v0.1 - GGUF.
 
 <img src="images/mistral.png" width="300">
+
+#### Phi-2  (llama.cpp)
+
+A local LLM example using Phi-2 - GGUF.
+
+<img src="images/phi2.png" width="300">
 
 
 ### TBD
