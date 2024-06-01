@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RealtimeCameraView: View {
-    @ObservedObject var captureManager = RealtimeCameraManager()
+    @StateObject var captureManager = RealtimeCameraManager()
 
     var body: some View {
         VStack {

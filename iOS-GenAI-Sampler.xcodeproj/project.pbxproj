@@ -117,6 +117,8 @@
 				8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */,
 				8A6A40312BFAFC770027DBB9 /* RealtimeCameraView.swift */,
 				8AE11A392BFB6905008C269A /* RealtimeCameraManager.swift */,
+				8A3F569E2C09F3A600E182AA /* LlamaCppState.swift */,
+				8A3F56A02C09F41800E182AA /* LlamaCppDownloadButton.swift */,
 				8A3F56A42C0A009400E182AA /* MistralView.swift */,
 				8A3F56A62C0A233500E182AA /* LlamaCppView.swift */,
 				8A3F56A82C0A249800E182AA /* Phi2View.swift */,
@@ -202,8 +204,6 @@
 			isa = PBXGroup;
 			children = (
 				8AF9D0042C0993F40050F693 /* LibLlama.swift */,
-				8A3F569E2C09F3A600E182AA /* LlamaCppState.swift */,
-				8A3F56A02C09F41800E182AA /* LlamaCppDownloadButton.swift */,
 				8A3F56A22C09FFF800E182AA /* LlamaCppModel.swift */,
 			);
 			path = llama.cpp;
