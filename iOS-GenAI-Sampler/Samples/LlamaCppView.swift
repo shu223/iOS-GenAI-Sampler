@@ -21,39 +21,51 @@ struct LlamaCppView: View {
 
     var body: some View {
         VStack(spacing: 32) {
-            modelSection
             inputSection
             resultSection
         }
         .padding()
-    }
+   }
 
-    private var modelSection: some View {
-        VStack {
+    private var modelView: some View {
+        VStack(spacing: 8) {
+            Text("Model:")
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.headline)
+                .foregroundColor(.secondary)
             if llamaState.modelLoaded {
-                Text("Model: \(targetModel.name)")
+                Text(targetModel.name)
                     .frame(maxWidth: .infinity, alignment: .leading)
             } else {
                 LlamaCppDownloadButton(llamaState: llamaState, model: targetModel)
             }
-        }.padding(.top)
+        }
     }
 
     private var inputSection: some View {
-        VStack {
-            TextField("Enter prompt here", text: $inputText)
-                .textFieldStyle(.roundedBorder)
+        VStack(spacing: 16) {
+            modelView
 
-            VStack(alignment: .trailing, spacing: 16) {
-                Button("Send", systemImage: "paperplane", action: {
-                    sendMessage()
-                })
-                .imageScale(.large)
-                .disabled(inputText.isEmpty)
-                .disabled(!llamaState.modelLoaded)
+            VStack {
+                Text("Prompt:")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.headline)
+                    .foregroundColor(.secondary)
+                TextField("Enter prompt here", text: $inputText)
+                    .textFieldStyle(.roundedBorder)
             }
+
+            Button("Send", systemImage: "paperplane", action: {
+                sendMessage()
+            })
+            .imageScale(.large)
+            .disabled(inputText.isEmpty)
+            .disabled(!llamaState.modelLoaded)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
+        .padding()
+        .background(Color.gray.opacity(0.1))
+        .cornerRadius(16)
     }
 
     private var resultSection: some View {
@@ -67,11 +79,15 @@ struct LlamaCppView: View {
                         .padding()
                 }
                 .frame(maxWidth: .infinity, maxHeight: 96)
-                .background(Color.black)
+//                .background(Color.black)
+                .background(Color.black.opacity(0.9))
+                .cornerRadius(4)
             }
 
             Text("Result:")
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.headline)
+                .foregroundColor(.secondary)
 
             ScrollView {
                 if isLoading {
@@ -80,12 +96,12 @@ struct LlamaCppView: View {
                 } else {
                     Text(llamaState.resultText)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding()
                 }
             }
             .frame(maxWidth: .infinity)
             Spacer()
         }
+        .padding()
         .frame(maxWidth: .infinity)
     }
 
