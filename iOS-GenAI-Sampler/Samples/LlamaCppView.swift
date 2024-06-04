@@ -21,13 +21,26 @@ struct LlamaCppView: View {
 
     var body: some View {
         VStack(spacing: 32) {
+            modelSection
+            inputSection
+            resultSection
+        }
+        .padding()
+    }
+
+    private var modelSection: some View {
+        VStack {
             if llamaState.modelLoaded {
                 Text("Model: \(targetModel.name)")
                     .frame(maxWidth: .infinity, alignment: .leading)
             } else {
                 LlamaCppDownloadButton(llamaState: llamaState, model: targetModel)
             }
+        }.padding(.top)
+    }
 
+    private var inputSection: some View {
+        VStack {
             TextField("Enter prompt here", text: $inputText)
                 .textFieldStyle(.roundedBorder)
 
@@ -40,7 +53,11 @@ struct LlamaCppView: View {
                 .disabled(!llamaState.modelLoaded)
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
+        }
+    }
 
+    private var resultSection: some View {
+        VStack(spacing: 16) {
             if !llamaState.completionLog.isEmpty {
                 ScrollView {
                     Text(llamaState.completionLog)
@@ -53,27 +70,23 @@ struct LlamaCppView: View {
                 .background(Color.black)
             }
 
-            VStack(spacing: 16) {
-                Text("Result:")
-                    .frame(maxWidth: .infinity, alignment: .leading)
+            Text("Result:")
+                .frame(maxWidth: .infinity, alignment: .leading)
 
-                ScrollView {
-                    if isLoading {
-                        ProgressView()
-                            .frame(alignment: .center)
-                    } else {
-                        Text(llamaState.resultText)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding()
-                    }
+            ScrollView {
+                if isLoading {
+                    ProgressView()
+                        .frame(alignment: .center)
+                } else {
+                    Text(llamaState.resultText)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
                 }
-                .frame(maxWidth: .infinity)
-
-                Spacer()
             }
             .frame(maxWidth: .infinity)
+            Spacer()
         }
-        .padding()
+        .frame(maxWidth: .infinity)
     }
 
     private func sendMessage() {
