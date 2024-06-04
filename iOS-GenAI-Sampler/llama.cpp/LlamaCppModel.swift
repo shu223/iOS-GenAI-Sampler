@@ -37,4 +37,11 @@ struct LlamaCppModel: Identifiable {
         url: "https://huggingface.co/ggml-org/models/resolve/main/phi-2/ggml-model-q4_0.gguf?download=true",
         filename: "phi-2-q4_0.gguf", status: "download"
     )
+
+
+    static let phi3_Mini_4K_Instruct_Q4 = LlamaCppModel(
+        name: "Phi-3 Mini-4K-Instruct (Q4, 2.2 GB)",
+        url: "https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf/resolve/main/Phi-3-mini-4k-instruct-q4.gguf?download=true",
+        filename: "Phi-3-mini-4k-instruct-q4.gguf", status: "download"
+    )
 }
