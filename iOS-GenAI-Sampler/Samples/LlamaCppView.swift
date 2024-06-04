@@ -30,9 +30,7 @@ struct LlamaCppView: View {
     private var modelView: some View {
         VStack(spacing: 8) {
             Text("Model:")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.headline)
-                .foregroundColor(.secondary)
+                .headlineText()
             if llamaState.modelLoaded {
                 Text(targetModel.name)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -48,9 +46,7 @@ struct LlamaCppView: View {
 
             VStack {
                 Text("Prompt:")
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .font(.headline)
-                    .foregroundColor(.secondary)
+                    .headlineText()
                 TextField("Enter prompt here", text: $inputText)
                     .textFieldStyle(.roundedBorder)
             }
@@ -79,15 +75,12 @@ struct LlamaCppView: View {
                         .padding()
                 }
                 .frame(maxWidth: .infinity, maxHeight: 96)
-//                .background(Color.black)
-                .background(Color.black.opacity(0.9))
+                .background(Color.black.opacity(0.7))
                 .cornerRadius(4)
             }
 
             Text("Result:")
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .font(.headline)
-                .foregroundColor(.secondary)
+                .headlineText()
 
             ScrollView {
                 if isLoading {
@@ -95,7 +88,7 @@ struct LlamaCppView: View {
                         .frame(alignment: .center)
                 } else {
                     Text(llamaState.resultText)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .leadingFrame()
                 }
             }
             .frame(maxWidth: .infinity)
