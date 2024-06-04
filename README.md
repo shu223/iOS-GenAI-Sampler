@@ -74,13 +74,13 @@ https://www.youtube.com/watch?v=bF5CW3b47Ss
 
 A local LLM example using Phi-3 - GGUF.
 
-<img src="images/phi3.png" width="300">
+<img src="images/phi3_2.png" width="300">
 
 #### Mistral 7B
 
 A local LLM example using Mistral-7B v0.1 - GGUF.
 
-<img src="images/mistral.png" width="300">
+<img src="images/mistral_2.png" width="300">
 
 
 ### TBD
