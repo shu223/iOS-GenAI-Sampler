@@ -70,17 +70,17 @@ https://www.youtube.com/watch?v=bF5CW3b47Ss
 
 ### Local LLMs Examples
 
-#### Mistral 7B (llama.cpp)
+#### Phi-3
+
+A local LLM example using Phi-3 - GGUF.
+
+<img src="images/phi3.png" width="300">
+
+#### Mistral 7B
 
 A local LLM example using Mistral-7B v0.1 - GGUF.
 
 <img src="images/mistral.png" width="300">
-
-#### Phi-2  (llama.cpp)
-
-A local LLM example using Phi-2 - GGUF.
-
-<img src="images/phi2.png" width="300">
 
 
 ### TBD
@@ -89,6 +89,5 @@ A local LLM example using Phi-2 - GGUF.
 - [WhisperKit](https://www.docswell.com/s/shu223/KRXDLE-whisperkit)
 - [Core ML Stable Diffusion](https://zenn.dev/shu223/articles/coreml-stable-diffusion)
 - Local LLMs
-  - llama.cpp
   - MLX
   - [Core ML](https://zenn.dev/shu223/articles/coreml-exporters)
