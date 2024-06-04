@@ -65,16 +65,18 @@ class LlamaCppState: ObservableObject {
                     self.resultText += "\(result)"
                 }
             }
+
+            Task { @MainActor in
+                let t_end = DispatchTime.now().uptimeNanoseconds
+                let t_generation = Double(t_end - t_heat_end) / self.NS_PER_S
+                let tokens_per_second = Double(await llamaContext.n_len) / t_generation
+
+                await llamaContext.clear()
+                self.completionLog += """
+                    \nDone
+                    Generated \(tokens_per_second) t/s\n
+                    """
+            }
         }
-
-        let t_end = DispatchTime.now().uptimeNanoseconds
-        let t_generation = Double(t_end - t_heat_end) / NS_PER_S
-        let tokens_per_second = Double(await llamaContext.n_len) / t_generation
-
-        await llamaContext.clear()
-        completionLog += """
-            \nDone
-            Generated \(tokens_per_second) t/s\n
-            """
     }
 }
