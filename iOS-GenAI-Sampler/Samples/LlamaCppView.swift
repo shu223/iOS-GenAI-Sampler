@@ -55,8 +55,7 @@ struct LlamaCppView: View {
                 sendMessage()
             })
             .imageScale(.large)
-            .disabled(inputText.isEmpty)
-            .disabled(!llamaState.modelLoaded)
+            .disabled(inputText.isEmpty || !llamaState.modelLoaded)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .padding()
@@ -103,7 +102,7 @@ struct LlamaCppView: View {
         Task {
             await llamaState.complete(text: inputText)
 
-            Task.detached { @MainActor in
+            Task { @MainActor in
                 self.isLoading = false
             }
         }
