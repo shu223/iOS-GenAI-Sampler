@@ -57,9 +57,14 @@ class LlamaCppState: ObservableObject {
 
         resultText += "\(text)"
 
-        while await llamaContext.n_cur < llamaContext.n_len {
-            let result = await llamaContext.completion_loop()
-            resultText += "\(result)"
+        Task.detached {
+            while await llamaContext.n_cur < llamaContext.n_len {
+                let result = await llamaContext.completion_loop()
+
+                await MainActor.run {
+                    self.resultText += "\(result)"
+                }
+            }
         }
 
         let t_end = DispatchTime.now().uptimeNanoseconds
