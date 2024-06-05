@@ -166,7 +166,8 @@ actor LlamaContext {
             print("\n")
             let new_token_str = String(cString: temporary_invalid_cchars + [0])
             temporary_invalid_cchars.removeAll()
-            n_cur    += 1
+            // FIXME: 呼び出し側がn_curを参照せずとも呼び出し側が終了を判断できるようにする
+            n_cur = n_len
             return new_token_str
         }
 
