@@ -74,7 +74,7 @@ https://www.youtube.com/watch?v=bF5CW3b47Ss
 
 A local LLM example using Phi-3 - GGUF.
 
-<img src="images/phi3_2.png" width="300">
+<img src="images/phi3_stream.gif" width="300">
 
 #### Mistral 7B
 
