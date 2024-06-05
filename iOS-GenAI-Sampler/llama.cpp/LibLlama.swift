@@ -158,10 +158,13 @@ actor LlamaContext {
             new_token_id = llama_sample_token_greedy(context, &candidates_p)
         }
 
-        if llama_token_is_eog(model, new_token_id) || n_cur == n_len {
+        if llama_token_is_eog(model, new_token_id) // new_token_idは終了トークンか？
+            || n_cur == n_len
+        {
             print("\n")
             let new_token_str = String(cString: temporary_invalid_cchars + [0])
             temporary_invalid_cchars.removeAll()
+            n_cur    += 1
             return new_token_str
         }
 
