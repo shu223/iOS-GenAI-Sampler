@@ -33,8 +33,6 @@ actor LlamaContext {
     var n_len: Int32 = 64
     var n_cur: Int32 = 0
 
-    var n_decode: Int32 = 0
-
     init(model: OpaquePointer, context: OpaquePointer) {
         self.model = model
         self.context = context
@@ -188,7 +186,6 @@ actor LlamaContext {
         llama_batch_clear(&batch)
         llama_batch_add(&batch, new_token_id, n_cur, [0], true)
 
-        n_decode += 1
         n_cur    += 1
 
         if llama_decode(context, batch) != 0 {
