@@ -7,6 +7,20 @@
 
 import SwiftUI
 
+struct NavigationLinkWithTitle<Destination>: View where Destination: View {
+    var title: String
+    var destination: Destination
+
+    init(_ title: String, destination: Destination) {
+        self.title = title
+        self.destination = destination
+    }
+
+    var body: some View {
+        NavigationLink(title, destination: destination.navigationBarTitle(title, displayMode: .automatic))
+    }
+}
+
 struct ContentView: View {
     struct SectionHeaderView: View {
         var title: String
@@ -22,15 +36,15 @@ struct ContentView: View {
         NavigationStack {
             List {
                 Section(header: SectionHeaderView(title: "Multimodal - GPT-4o")) {
-                    NavigationLink("Input Text", destination: InputTextView())
-                    NavigationLink("Input Image", destination: InputImageView())
-                    NavigationLink("Input Video", destination: InputVideoView())
-                    NavigationLink("Realtime Camera", destination: RealtimeCameraView())
+                    NavigationLinkWithTitle("Input Text", destination: InputTextView())
+                    NavigationLinkWithTitle("Input Image", destination: InputImageView())
+                    NavigationLinkWithTitle("Input Video", destination: InputVideoView())
+                    NavigationLinkWithTitle("Realtime Camera", destination: RealtimeCameraView())
                 }
                 Section(header: SectionHeaderView(title: "Local LLM - llama.cpp")) {
-                    NavigationLink("Phi-3", destination: Phi3View())
-                    NavigationLink("Gemma", destination: GemmaView())
-                    NavigationLink("Mistral", destination: MistralView())
+                    NavigationLinkWithTitle("Phi-3", destination: Phi3View())
+                    NavigationLinkWithTitle("Gemma", destination: GemmaView())
+                    NavigationLinkWithTitle("Mistral", destination: MistralView())
                 }
             }
             .listStyle(.insetGrouped)
