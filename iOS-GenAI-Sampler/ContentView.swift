@@ -28,8 +28,8 @@ struct ContentView: View {
                     NavigationLink("Realtime Camera", destination: RealtimeCameraView())
                 }
                 Section(header: SectionHeaderView(title: "Local LLM - llama.cpp")) {
-                    NavigationLink("Mistral", destination: MistralView())
                     NavigationLink("Phi-3", destination: Phi3View())
+                    NavigationLink("Mistral", destination: MistralView())
                 }
             }
             .listStyle(.insetGrouped)
