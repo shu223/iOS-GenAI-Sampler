@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct LlamaCppModel: Identifiable {
+struct LlamaCppModel: Identifiable, Hashable {
     var id = UUID()
     var name: String
+    var shortName: String?
     var url: String
     var filename: String
     var status: String?
@@ -37,7 +38,6 @@ struct LlamaCppModel: Identifiable {
         url: "https://huggingface.co/ggml-org/models/resolve/main/phi-2/ggml-model-q4_0.gguf?download=true",
         filename: "phi-2-q4_0.gguf", status: "download"
     )
-
 
     static let phi3_Mini_4K_Instruct_Q4 = LlamaCppModel(
         name: "Phi-3 Mini-4K-Instruct (Q4, 2.2 GB)",

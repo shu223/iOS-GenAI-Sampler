@@ -13,10 +13,12 @@ struct LlamaCppView: View {
     @State private var inputText = "What's the highest building in Japan?"
     @State private var isLoading = false
 
-    private let targetModel: LlamaCppModel
+    @State private var targetModel: LlamaCppModel
+    private var models: [LlamaCppModel]
 
-    init(model: LlamaCppModel) {
-        self.targetModel = model
+    init(models: [LlamaCppModel]) {
+        self.targetModel = models.first!
+        self.models = models
     }
 
     var body: some View {
@@ -31,6 +33,14 @@ struct LlamaCppView: View {
         VStack(spacing: 8) {
             Text("Model:")
                 .headlineText()
+            if models.count > 1 {
+                Picker("Model:", selection: $targetModel) {
+                    ForEach(models, id: \.self) { model in
+                        Text(model.shortName ?? model.name).tag(model)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
             if llamaState.modelLoaded {
                 Text(targetModel.name)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -110,5 +120,5 @@ struct LlamaCppView: View {
 }
 
 #Preview {
-    LlamaCppView(model: LlamaCppModel.mistral_7B_Q4)
+    LlamaCppView(models: [LlamaCppModel.phi3_Mini_4K_Instruct_Q4])
 }

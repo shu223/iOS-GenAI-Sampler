@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Phi2View: View {
     var body: some View {
-        LlamaCppView(model: LlamaCppModel.phi2_Q4)
+        LlamaCppView(models: [LlamaCppModel.phi2_Q4])
     }
 }
 
