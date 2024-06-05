@@ -32,6 +32,8 @@ actor LlamaContext {
     private var temporary_invalid_cchars: [CChar]
 
     var n_len: Int32
+    // FIXME: n_cur == n_len の判定は completion_loop 内部でも行っているので、呼び出し側がこの値を参照せずとも呼び出し側が終了を（返り値で？）判断できるようにする
+    // このカウントが n_len に達した場合、呼び出し側は completion_loop の呼び出しループを終了する
     var n_cur: Int32 = 0
 
     init(model: OpaquePointer, context: OpaquePointer, n_len: Int32 = defaultMaxLength) {
