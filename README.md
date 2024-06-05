@@ -76,6 +76,12 @@ A local LLM example using Phi-3 - GGUF.
 
 <img src="images/phi3_stream.gif" width="300">
 
+#### Gemma
+
+A local LLM example using Gemma 2B Instruct - GGUF.
+
+<img src="images/gemma2b.gif" width="300">
+
 #### Mistral 7B
 
 A local LLM example using Mistral-7B v0.1 - GGUF.
