@@ -22,6 +22,7 @@ func llama_batch_add(_ batch: inout llama_batch, _ id: llama_token, _ pos: llama
 }
 
 actor LlamaContext {
+    private static let defaultMaxLength: Int32 = 64
     private var model: OpaquePointer
     private var context: OpaquePointer
     private var batch: llama_batch
@@ -30,15 +31,16 @@ actor LlamaContext {
     /// This variable is used to store temporarily invalid cchars
     private var temporary_invalid_cchars: [CChar]
 
-    var n_len: Int32 = 64
+    var n_len: Int32
     var n_cur: Int32 = 0
 
-    init(model: OpaquePointer, context: OpaquePointer) {
+    init(model: OpaquePointer, context: OpaquePointer, n_len: Int32 = defaultMaxLength) {
         self.model = model
         self.context = context
         self.tokens_list = []
         self.batch = llama_batch_init(512, 0, 1)
         self.temporary_invalid_cchars = []
+        self.n_len = n_len
     }
 
     deinit {
@@ -48,7 +50,7 @@ actor LlamaContext {
         llama_backend_free()
     }
 
-    static func create_context(path: String) throws -> LlamaContext {
+    static func create_context(path: String, maxLength: Int32 = defaultMaxLength) throws -> LlamaContext {
         llama_backend_init()
         var model_params = llama_model_default_params()
 
@@ -77,7 +79,7 @@ actor LlamaContext {
             throw LlamaError.couldNotInitializeContext
         }
 
-        return LlamaContext(model: model, context: context)
+        return LlamaContext(model: model, context: context, n_len: maxLength)
     }
 
     func model_info() -> String {

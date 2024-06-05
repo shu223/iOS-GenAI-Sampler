@@ -33,7 +33,7 @@ class LlamaCppState: ObservableObject {
 
     func loadModel(modelUrl: URL) throws {
         print("Loading model...")
-        llamaContext = try LlamaContext.create_context(path: modelUrl.path())
+        llamaContext = try LlamaContext.create_context(path: modelUrl.path(), maxLength: 200)
         print("Loaded model \(modelUrl.lastPathComponent)")
     }
 
