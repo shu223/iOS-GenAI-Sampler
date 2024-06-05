@@ -44,4 +44,18 @@ struct LlamaCppModel: Identifiable, Hashable {
         url: "https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf/resolve/main/Phi-3-mini-4k-instruct-q4.gguf?download=true",
         filename: "Phi-3-mini-4k-instruct-q4.gguf", status: "download"
     )
+
+    static let gemma_2B_Instruct_Q4 = LlamaCppModel(
+        name: "Gemma 2B Instruct (Q4, 1.5 GB)",
+        shortName: "Q4",
+        url: "https://huggingface.co/lmstudio-ai/gemma-2b-it-GGUF/resolve/main/gemma-2b-it-q4_k_m.gguf?download=true",
+        filename: "gemma-2b-it-q4_k_m.gguf", status: "download"
+    )
+
+    static let gemma_2B_Instruct_Q8 = LlamaCppModel(
+        name: "Gemma 2B Instruct (Q8, 2.67 GB)",
+        shortName: "Q8",
+        url: "https://huggingface.co/lmstudio-ai/gemma-2b-it-GGUF/resolve/main/gemma-2b-it-q8_0.gguf?download=true",
+        filename: "gemma-2b-it-q8_0.gguf", status: "download"
+    )
 }

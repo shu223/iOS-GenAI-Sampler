@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8A36F9642C0EB8B300956E7E /* Phi3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36F9632C0EB8B300956E7E /* Phi3View.swift */; };
 		8A36F9662C0F089000956E7E /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36F9652C0F089000956E7E /* CustomModifiers.swift */; };
+		8A36F9682C10212B00956E7E /* GemmaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36F9672C10212B00956E7E /* GemmaView.swift */; };
 		8A3F569F2C09F3A600E182AA /* LlamaCppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F569E2C09F3A600E182AA /* LlamaCppState.swift */; };
 		8A3F56A12C09F41800E182AA /* LlamaCppDownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A02C09F41800E182AA /* LlamaCppDownloadButton.swift */; };
 		8A3F56A32C09FFF800E182AA /* LlamaCppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A22C09FFF800E182AA /* LlamaCppModel.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		8A36F9632C0EB8B300956E7E /* Phi3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phi3View.swift; sourceTree = "<group>"; };
 		8A36F9652C0F089000956E7E /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
+		8A36F9672C10212B00956E7E /* GemmaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemmaView.swift; sourceTree = "<group>"; };
 		8A3F569E2C09F3A600E182AA /* LlamaCppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppState.swift; sourceTree = "<group>"; };
 		8A3F56A02C09F41800E182AA /* LlamaCppDownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppDownloadButton.swift; sourceTree = "<group>"; };
 		8A3F56A22C09FFF800E182AA /* LlamaCppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppModel.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				8A3F56A62C0A233500E182AA /* LlamaCppView.swift */,
 				8A3F56A82C0A249800E182AA /* Phi2View.swift */,
 				8A36F9632C0EB8B300956E7E /* Phi3View.swift */,
+				8A36F9672C10212B00956E7E /* GemmaView.swift */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A36F9682C10212B00956E7E /* GemmaView.swift in Sources */,
 				8A6A403C2BFB0BF90027DBB9 /* VideoCapture+UIKit.swift in Sources */,
 				8AF4995E2BF5F9C1001EE586 /* ContentView.swift in Sources */,
 				8AF9D0052C0993F40050F693 /* LibLlama.swift in Sources */,

@@ -29,6 +29,7 @@ struct ContentView: View {
                 }
                 Section(header: SectionHeaderView(title: "Local LLM - llama.cpp")) {
                     NavigationLink("Phi-3", destination: Phi3View())
+                    NavigationLink("Gemma", destination: GemmaView())
                     NavigationLink("Mistral", destination: MistralView())
                 }
             }
