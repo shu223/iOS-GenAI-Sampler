@@ -94,14 +94,15 @@ struct LlamaCppView: View {
             if isLoading {
                 ProgressView()
                     .frame(alignment: .center)
+                Spacer()
             } else {
                 ScrollView {
                 Text(llamaState.resultText)
                     .leadingFrame()
                 }
+                .padding()
                 .frame(maxWidth: .infinity)
             }
-            Spacer()
         }
         .padding()
         .frame(maxWidth: .infinity)

@@ -36,7 +36,7 @@ struct InputImageView: View {
             Text("Image Data").tag(0)
             Text("Image URL").tag(1)
         }
-        .pickerStyle(SegmentedPickerStyle())
+        .pickerStyle(.segmented)
     }
 
     private var imageSection: some View {
