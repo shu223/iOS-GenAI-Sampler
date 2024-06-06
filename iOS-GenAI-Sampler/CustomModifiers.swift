@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct HeadlineTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -26,10 +25,10 @@ struct LeadingFrameModifier: ViewModifier {
 
 extension View {
     func headlineText() -> some View {
-        self.modifier(HeadlineTextModifier())
+        modifier(HeadlineTextModifier())
     }
 
     func leadingFrame() -> some View {
-        self.modifier(LeadingFrameModifier())
+        modifier(LeadingFrameModifier())
     }
 }

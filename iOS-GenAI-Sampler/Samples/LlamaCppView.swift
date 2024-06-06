@@ -17,7 +17,7 @@ struct LlamaCppView: View {
     private var models: [LlamaCppModel]
 
     init(models: [LlamaCppModel]) {
-        self.targetModel = models.first!
+        targetModel = models.first!
         self.models = models
     }
 
@@ -27,7 +27,7 @@ struct LlamaCppView: View {
             resultSection
         }
         .padding()
-   }
+    }
 
     private var modelView: some View {
         VStack(spacing: 8) {
@@ -97,8 +97,8 @@ struct LlamaCppView: View {
                 Spacer()
             } else {
                 ScrollView {
-                Text(llamaState.resultText)
-                    .leadingFrame()
+                    Text(llamaState.resultText)
+                        .leadingFrame()
                 }
                 .padding()
                 .frame(maxWidth: .infinity)

@@ -1,5 +1,5 @@
 //
-//  APIKey.swift
+//  APIKey.sample.swift
 //  iOS-GenAI-Sampler
 //
 //  Created by Shuichi Tsutsumi.

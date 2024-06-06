@@ -10,13 +10,13 @@ func llama_batch_clear(_ batch: inout llama_batch) {
 }
 
 func llama_batch_add(_ batch: inout llama_batch, _ id: llama_token, _ pos: llama_pos, _ seq_ids: [llama_seq_id], _ logits: Bool) {
-    batch.token   [Int(batch.n_tokens)] = id
-    batch.pos     [Int(batch.n_tokens)] = pos
+    batch.token[Int(batch.n_tokens)] = id
+    batch.pos[Int(batch.n_tokens)] = pos
     batch.n_seq_id[Int(batch.n_tokens)] = Int32(seq_ids.count)
-    for i in 0..<seq_ids.count {
+    for i in 0 ..< seq_ids.count {
         batch.seq_id[Int(batch.n_tokens)]![Int(i)] = seq_ids[i]
     }
-    batch.logits  [Int(batch.n_tokens)] = logits ? 1 : 0
+    batch.logits[Int(batch.n_tokens)] = logits ? 1 : 0
 
     batch.n_tokens += 1
 }
@@ -39,9 +39,9 @@ actor LlamaContext {
     init(model: OpaquePointer, context: OpaquePointer, n_len: Int32 = defaultMaxLength) {
         self.model = model
         self.context = context
-        self.tokens_list = []
-        self.batch = llama_batch_init(512, 0, 1)
-        self.temporary_invalid_cchars = []
+        tokens_list = []
+        batch = llama_batch_init(512, 0, 1)
+        temporary_invalid_cchars = []
         self.n_len = n_len
     }
 
@@ -56,10 +56,10 @@ actor LlamaContext {
         llama_backend_init()
         var model_params = llama_model_default_params()
 
-#if targetEnvironment(simulator)
-        model_params.n_gpu_layers = 0
-        print("Running on simulator, force use n_gpu_layers = 0")
-#endif
+        #if targetEnvironment(simulator)
+            model_params.n_gpu_layers = 0
+            print("Running on simulator, force use n_gpu_layers = 0")
+        #endif
         let model = llama_load_model_from_file(path, model_params)
         guard let model else {
             print("Could not load model at \(path)")
@@ -70,9 +70,9 @@ actor LlamaContext {
         print("Using \(n_threads) threads")
 
         var ctx_params = llama_context_default_params()
-        ctx_params.seed  = 1234
+        ctx_params.seed = 1234
         ctx_params.n_ctx = 2048
-        ctx_params.n_threads       = UInt32(n_threads)
+        ctx_params.n_threads = UInt32(n_threads)
         ctx_params.n_threads_batch = UInt32(n_threads)
 
         let context = llama_new_context_with_model(model, ctx_params)
@@ -105,7 +105,7 @@ actor LlamaContext {
     }
 
     func get_n_tokens() -> Int32 {
-        return batch.n_tokens;
+        return batch.n_tokens
     }
 
     func completion_init(text: String) {
@@ -129,7 +129,7 @@ actor LlamaContext {
 
         llama_batch_clear(&batch)
 
-        for i1 in 0..<tokens_list.count {
+        for i1 in 0 ..< tokens_list.count {
             let i = Int(i1)
             llama_batch_add(&batch, tokens_list[i], Int32(i), [0], false)
         }
@@ -148,13 +148,13 @@ actor LlamaContext {
         let n_vocab = llama_n_vocab(model)
         let logits = llama_get_logits_ith(context, batch.n_tokens - 1)
 
-        var candidates = Array<llama_token_data>()
+        var candidates = [llama_token_data]()
         candidates.reserveCapacity(Int(n_vocab))
 
-        for token_id in 0..<n_vocab {
+        for token_id in 0 ..< n_vocab {
             candidates.append(llama_token_data(id: token_id, logit: logits![Int(token_id)], p: 0.0))
         }
-        candidates.withUnsafeMutableBufferPointer() { buffer in
+        candidates.withUnsafeMutableBufferPointer { buffer in
             var candidates_p = llama_token_data_array(data: buffer.baseAddress, size: buffer.count, sorted: false)
 
             new_token_id = llama_sample_token_greedy(context, &candidates_p)
@@ -177,7 +177,7 @@ actor LlamaContext {
         if let string = String(validatingUTF8: temporary_invalid_cchars + [0]) {
             temporary_invalid_cchars.removeAll()
             new_token_str = string
-        } else if (0 ..< temporary_invalid_cchars.count).contains(where: {$0 != 0 && String(validatingUTF8: Array(temporary_invalid_cchars.suffix($0)) + [0]) != nil}) {
+        } else if (0 ..< temporary_invalid_cchars.count).contains(where: { $0 != 0 && String(validatingUTF8: Array(temporary_invalid_cchars.suffix($0)) + [0]) != nil }) {
             // in this case, at least the suffix of the temporary_invalid_cchars can be interpreted as UTF8 string
             let string = String(cString: temporary_invalid_cchars + [0])
             temporary_invalid_cchars.removeAll()
@@ -191,7 +191,7 @@ actor LlamaContext {
         llama_batch_clear(&batch)
         llama_batch_add(&batch, new_token_id, n_cur, [0], true)
 
-        n_cur    += 1
+        n_cur += 1
 
         if llama_decode(context, batch) != 0 {
             print("failed to evaluate llama!")
@@ -207,14 +207,14 @@ actor LlamaContext {
         var pp_std: Double = 0
         var tg_std: Double = 0
 
-        for _ in 0..<nr {
+        for _ in 0 ..< nr {
             // bench prompt processing
 
             llama_batch_clear(&batch)
 
             let n_tokens = pp
 
-            for i in 0..<n_tokens {
+            for i in 0 ..< n_tokens {
                 llama_batch_add(&batch, 0, Int32(i), [0], false)
             }
             batch.logits[Int(batch.n_tokens) - 1] = 1 // true
@@ -236,10 +236,10 @@ actor LlamaContext {
 
             let t_tg_start = ggml_time_us()
 
-            for i in 0..<tg {
+            for i in 0 ..< tg {
                 llama_batch_clear(&batch)
 
-                for j in 0..<pl {
+                for j in 0 ..< pl {
                     llama_batch_add(&batch, 0, Int32(i), [Int32(j)], true)
                 }
 
@@ -253,11 +253,11 @@ actor LlamaContext {
 
             llama_kv_cache_clear(context)
 
-            let t_pp = Double(t_pp_end - t_pp_start) / 1000000.0
-            let t_tg = Double(t_tg_end - t_tg_start) / 1000000.0
+            let t_pp = Double(t_pp_end - t_pp_start) / 1_000_000.0
+            let t_tg = Double(t_tg_end - t_tg_start) / 1_000_000.0
 
-            let speed_pp = Double(pp)    / t_pp
-            let speed_tg = Double(pl*tg) / t_tg
+            let speed_pp = Double(pp) / t_pp
+            let speed_tg = Double(pl * tg) / t_tg
 
             pp_avg += speed_pp
             tg_avg += speed_tg
@@ -279,14 +279,14 @@ actor LlamaContext {
             tg_std = 0
         }
 
-        let model_desc     = model_info();
-        let model_size     = String(format: "%.2f GiB", Double(llama_model_size(model)) / 1024.0 / 1024.0 / 1024.0);
-        let model_n_params = String(format: "%.2f B", Double(llama_model_n_params(model)) / 1e9);
-        let backend        = "Metal";
-        let pp_avg_str     = String(format: "%.2f", pp_avg);
-        let tg_avg_str     = String(format: "%.2f", tg_avg);
-        let pp_std_str     = String(format: "%.2f", pp_std);
-        let tg_std_str     = String(format: "%.2f", tg_std);
+        let model_desc = model_info()
+        let model_size = String(format: "%.2f GiB", Double(llama_model_size(model)) / 1024.0 / 1024.0 / 1024.0)
+        let model_n_params = String(format: "%.2f B", Double(llama_model_n_params(model)) / 1e9)
+        let backend = "Metal"
+        let pp_avg_str = String(format: "%.2f", pp_avg)
+        let tg_avg_str = String(format: "%.2f", tg_avg)
+        let pp_std_str = String(format: "%.2f", pp_std)
+        let tg_std_str = String(format: "%.2f", tg_std)
 
         var result = ""
 
@@ -295,7 +295,7 @@ actor LlamaContext {
         result += String("| \(model_desc) | \(model_size) | \(model_n_params) | \(backend) | pp \(pp) | \(pp_avg_str) ± \(pp_std_str) |\n")
         result += String("| \(model_desc) | \(model_size) | \(model_n_params) | \(backend) | tg \(tg) | \(tg_avg_str) ± \(tg_std_str) |\n")
 
-        return result;
+        return result
     }
 
     func clear() {
@@ -311,7 +311,7 @@ actor LlamaContext {
         let tokenCount = llama_tokenize(model, text, Int32(utf8Count), tokens, Int32(n_tokens), add_bos, false)
 
         var swiftTokens: [llama_token] = []
-        for i in 0..<tokenCount {
+        for i in 0 ..< tokenCount {
             swiftTokens.append(tokens[Int(i)])
         }
 

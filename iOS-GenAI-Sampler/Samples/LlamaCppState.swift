@@ -1,5 +1,5 @@
 //
-//  LlamaCppManager.swift
+//  LlamaCppState.swift
 //  iOS-GenAI-Sampler
 //
 //  Created by Shuichi Tsutsumi on 2024/05/31.
@@ -74,9 +74,9 @@ class LlamaCppState: ObservableObject {
 
             Task { @MainActor in
                 self.completionLog += """
-                    \nDone
-                    Generated \(tokens_per_second) t/s\n
-                    """
+                \nDone
+                Generated \(tokens_per_second) t/s\n
+                """
             }
         }
     }

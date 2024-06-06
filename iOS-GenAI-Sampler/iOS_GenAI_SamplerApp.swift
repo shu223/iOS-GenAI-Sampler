@@ -1,5 +1,5 @@
 //
-//  iOS_OpenAI_SamplerApp.swift
+//  iOS_GenAI_SamplerApp.swift
 //  iOS-GenAI-Sampler
 //
 //  Created by Shuichi Tsutsumi on 2024/05/16.

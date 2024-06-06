@@ -46,7 +46,7 @@ struct LlamaCppDownloadButton: View {
                 return
             }
 
-            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+            guard let response = response as? HTTPURLResponse, (200 ... 299).contains(response.statusCode) else {
                 print("Server error!")
                 return
             }
@@ -56,9 +56,9 @@ struct LlamaCppDownloadButton: View {
                     try FileManager.default.copyItem(at: temporaryURL, to: fileURL)
                     print("Writing to \(filename) completed")
 
-                    DispatchQueue.main.async(execute: {
+                    DispatchQueue.main.async {
                         llamaState.cacheCleared = false
-                    })
+                    }
                     status = "downloaded"
                 }
             } catch let err {
@@ -105,7 +105,7 @@ struct LlamaCppDownloadButton: View {
                 Text("Unknown status")
             }
         }
-        .onDisappear() {
+        .onDisappear {
             downloadTask?.cancel()
         }
         .onChange(of: llamaState.cacheCleared) { newValue in
