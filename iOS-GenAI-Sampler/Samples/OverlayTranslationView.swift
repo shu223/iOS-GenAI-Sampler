@@ -18,10 +18,12 @@ struct OverlayTranslationView: View {
     var body: some View {
         VStack {
             Text(verbatim: originalText)
+                .padding()
+
             Button("Translate") {
                 showTranslation.toggle()
             }
-            Spacer()
+            .padding()
         }
         // Offer a system UI translation.
         .translationPresentation(isPresented: $showTranslation,
