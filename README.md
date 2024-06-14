@@ -88,6 +88,13 @@ A local LLM example using Mistral-7B v0.1 - GGUF.
 
 <img src="images/mistral_2.png" width="300">
 
+### Apple Translation Framework Examples
+
+#### Simple Overlay
+
+A simple overlay translation with 1-line implementation.
+
+<img src="images/translation_simple.jpg" width="300">
 
 ### TBD
 
