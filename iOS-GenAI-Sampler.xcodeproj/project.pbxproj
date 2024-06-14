@@ -26,6 +26,7 @@
 		8A6A403B2BFB0BF90027DBB9 /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40362BFB0BF90027DBB9 /* VideoCapture.swift */; };
 		8A6A403C2BFB0BF90027DBB9 /* VideoCapture+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40372BFB0BF90027DBB9 /* VideoCapture+UIKit.swift */; };
 		8A90AA852C02CB56007B2E24 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90AA842C02CB56007B2E24 /* InputTextView.swift */; };
+		8A97C64B2C1CD710001A1C5B /* OverlayTranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97C64A2C1CD710001A1C5B /* OverlayTranslationView.swift */; };
 		8AE11A382BFB68D6008C269A /* CIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE11A372BFB68D6008C269A /* CIImageExtension.swift */; };
 		8AE11A3A2BFB6905008C269A /* RealtimeCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE11A392BFB6905008C269A /* RealtimeCameraManager.swift */; };
 		8AE5B4352C07C06100CE893D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8AE5B4342C07C06100CE893D /* README.md */; };
@@ -71,6 +72,7 @@
 		8A6A40362BFB0BF90027DBB9 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		8A6A40372BFB0BF90027DBB9 /* VideoCapture+UIKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VideoCapture+UIKit.swift"; sourceTree = "<group>"; };
 		8A90AA842C02CB56007B2E24 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
+		8A97C64A2C1CD710001A1C5B /* OverlayTranslationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayTranslationView.swift; sourceTree = "<group>"; };
 		8AE11A372BFB68D6008C269A /* CIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIImageExtension.swift; sourceTree = "<group>"; };
 		8AE11A392BFB6905008C269A /* RealtimeCameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeCameraManager.swift; sourceTree = "<group>"; };
 		8AE5B4342C07C06100CE893D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				8A3F56A82C0A249800E182AA /* Phi2View.swift */,
 				8A36F9632C0EB8B300956E7E /* Phi3View.swift */,
 				8A36F9672C10212B00956E7E /* GemmaView.swift */,
+				8A97C64A2C1CD710001A1C5B /* OverlayTranslationView.swift */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				8A3F56A92C0A249800E182AA /* Phi2View.swift in Sources */,
 				8A3F56A12C09F41800E182AA /* LlamaCppDownloadButton.swift in Sources */,
 				8A3F56A32C09FFF800E182AA /* LlamaCppModel.swift in Sources */,
+				8A97C64B2C1CD710001A1C5B /* OverlayTranslationView.swift in Sources */,
 				8A36F9662C0F089000956E7E /* CustomModifiers.swift in Sources */,
 				8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */,
 				8AE11A3A2BFB6905008C269A /* RealtimeCameraManager.swift in Sources */,
@@ -513,7 +517,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
@@ -552,7 +556,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.3;

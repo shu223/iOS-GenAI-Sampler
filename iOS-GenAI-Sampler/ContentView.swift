@@ -46,6 +46,9 @@ struct ContentView: View {
                     NavigationLinkWithTitle("Gemma", destination: GemmaView())
                     NavigationLinkWithTitle("Mistral", destination: MistralView())
                 }
+                Section(header: SectionHeaderView(title: "Translation Framework - Apple")) {
+                    NavigationLinkWithTitle("Simple Overlay", destination: OverlayTranslationView())
+                }
             }
             .listStyle(.insetGrouped)
             .navigationTitle("GenAI Sampler")
