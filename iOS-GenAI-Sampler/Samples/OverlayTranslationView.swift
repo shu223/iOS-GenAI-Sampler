@@ -28,7 +28,6 @@ struct OverlayTranslationView: View {
         // Offer a system UI translation.
         .translationPresentation(isPresented: $showTranslation,
                                  text: originalText)
-        .navigationTitle("Translate")
     }
 }
 
