@@ -54,6 +54,10 @@ struct ContentView: View {
                 }
                 Section(header: SectionHeaderView(imageName: "arrow.left.arrow.right", title: "Translation Framework - Apple")) {
                     NavigationLinkWithTitle("Simple Overlay", destination: OverlayTranslationView())
+                    if #available(iOS 18.0, *) {
+                        NavigationLinkWithTitle("Custom UI Translation", destination: CustomTranslationView())
+                        NavigationLinkWithTitle("Download status for models", destination: SupportedLanguagesView())
+                    }
                 }
             }
             .listStyle(.insetGrouped)
