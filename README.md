@@ -94,7 +94,15 @@ A local LLM example using Mistral-7B v0.1 - GGUF.
 
 A simple overlay translation with 1-line implementation.
 
-<img src="images/translation_simple.jpg" width="300">
+### Custom UI Translation (Available on [iOS 18 branch](https://github.com/shu223/iOS-GenAI-Sampler/tree/ios18/translation))
+
+A custom UI translation example using `TranslationSession`.
+
+### Translation Availabilities (Available on [iOS 18 branch](https://github.com/shu223/iOS-GenAI-Sampler/tree/ios18/translation))
+
+Showing translation availabilities for each language pair using `LanguageAvailability`.
+
+<img src="images/translation-availabilities.jpg" width="300">
 
 ### TBD
 
