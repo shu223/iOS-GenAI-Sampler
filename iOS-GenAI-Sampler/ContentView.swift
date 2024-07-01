@@ -23,12 +23,18 @@ struct NavigationLinkWithTitle<Destination>: View where Destination: View {
 
 struct ContentView: View {
     struct SectionHeaderView: View {
+        var imageName: String?
         var title: String
 
         var body: some View {
-            Text(title)
-                .font(.title2)
-                .textCase(nil)
+            HStack {
+                if let imageName {
+                    Image(systemName: imageName)
+                }
+                Text(title)
+                    .font(.title2)
+                    .textCase(nil)
+            }
         }
     }
 
