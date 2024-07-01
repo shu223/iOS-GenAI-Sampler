@@ -41,18 +41,18 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(header: SectionHeaderView(title: "Multimodal - GPT-4o")) {
+                Section(header: SectionHeaderView(title: "📷 Multimodal - GPT-4o")) {
                     NavigationLinkWithTitle("Input Text", destination: InputTextView())
                     NavigationLinkWithTitle("Input Image", destination: InputImageView())
                     NavigationLinkWithTitle("Input Video", destination: InputVideoView())
                     NavigationLinkWithTitle("Realtime Camera", destination: RealtimeCameraView())
                 }
-                Section(header: SectionHeaderView(title: "Local LLM - llama.cpp")) {
+                Section(header: SectionHeaderView(title: "🦙 Local LLM - llama.cpp")) {
                     NavigationLinkWithTitle("Phi-3", destination: Phi3View())
                     NavigationLinkWithTitle("Gemma", destination: GemmaView())
                     NavigationLinkWithTitle("Mistral", destination: MistralView())
                 }
-                Section(header: SectionHeaderView(title: "Translation Framework - Apple")) {
+                Section(header: SectionHeaderView(imageName: "arrow.left.arrow.right", title: "Translation Framework - Apple")) {
                     NavigationLinkWithTitle("Simple Overlay", destination: OverlayTranslationView())
                 }
             }
