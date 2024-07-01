@@ -56,7 +56,7 @@ struct ContentView: View {
                     NavigationLinkWithTitle("Simple Overlay", destination: OverlayTranslationView())
                     if #available(iOS 18.0, *) {
                         NavigationLinkWithTitle("Custom UI Translation", destination: CustomTranslationView())
-                        NavigationLinkWithTitle("Download status for models", destination: SupportedLanguagesView())
+                        NavigationLinkWithTitle("Translation Availabilities", destination: SupportedLanguagesView())
                     }
                 }
             }
