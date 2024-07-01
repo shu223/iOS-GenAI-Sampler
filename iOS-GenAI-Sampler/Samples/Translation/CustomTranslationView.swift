@@ -18,6 +18,7 @@ struct CustomTranslationView: View {
     var body: some View {
         VStack {
             TextField("Enter text to translate", text: $sourceText)
+                .textFieldStyle(.roundedBorder)
                 .padding()
 
             Button("Translate") {
@@ -34,7 +35,6 @@ struct CustomTranslationView: View {
             targetText = response?.targetText ?? ""
         }
         .padding()
-        .navigationTitle("Single string")
     }
 
     private func triggerTranslation() {
