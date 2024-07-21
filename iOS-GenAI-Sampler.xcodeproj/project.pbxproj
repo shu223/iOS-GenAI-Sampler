@@ -17,6 +17,17 @@
 		8A3F56A72C0A233500E182AA /* LlamaCppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A62C0A233500E182AA /* LlamaCppView.swift */; };
 		8A3F56A92C0A249800E182AA /* Phi2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A82C0A249800E182AA /* Phi2View.swift */; };
 		8A524F442C4CEC5200C53ADB /* StableDiffusionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F432C4CEC5200C53ADB /* StableDiffusionView.swift */; };
+		8A524F522C4D218400C53ADB /* Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F462C4D218300C53ADB /* Pipeline.swift */; };
+		8A524F532C4D218400C53ADB /* PipelineLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F472C4D218300C53ADB /* PipelineLoader.swift */; };
+		8A524F542C4D218400C53ADB /* DiffusionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F492C4D218300C53ADB /* DiffusionImage.swift */; };
+		8A524F552C4D218400C53ADB /* ModelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F4A2C4D218300C53ADB /* ModelInfo.swift */; };
+		8A524F562C4D218400C53ADB /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F4B2C4D218300C53ADB /* State.swift */; };
+		8A524F572C4D218400C53ADB /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F4C2C4D218400C53ADB /* Loading.swift */; };
+		8A524F582C4D218400C53ADB /* PromptTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F4D2C4D218400C53ADB /* PromptTextField.swift */; };
+		8A524F592C4D218400C53ADB /* TextToImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F4E2C4D218400C53ADB /* TextToImage.swift */; };
+		8A524F5A2C4D218400C53ADB /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F502C4D218400C53ADB /* Downloader.swift */; };
+		8A524F5B2C4D218400C53ADB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F512C4D218400C53ADB /* Utils.swift */; };
+		8A524F5E2C4D225100C53ADB /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 8A524F5D2C4D225100C53ADB /* ZIPFoundation */; };
 		8A6A401F2BF6CA380027DBB9 /* InputImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */; };
 		8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */; };
 		8A6A402D2BF7458D0027DBB9 /* wwdc_test_60s.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */; };
@@ -65,6 +76,16 @@
 		8A3F56A62C0A233500E182AA /* LlamaCppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppView.swift; sourceTree = "<group>"; };
 		8A3F56A82C0A249800E182AA /* Phi2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phi2View.swift; sourceTree = "<group>"; };
 		8A524F432C4CEC5200C53ADB /* StableDiffusionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StableDiffusionView.swift; sourceTree = "<group>"; };
+		8A524F462C4D218300C53ADB /* Pipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pipeline.swift; sourceTree = "<group>"; };
+		8A524F472C4D218300C53ADB /* PipelineLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipelineLoader.swift; sourceTree = "<group>"; };
+		8A524F492C4D218300C53ADB /* DiffusionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffusionImage.swift; sourceTree = "<group>"; };
+		8A524F4A2C4D218300C53ADB /* ModelInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelInfo.swift; sourceTree = "<group>"; };
+		8A524F4B2C4D218300C53ADB /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		8A524F4C2C4D218400C53ADB /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		8A524F4D2C4D218400C53ADB /* PromptTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromptTextField.swift; sourceTree = "<group>"; };
+		8A524F4E2C4D218400C53ADB /* TextToImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextToImage.swift; sourceTree = "<group>"; };
+		8A524F502C4D218400C53ADB /* Downloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		8A524F512C4D218400C53ADB /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputImageView.swift; sourceTree = "<group>"; };
 		8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputVideoView.swift; sourceTree = "<group>"; };
 		8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wwdc_test_60s.mp4; sourceTree = "<group>"; };
@@ -116,9 +137,35 @@
 		8A524F452C4CEC5F00C53ADB /* Stable Diffusion */ = {
 			isa = PBXGroup;
 			children = (
+				8A524F492C4D218300C53ADB /* DiffusionImage.swift */,
+				8A524F502C4D218400C53ADB /* Downloader.swift */,
+				8A524F4A2C4D218300C53ADB /* ModelInfo.swift */,
+				8A524F482C4D218300C53ADB /* Pipeline */,
+				8A524F4B2C4D218300C53ADB /* State.swift */,
+				8A524F512C4D218400C53ADB /* Utils.swift */,
+				8A524F4F2C4D218400C53ADB /* Views */,
 				8A524F432C4CEC5200C53ADB /* StableDiffusionView.swift */,
 			);
 			path = "Stable Diffusion";
+			sourceTree = "<group>";
+		};
+		8A524F482C4D218300C53ADB /* Pipeline */ = {
+			isa = PBXGroup;
+			children = (
+				8A524F462C4D218300C53ADB /* Pipeline.swift */,
+				8A524F472C4D218300C53ADB /* PipelineLoader.swift */,
+			);
+			path = Pipeline;
+			sourceTree = "<group>";
+		};
+		8A524F4F2C4D218400C53ADB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A524F4C2C4D218400C53ADB /* Loading.swift */,
+				8A524F4D2C4D218400C53ADB /* PromptTextField.swift */,
+				8A524F4E2C4D218400C53ADB /* TextToImage.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8A6A402B2BF7458C0027DBB9 /* Resources */ = {
@@ -377,20 +424,30 @@
 				8AF9D0052C0993F40050F693 /* LibLlama.swift in Sources */,
 				8AE11A382BFB68D6008C269A /* CIImageExtension.swift in Sources */,
 				8A6A40322BFAFC770027DBB9 /* RealtimeCameraView.swift in Sources */,
+				8A524F592C4D218400C53ADB /* TextToImage.swift in Sources */,
+				8A524F562C4D218400C53ADB /* State.swift in Sources */,
 				8AF4995C2BF5F9C1001EE586 /* iOS_GenAI_SamplerApp.swift in Sources */,
 				8A6A40392BFB0BF90027DBB9 /* AVCaptureDevice+Extension.swift in Sources */,
 				8A90AA852C02CB56007B2E24 /* InputTextView.swift in Sources */,
+				8A524F582C4D218400C53ADB /* PromptTextField.swift in Sources */,
+				8A524F5B2C4D218400C53ADB /* Utils.swift in Sources */,
 				8A6A403B2BFB0BF90027DBB9 /* VideoCapture.swift in Sources */,
+				8A524F5A2C4D218400C53ADB /* Downloader.swift in Sources */,
 				8AF4998D2BF5FE5A001EE586 /* APIKey.swift in Sources */,
 				8A3F56A72C0A233500E182AA /* LlamaCppView.swift in Sources */,
+				8A524F552C4D218400C53ADB /* ModelInfo.swift in Sources */,
 				8A3F569F2C09F3A600E182AA /* LlamaCppState.swift in Sources */,
 				8A6A403A2BFB0BF90027DBB9 /* VideoCameraType.swift in Sources */,
+				8A524F522C4D218400C53ADB /* Pipeline.swift in Sources */,
 				8A36F9642C0EB8B300956E7E /* Phi3View.swift in Sources */,
 				8A6A402E2BF7458D0027DBB9 /* VideoUtils.swift in Sources */,
+				8A524F532C4D218400C53ADB /* PipelineLoader.swift in Sources */,
 				8A6A401F2BF6CA380027DBB9 /* InputImageView.swift in Sources */,
 				8AF499882BF5FD70001EE586 /* OpenAIClient.swift in Sources */,
 				8A3F56A52C0A009400E182AA /* MistralView.swift in Sources */,
 				8A3F56A92C0A249800E182AA /* Phi2View.swift in Sources */,
+				8A524F572C4D218400C53ADB /* Loading.swift in Sources */,
+				8A524F542C4D218400C53ADB /* DiffusionImage.swift in Sources */,
 				8A3F56A12C09F41800E182AA /* LlamaCppDownloadButton.swift in Sources */,
 				8A3F56A32C09FFF800E182AA /* LlamaCppModel.swift in Sources */,
 				8A97C64B2C1CD710001A1C5B /* OverlayTranslationView.swift in Sources */,
