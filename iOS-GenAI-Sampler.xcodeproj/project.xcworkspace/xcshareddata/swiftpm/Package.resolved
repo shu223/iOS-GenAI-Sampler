@@ -1,5 +1,5 @@
 {
-  "originHash" : "1b0edf681a1787c8a3590b77eaa6fdb34735601da18c47283c0cee5ac48a7e06",
+  "originHash" : "575d4636c6c2c663376f081aa3aa987685a94ab4f323d25a734802c2b0cbcb41",
   "pins" : [
     {
       "identity" : "llama.cpp",
@@ -35,6 +35,15 @@
       "state" : {
         "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
         "version" : "1.5.0"
+      }
+    },
+    {
+      "identity" : "zipfoundation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/weichsel/ZIPFoundation",
+      "state" : {
+        "revision" : "02b6abe5f6eef7e3cbd5f247c5cc24e246efcfe0",
+        "version" : "0.9.19"
       }
     }
   ],
