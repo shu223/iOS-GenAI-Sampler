@@ -16,6 +16,7 @@
 		8A3F56A52C0A009400E182AA /* MistralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A42C0A009400E182AA /* MistralView.swift */; };
 		8A3F56A72C0A233500E182AA /* LlamaCppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A62C0A233500E182AA /* LlamaCppView.swift */; };
 		8A3F56A92C0A249800E182AA /* Phi2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A82C0A249800E182AA /* Phi2View.swift */; };
+		8A524F442C4CEC5200C53ADB /* StableDiffusionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F432C4CEC5200C53ADB /* StableDiffusionView.swift */; };
 		8A6A401F2BF6CA380027DBB9 /* InputImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */; };
 		8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */; };
 		8A6A402D2BF7458D0027DBB9 /* wwdc_test_60s.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */; };
@@ -63,6 +64,7 @@
 		8A3F56A42C0A009400E182AA /* MistralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistralView.swift; sourceTree = "<group>"; };
 		8A3F56A62C0A233500E182AA /* LlamaCppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppView.swift; sourceTree = "<group>"; };
 		8A3F56A82C0A249800E182AA /* Phi2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phi2View.swift; sourceTree = "<group>"; };
+		8A524F432C4CEC5200C53ADB /* StableDiffusionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StableDiffusionView.swift; sourceTree = "<group>"; };
 		8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputImageView.swift; sourceTree = "<group>"; };
 		8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputVideoView.swift; sourceTree = "<group>"; };
 		8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wwdc_test_60s.mp4; sourceTree = "<group>"; };
@@ -111,6 +113,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A524F452C4CEC5F00C53ADB /* Stable Diffusion */ = {
+			isa = PBXGroup;
+			children = (
+				8A524F432C4CEC5200C53ADB /* StableDiffusionView.swift */,
+			);
+			path = "Stable Diffusion";
+			sourceTree = "<group>";
+		};
 		8A6A402B2BF7458C0027DBB9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,7 +135,7 @@
 				8AC92E462C4CEA41008CC0B9 /* OpenAI API */,
 				8AC92E472C4CEA7F008CC0B9 /* llama.cpp */,
 				8AC92E482C4CEADE008CC0B9 /* Apple */,
-				8AC92E442C4CE57D008CC0B9 /* StableDiffusionView.swift */,
+				8A524F452C4CEC5F00C53ADB /* Stable Diffusion */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -362,6 +372,7 @@
 			files = (
 				8A36F9682C10212B00956E7E /* GemmaView.swift in Sources */,
 				8A6A403C2BFB0BF90027DBB9 /* VideoCapture+UIKit.swift in Sources */,
+				8A524F442C4CEC5200C53ADB /* StableDiffusionView.swift in Sources */,
 				8AF4995E2BF5F9C1001EE586 /* ContentView.swift in Sources */,
 				8AF9D0052C0993F40050F693 /* LibLlama.swift in Sources */,
 				8AE11A382BFB68D6008C269A /* CIImageExtension.swift in Sources */,
