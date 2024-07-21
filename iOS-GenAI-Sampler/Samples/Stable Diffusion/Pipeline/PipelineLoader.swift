@@ -108,7 +108,7 @@ extension PipelineLoader {
         case .cpuOnly           : return .original          // Not supported yet
         case .cpuAndGPU         : return .original
         case .cpuAndNeuralEngine: return model.supportsAttentionV2 ? .splitEinsumV2 : .splitEinsum
-        case .all               : return model.isSD3 ? .original : .splitEinsum
+        case .all               : return .splitEinsum
         @unknown default:
             fatalError("Unknown MLComputeUnits")
         }
@@ -175,14 +175,6 @@ extension PipelineLoader {
                 throw "Stable Diffusion XL requires macOS 14"
             }
 
-        } else if model.isSD3 {
-            if #available(macOS 14.0, iOS 17.0, *) {
-                pipeline = try StableDiffusion3Pipeline(resourcesAt: url,
-                                                        configuration: configuration,
-                                                        reduceMemory: model.reduceMemory)
-            } else {
-                throw "Stable Diffusion 3 requires macOS 14"
-            }
         } else {
             pipeline = try StableDiffusionPipeline(resourcesAt: url,
                                                        controlNet: [],
