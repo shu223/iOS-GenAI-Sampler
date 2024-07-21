@@ -30,14 +30,11 @@ public enum StableDiffusionScheduler: String {
     case pndmScheduler
     /// Scheduler that uses a second order DPM-Solver++ algorithm
     case dpmSolverMultistepScheduler
-    /// Scheduler for rectified flow based multimodal diffusion transformer models
-    case discreteFlowScheduler
 
     func asStableDiffusionScheduler() -> StableDiffusion.StableDiffusionScheduler {
         switch self {
         case .pndmScheduler: return StableDiffusion.StableDiffusionScheduler.pndmScheduler
         case .dpmSolverMultistepScheduler: return StableDiffusion.StableDiffusionScheduler.dpmSolverMultistepScheduler
-        case .discreteFlowScheduler: return StableDiffusion.StableDiffusionScheduler.discreteFlowScheduler
         }
     }
 }
