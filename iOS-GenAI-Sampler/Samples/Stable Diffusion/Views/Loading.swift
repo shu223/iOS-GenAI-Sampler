@@ -10,8 +10,6 @@ import SwiftUI
 import Combine
 
 func iosModel() -> ModelInfo {
-    guard deviceSupportsQuantization else { return ModelInfo.v21Base }
-    if deviceHas6GBOrMore { return ModelInfo.xlmbpChunked }
     return ModelInfo.v21Palettized
 }
 
