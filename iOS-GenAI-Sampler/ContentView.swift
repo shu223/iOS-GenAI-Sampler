@@ -56,7 +56,7 @@ struct ContentView: View {
                     NavigationLinkWithTitle("Simple Overlay", destination: OverlayTranslationView())
                 }
                 Section(header: SectionHeaderView(title: "🖼️ Image Gen - Stable Diffusion")) {
-                    NavigationLinkWithTitle("Stable Diffusion v2.1", destination: LoadingView())
+                    NavigationLinkWithTitle("Stable Diffusion v2.1", destination: LoadingView(model: ModelInfo.v21Palettized))
                 }
             }
             .listStyle(.insetGrouped)

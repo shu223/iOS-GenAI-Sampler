@@ -9,11 +9,8 @@
 import SwiftUI
 import Combine
 
-func iosModel() -> ModelInfo {
-    return ModelInfo.v21Palettized
-}
-
 struct LoadingView: View {
+    let model: ModelInfo
 
     @StateObject var generation = GenerationContext()
 
@@ -43,7 +40,7 @@ struct LoadingView: View {
         .environmentObject(generation)
         .onAppear {
             Task.init {
-                let loader = PipelineLoader(model: iosModel())
+                let loader = PipelineLoader(model: model)
                 stateSubscriber = loader.statePublisher.sink { state in
                     DispatchQueue.main.async {
                         switch state {
@@ -91,6 +88,6 @@ struct ErrorPopover: View {
 
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingView()
+        LoadingView(model: ModelInfo.v21Palettized)
     }
 }

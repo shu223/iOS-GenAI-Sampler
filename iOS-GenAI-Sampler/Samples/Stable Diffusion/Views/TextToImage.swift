@@ -101,7 +101,7 @@ struct TextToImage: View {
     var body: some View {
         VStack {
             HStack {
-                PromptTextField(text: $generation.positivePrompt, isPositivePrompt: true, model: iosModel().modelVersion)
+                PromptTextField(text: $generation.positivePrompt, isPositivePrompt: true, model: generation.pipeline!.modelInfo.modelVersion)
                 Button("Generate") {
                     submit()
                 }

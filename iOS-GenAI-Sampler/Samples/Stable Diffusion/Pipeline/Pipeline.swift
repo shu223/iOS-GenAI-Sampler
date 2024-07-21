@@ -42,7 +42,8 @@ struct GenerationResult {
 class Pipeline {
     let pipeline: StableDiffusionPipelineProtocol
     let maxSeed: UInt32
-    
+    let modelInfo: ModelInfo
+
     var isXL: Bool {
         if #available(macOS 14.0, iOS 17.0, *) {
             return (pipeline as? StableDiffusionXLPipeline) != nil
@@ -59,9 +60,10 @@ class Pipeline {
     
     private var canceled = false
 
-    init(_ pipeline: StableDiffusionPipelineProtocol, maxSeed: UInt32 = UInt32.max) {
+    init(_ pipeline: StableDiffusionPipelineProtocol, maxSeed: UInt32 = UInt32.max, modelInfo: ModelInfo) {
         self.pipeline = pipeline
         self.maxSeed = maxSeed
+        self.modelInfo = modelInfo
     }
     
     func generate(
