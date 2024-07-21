@@ -57,6 +57,7 @@ struct ContentView: View {
                 }
                 Section(header: SectionHeaderView(title: "🖼️ Image Gen - Stable Diffusion")) {
                     NavigationLinkWithTitle("Stable Diffusion v2.1", destination: StableDiffusionView(model: ModelInfo.v21Palettized))
+                    NavigationLinkWithTitle("Stable Diffusion XL", destination: StableDiffusionView(model: ModelInfo.xlmbpChunked))
                 }
             }
             .listStyle(.insetGrouped)
