@@ -66,7 +66,7 @@ class GenerationContext: ObservableObject {
     @Published var numImages: Double = 1.0
     @Published var seed: UInt32 = Settings.shared.seed
     @Published var guidanceScale: Double = Settings.shared.guidanceScale
-    @Published var previews: Double = runningOnMac ? Settings.shared.previewCount : 0.0
+    @Published var previews: Double = 0.0
     @Published var disableSafety = false
     @Published var previewImage: CGImage? = nil
 

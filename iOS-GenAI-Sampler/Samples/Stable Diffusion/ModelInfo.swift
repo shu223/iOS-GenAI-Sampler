@@ -8,6 +8,9 @@
 
 import CoreML
 
+let deviceHas6GBOrMore = ProcessInfo.processInfo.physicalMemory > 5910000000   // Reported by iOS 17 beta (21A5319a) on iPhone 13 Pro: 5917753344
+let deviceHas8GBOrMore = ProcessInfo.processInfo.physicalMemory > 7900000000   // Reported by iOS 17.0.2 on iPhone 15 Pro Max: 8021032960
+
 enum AttentionVariant: String {
     case original
     case splitEinsum
@@ -76,7 +79,6 @@ struct ModelInfo {
 extension ModelInfo {
     //TODO: set compute units instead and derive variant from it
     static var defaultAttention: AttentionVariant {
-        guard runningOnMac else { return .splitEinsum }
         #if os(macOS)
         guard Capabilities.hasANE else { return .original }
         return Capabilities.performanceCores >= 8 ? .original : .splitEinsum
@@ -88,7 +90,7 @@ extension ModelInfo {
     static var defaultComputeUnits: MLComputeUnits { defaultAttention.defaultComputeUnits }
     
     var bestAttention: AttentionVariant {
-        if !runningOnMac && supportsAttentionV2 { return .splitEinsumV2 }
+        if supportsAttentionV2 { return .splitEinsumV2 }
         return ModelInfo.defaultAttention
     }
     var defaultComputeUnits: MLComputeUnits { bestAttention.defaultComputeUnits }
@@ -111,7 +113,6 @@ extension ModelInfo {
     
     var reduceMemory: Bool {
         // Enable on iOS devices, except when using quantization
-        if runningOnMac { return false }
         if isXL { return !deviceHas8GBOrMore }
         return !(quantized && deviceHas6GBOrMore)
     }
@@ -207,38 +208,18 @@ extension ModelInfo {
         isXL: true
     )
 
-    static let MODELS: [ModelInfo] = {
-        if deviceSupportsQuantization {
-            var models = [
-                ModelInfo.v14Base,
-                ModelInfo.v14Palettized,
-                ModelInfo.v15Base,
-                ModelInfo.v15Palettized,
-                ModelInfo.v2Base,
-                ModelInfo.v2Palettized,
-                ModelInfo.v21Base,
-                ModelInfo.v21Palettized
-            ]
-            if runningOnMac {
-                models.append(contentsOf: [
-                    ModelInfo.xl,
-                    ModelInfo.xlWithRefiner,
-                    ModelInfo.xlmbp,
-                ])
-            } else {
-                models.append(ModelInfo.xlmbpChunked)
-            }
-            return models
-        } else {
-            return [
-                ModelInfo.v14Base,
-                ModelInfo.v15Base,
-                ModelInfo.v2Base,
-                ModelInfo.v21Base,
-            ]
-        }
-    }()
-    
+    static let MODELS: [ModelInfo] = [
+            ModelInfo.v14Base,
+            ModelInfo.v14Palettized,
+            ModelInfo.v15Base,
+            ModelInfo.v15Palettized,
+            ModelInfo.v2Base,
+            ModelInfo.v2Palettized,
+            ModelInfo.v21Base,
+            ModelInfo.v21Palettized,
+            ModelInfo.xlmbpChunked,
+    ]
+
     static func from(modelVersion: String) -> ModelInfo? {
         ModelInfo.MODELS.first(where: {$0.modelVersion == modelVersion})
     }

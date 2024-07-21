@@ -24,30 +24,7 @@ struct ShareButtons: View {
     var body: some View {
         let imageView = Image(image, scale: 1, label: Text(name))
 
-        if runningOnMac {
-            HStack {
-                ShareLink(item: imageView, preview: SharePreview(name, image: imageView))
-                Button() {
-                    guard let imageData = UIImage(cgImage: image).pngData() else {
-                        return
-                    }
-                    do {
-                        let fileURL = FileManager.default.temporaryDirectory.appendingPathComponent("\(filename).png")
-                        try imageData.write(to: fileURL)
-                        let controller = UIDocumentPickerViewController(forExporting: [fileURL])
-                        
-                        let scene = UIApplication.shared.connectedScenes.first as! UIWindowScene
-                        scene.windows.first!.rootViewController!.present(controller, animated: true)
-                    } catch {
-                        print("Error creating file")
-                    }
-                } label: {
-                    Label("Save…", systemImage: "square.and.arrow.down")
-                }
-            }
-        } else {
-            ShareLink(item: imageView, preview: SharePreview(name, image: imageView))
-        }
+        ShareLink(item: imageView, preview: SharePreview(name, image: imageView))
     }
 }
 
