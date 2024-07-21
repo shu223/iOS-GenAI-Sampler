@@ -1,29 +1,30 @@
 //
-//  Loading.swift
-//  Diffusion
+//  StableDiffusionView.swift
+//  iOS-GenAI-Sampler
 //
-//  Created by Pedro Cuenca on December 2022.
+//  Created by Shuichi Tsutsumi on 2024/07/21.
+//
+//  Ported from swift-coreml-diffusers's LoadingView
 //  See LICENSE at https://github.com/huggingface/swift-coreml-diffusers/LICENSE
-//
 
 import SwiftUI
 import Combine
 
-struct LoadingView: View {
+struct StableDiffusionView: View {
     let model: ModelInfo
 
     @StateObject var generation = GenerationContext()
 
     @State private var preparationPhase = "Downloading…"
     @State private var downloadProgress: Double = 0
-    
+
     enum CurrentView {
         case loading
         case textToImage
         case error(String)
     }
     @State private var currentView: CurrentView = .loading
-    
+
     @State private var stateSubscriber: Cancellable?
 
     var body: some View {
@@ -64,13 +65,13 @@ struct LoadingView: View {
                 } catch {
                     self.currentView = .error("Could not load model, error: \(error)")
                 }
-            }            
+            }
         }
     }
 }
 
 // Required by .animation
-extension LoadingView.CurrentView: Equatable {}
+extension StableDiffusionView.CurrentView: Equatable {}
 
 struct ErrorPopover: View {
     var errorMessage: String
@@ -86,8 +87,6 @@ struct ErrorPopover: View {
     }
 }
 
-struct LoadingView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoadingView(model: ModelInfo.v21Palettized)
-    }
+#Preview {
+    StableDiffusionView(model: ModelInfo.v21Palettized)
 }
