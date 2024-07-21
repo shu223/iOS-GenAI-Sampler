@@ -27,6 +27,7 @@
 		8A6A403C2BFB0BF90027DBB9 /* VideoCapture+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40372BFB0BF90027DBB9 /* VideoCapture+UIKit.swift */; };
 		8A90AA852C02CB56007B2E24 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A90AA842C02CB56007B2E24 /* InputTextView.swift */; };
 		8A97C64B2C1CD710001A1C5B /* OverlayTranslationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A97C64A2C1CD710001A1C5B /* OverlayTranslationView.swift */; };
+		8AC92E432C4CE1EC008CC0B9 /* StableDiffusion in Frameworks */ = {isa = PBXBuildFile; productRef = 8AC92E422C4CE1EC008CC0B9 /* StableDiffusion */; };
 		8AE11A382BFB68D6008C269A /* CIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE11A372BFB68D6008C269A /* CIImageExtension.swift */; };
 		8AE11A3A2BFB6905008C269A /* RealtimeCameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE11A392BFB6905008C269A /* RealtimeCameraManager.swift */; };
 		8AE5B4352C07C06100CE893D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 8AE5B4342C07C06100CE893D /* README.md */; };
@@ -95,6 +96,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8AF9CFF52C098EC00050F693 /* llama in Frameworks */,
+				8AC92E432C4CE1EC008CC0B9 /* StableDiffusion in Frameworks */,
 				8AF4998B2BF5FDDE001EE586 /* OpenAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +267,7 @@
 			packageProductDependencies = (
 				8AF4998A2BF5FDDE001EE586 /* OpenAI */,
 				8AF9CFF42C098EC00050F693 /* llama */,
+				8AC92E422C4CE1EC008CC0B9 /* StableDiffusion */,
 			);
 			productName = "iOS-GenAI-Sampler";
 			productReference = 8AF499582BF5F9C1001EE586 /* iOS-GenAI-Sampler.app */;
@@ -319,6 +322,7 @@
 			packageReferences = (
 				8AF499862BF5FC47001EE586 /* XCRemoteSwiftPackageReference "OpenAI" */,
 				8AF9CFF32C098EC00050F693 /* XCRemoteSwiftPackageReference "llama" */,
+				8AC92E412C4CE1EC008CC0B9 /* XCRemoteSwiftPackageReference "ml-stable-diffusion" */,
 			);
 			productRefGroup = 8AF499592BF5F9C1001EE586 /* Products */;
 			projectDirPath = "";
@@ -681,6 +685,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8AC92E412C4CE1EC008CC0B9 /* XCRemoteSwiftPackageReference "ml-stable-diffusion" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/ml-stable-diffusion";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
 		8AF499862BF5FC47001EE586 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MacPaw/OpenAI";
@@ -700,6 +712,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8AC92E422C4CE1EC008CC0B9 /* StableDiffusion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AC92E412C4CE1EC008CC0B9 /* XCRemoteSwiftPackageReference "ml-stable-diffusion" */;
+			productName = StableDiffusion;
+		};
 		8AF4998A2BF5FDDE001EE586 /* OpenAI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8AF499862BF5FC47001EE586 /* XCRemoteSwiftPackageReference "OpenAI" */;

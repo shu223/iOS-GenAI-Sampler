@@ -1,5 +1,5 @@
 {
-  "originHash" : "0d90a2012b5b9f48ddaa0436c537feeae259ac42007f2e1b614c377b2535685b",
+  "originHash" : "1b0edf681a1787c8a3590b77eaa6fdb34735601da18c47283c0cee5ac48a7e06",
   "pins" : [
     {
       "identity" : "llama.cpp",
@@ -11,12 +11,30 @@
       }
     },
     {
+      "identity" : "ml-stable-diffusion",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/ml-stable-diffusion",
+      "state" : {
+        "revision" : "5a170d29cf38e674b80541d7ce22929c6a11cdde",
+        "version" : "1.1.1"
+      }
+    },
+    {
       "identity" : "openai",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/MacPaw/OpenAI",
       "state" : {
         "revision" : "fd13a41e987004d14f1793c570721953a2767b03",
         "version" : "0.2.9"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "state" : {
+        "revision" : "41982a3656a71c768319979febd796c6fd111d5c",
+        "version" : "1.5.0"
       }
     }
   ],
