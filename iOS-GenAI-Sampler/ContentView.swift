@@ -55,8 +55,8 @@ struct ContentView: View {
                 Section(header: SectionHeaderView(imageName: "arrow.left.arrow.right", title: "Translation Framework - Apple")) {
                     NavigationLinkWithTitle("Simple Overlay", destination: OverlayTranslationView())
                 }
-                Section(header: SectionHeaderView(imageName: "arrow.left.arrow.right", title: "Image Generator - Stable Diffusion")) {
-                    NavigationLinkWithTitle("Stable Diffusion", destination: LoadingView())
+                Section(header: SectionHeaderView(title: "🖼️ Image Gen - Stable Diffusion")) {
+                    NavigationLinkWithTitle("Stable Diffusion v2.1", destination: LoadingView())
                 }
             }
             .listStyle(.insetGrouped)

@@ -16,7 +16,6 @@
 		8A3F56A52C0A009400E182AA /* MistralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A42C0A009400E182AA /* MistralView.swift */; };
 		8A3F56A72C0A233500E182AA /* LlamaCppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A62C0A233500E182AA /* LlamaCppView.swift */; };
 		8A3F56A92C0A249800E182AA /* Phi2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F56A82C0A249800E182AA /* Phi2View.swift */; };
-		8A524F442C4CEC5200C53ADB /* StableDiffusionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F432C4CEC5200C53ADB /* StableDiffusionView.swift */; };
 		8A524F522C4D218400C53ADB /* Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F462C4D218300C53ADB /* Pipeline.swift */; };
 		8A524F532C4D218400C53ADB /* PipelineLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F472C4D218300C53ADB /* PipelineLoader.swift */; };
 		8A524F542C4D218400C53ADB /* DiffusionImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F492C4D218300C53ADB /* DiffusionImage.swift */; };
@@ -77,7 +76,6 @@
 		8A3F56A42C0A009400E182AA /* MistralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MistralView.swift; sourceTree = "<group>"; };
 		8A3F56A62C0A233500E182AA /* LlamaCppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LlamaCppView.swift; sourceTree = "<group>"; };
 		8A3F56A82C0A249800E182AA /* Phi2View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phi2View.swift; sourceTree = "<group>"; };
-		8A524F432C4CEC5200C53ADB /* StableDiffusionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StableDiffusionView.swift; sourceTree = "<group>"; };
 		8A524F462C4D218300C53ADB /* Pipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pipeline.swift; sourceTree = "<group>"; };
 		8A524F472C4D218300C53ADB /* PipelineLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PipelineLoader.swift; sourceTree = "<group>"; };
 		8A524F492C4D218300C53ADB /* DiffusionImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffusionImage.swift; sourceTree = "<group>"; };
@@ -151,7 +149,6 @@
 				8A524F4B2C4D218300C53ADB /* State.swift */,
 				8A524F512C4D218400C53ADB /* Utils.swift */,
 				8A524F4F2C4D218400C53ADB /* Views */,
-				8A524F432C4CEC5200C53ADB /* StableDiffusionView.swift */,
 			);
 			path = "Stable Diffusion";
 			sourceTree = "<group>";
@@ -428,7 +425,6 @@
 			files = (
 				8A36F9682C10212B00956E7E /* GemmaView.swift in Sources */,
 				8A6A403C2BFB0BF90027DBB9 /* VideoCapture+UIKit.swift in Sources */,
-				8A524F442C4CEC5200C53ADB /* StableDiffusionView.swift in Sources */,
 				8AF4995E2BF5F9C1001EE586 /* ContentView.swift in Sources */,
 				8AF9D0052C0993F40050F693 /* LibLlama.swift in Sources */,
 				8AE11A382BFB68D6008C269A /* CIImageExtension.swift in Sources */,
