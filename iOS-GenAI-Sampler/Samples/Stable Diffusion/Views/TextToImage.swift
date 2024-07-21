@@ -34,7 +34,7 @@ struct ImageWithPlaceholder: View {
         
     var body: some View {
         switch state.wrappedValue {
-        case .startup: return AnyView(Image("placeholder").resizable())
+        case .startup: return AnyView(Image(systemName: "photo.artframe").resizable().aspectRatio(contentMode: .fit).foregroundColor(.secondary).padding())
         case .running(let progress):
             guard let progress = progress, progress.stepCount > 0 else {
                 // The first time it takes a little bit before generation starts
