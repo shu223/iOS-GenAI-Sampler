@@ -122,6 +122,7 @@
 			files = (
 				8AF9CFF52C098EC00050F693 /* llama in Frameworks */,
 				8AC92E432C4CE1EC008CC0B9 /* StableDiffusion in Frameworks */,
+				8A524F672C4E1CE400C53ADB /* WhisperKit in Frameworks */,
 				8AF4998B2BF5FDDE001EE586 /* OpenAI in Frameworks */,
 				8A524F5E2C4D225100C53ADB /* ZIPFoundation in Frameworks */,
 			);
@@ -330,6 +331,7 @@
 				8AF9CFF42C098EC00050F693 /* llama */,
 				8AC92E422C4CE1EC008CC0B9 /* StableDiffusion */,
 				8A524F5D2C4D225100C53ADB /* ZIPFoundation */,
+				8A524F662C4E1CE400C53ADB /* WhisperKit */,
 			);
 			productName = "iOS-GenAI-Sampler";
 			productReference = 8AF499582BF5F9C1001EE586 /* iOS-GenAI-Sampler.app */;
@@ -386,6 +388,7 @@
 				8AF9CFF32C098EC00050F693 /* XCRemoteSwiftPackageReference "llama" */,
 				8AC92E412C4CE1EC008CC0B9 /* XCRemoteSwiftPackageReference "ml-stable-diffusion" */,
 				8A524F5C2C4D225100C53ADB /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				8A524F652C4E1CE400C53ADB /* XCRemoteSwiftPackageReference "WhisperKit" */,
 			);
 			productRefGroup = 8AF499592BF5F9C1001EE586 /* Products */;
 			projectDirPath = "";
@@ -768,6 +771,14 @@
 				minimumVersion = 0.9.19;
 			};
 		};
+		8A524F652C4E1CE400C53ADB /* XCRemoteSwiftPackageReference "WhisperKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/argmaxinc/WhisperKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		8AC92E412C4CE1EC008CC0B9 /* XCRemoteSwiftPackageReference "ml-stable-diffusion" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/ml-stable-diffusion";
@@ -799,6 +810,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A524F5C2C4D225100C53ADB /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
 			productName = ZIPFoundation;
+		};
+		8A524F662C4E1CE400C53ADB /* WhisperKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A524F652C4E1CE400C53ADB /* XCRemoteSwiftPackageReference "WhisperKit" */;
+			productName = WhisperKit;
 		};
 		8AC92E422C4CE1EC008CC0B9 /* StableDiffusion */ = {
 			isa = XCSwiftPackageProductDependency;
