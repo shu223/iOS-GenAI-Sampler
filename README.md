@@ -2,6 +2,10 @@
 
 A collection of Generative AI examples on iOS.
 
+<p align="center">
+<img src="images/contents.png" width="300">
+</p>
+
 ## Usage
 
 1. Rename `APIKey.sample.swift` to `APIKey.swift`, and put your OpenAI API Key into the `apiKeyOpenAI` property's value.
@@ -23,7 +27,9 @@ It shows both of normal and streaming implementations.
 
 A multimodal example that provides a description of an image by GPT-4o.
 
+<p align="center">
 <img src="images/image-und.png" width="300">
+</p>
 
 
 <details>
@@ -42,7 +48,9 @@ The setting to appears indoors be, with a lamp and a chair visible in the backgr
 
 A multimodal example that provides a summary of a video by GPT-4o.
 
+<p align="center">
 <img src="images/video-sum2.png" width="300">
+</p>
 
 <details>
 <summary>Output sample</summary>
@@ -63,7 +71,11 @@ The frames collectively depict a segment from an Apple developer session, where 
 
 A multimodal example that provides a description of a video in realtime by GPT-4o.
 
+<p align="center">
+
 ![](images/realtime1.gif)
+
+</p>
 
 https://www.youtube.com/watch?v=bF5CW3b47Ss
 
@@ -74,19 +86,26 @@ https://www.youtube.com/watch?v=bF5CW3b47Ss
 
 A local LLM example using Phi-3 - GGUF.
 
+<p align="center">
 <img src="images/phi3_stream.gif" width="300">
+</p>
+
 
 #### Gemma
 
 A local LLM example using Gemma 2B Instruct - GGUF.
 
+<p align="center">
 <img src="images/gemma2b.gif" width="300">
+</p>
 
 #### Mistral 7B
 
 A local LLM example using Mistral-7B v0.1 - GGUF.
 
+<p align="center">
 <img src="images/mistral_2.png" width="300">
+</p>
 
 ### Apple Translation Framework Examples
 
@@ -102,7 +121,9 @@ A custom UI translation example using `TranslationSession`.
 
 Showing translation availabilities for each language pair using `LanguageAvailability`.
 
+<p align="center">
 <img src="images/translation-availabilities.jpg" width="300">
+</p>
 
 ### Core ML Stable Diffusion Examples
 
@@ -110,19 +131,32 @@ Showing translation availabilities for each language pair using `LanguageAvailab
 
 On-Device Image Generation using Stable Diffusion v2.1.
 
+<p align="center">
 <img src="images/IMG_7413.jpg" width="300">
+</p>
 
 #### Stable Diffusion XL
 
 On-Device Image Generation using Stable Diffusion XL.
 
+### Whisper Examples
 
+#### WhisperKit
+
+On-Device Speech Recognition using [WhisperKit](https://github.com/argmaxinc/WhisperKit).
+
+<p align="center">
+
+![](images/whisperkit.gif)
+
+</p>
 
 ### TBD
 
 - Other OpenAI APIs (e.g. Embeddings, Images, Audio, etc.)
-- [WhisperKit](https://www.docswell.com/s/shu223/KRXDLE-whisperkit)
-- [Core ML Stable Diffusion](https://zenn.dev/shu223/articles/coreml-stable-diffusion)
 - Local LLMs
   - MLX
   - [Core ML](https://zenn.dev/shu223/articles/coreml-exporters)
+- Other Whisper models
+  - whisper.cpp
+  - MLX
