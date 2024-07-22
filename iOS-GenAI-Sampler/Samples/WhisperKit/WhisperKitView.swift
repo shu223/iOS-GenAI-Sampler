@@ -34,7 +34,6 @@ struct WhisperKitView: View {
 
     @AppStorage("selectedAudioInput") private var selectedAudioInput: String = "No Audio Input"
     @AppStorage("selectedModel") private var selectedModel: String = WhisperKit.recommendedModels().default
-    @AppStorage("selectedTab") private var selectedTab: String = "Transcribe"
     @AppStorage("selectedTask") private var selectedTask: String = "transcribe"
     @AppStorage("selectedLanguage") private var selectedLanguage: String = "english"
     @AppStorage("repoName") private var repoName: String = "argmaxinc/whisperkit-coreml"
@@ -175,9 +174,6 @@ struct WhisperKitView: View {
                                 .bold()
                         }
                     }
-                }
-                .onChange(of: selectedCategoryId) {
-                    selectedTab = menu.first(where: { $0.id == selectedCategoryId })?.name ?? "Transcribe"
                 }
                 .disabled(modelState != .loaded)
                 .foregroundColor(modelState != .loaded ? .secondary : .primary)
