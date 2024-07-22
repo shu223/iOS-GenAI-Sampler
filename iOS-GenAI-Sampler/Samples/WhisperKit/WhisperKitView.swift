@@ -3,19 +3,12 @@
 
 import SwiftUI
 import WhisperKit
-#if canImport(UIKit)
 import UIKit
-#elseif canImport(AppKit)
-import AppKit
-#endif
 import AVFoundation
 import CoreML
 
 struct WhisperKitView: View {
     @State var whisperKit: WhisperKit? = nil
-    #if os(macOS)
-    @State var audioDevices: [AudioDevice]? = nil
-    #endif
     @State var isRecording: Bool = false
     @State var isTranscribing: Bool = false
     @State var currentText: String = ""
@@ -359,24 +352,9 @@ struct WhisperKitView: View {
                     .disabled(localModels.count == 0)
                     .disabled(!localModels.contains(selectedModel))
 
-                    #if os(macOS)
-                    Button(action: {
-                        let folderURL = whisperKit?.modelFolder ?? (localModels.contains(selectedModel) ? URL(fileURLWithPath: localModelPath) : nil)
-                        if let folder = folderURL {
-                            NSWorkspace.shared.open(folder)
-                        }
-                    }, label: {
-                        Image(systemName: "folder")
-                    })
-                    .buttonStyle(BorderlessButtonStyle())
-                    #endif
                     Button(action: {
                         if let url = URL(string: "https://huggingface.co/\(repoName)") {
-                            #if os(macOS)
-                            NSWorkspace.shared.open(url)
-                            #else
                             UIApplication.shared.open(url)
-                            #endif
                         }
                     }, label: {
                         Image(systemName: "link.circle")
@@ -470,34 +448,6 @@ struct WhisperKitView: View {
 
     // MARK: - Controls
 
-    var audioDevicesView: some View {
-        Group {
-            #if os(macOS)
-            HStack {
-                if let audioDevices = audioDevices, audioDevices.count > 0 {
-                    Picker("", selection: $selectedAudioInput) {
-                        ForEach(audioDevices, id: \.self) { device in
-                            Text(device.name).tag(device.name)
-                        }
-                    }
-                    .frame(width: 250)
-                    .disabled(isRecording)
-                }
-            }
-            .onAppear {
-                audioDevices = AudioProcessor.getAudioDevices()
-                if let audioDevices = audioDevices,
-                   !audioDevices.isEmpty,
-                   selectedAudioInput == "No Audio Input",
-                   let device = audioDevices.first
-                {
-                    selectedAudioInput = device.name
-                }
-            }
-            #endif
-        }
-    }
-
     var controlsView: some View {
         VStack {
             basicSettingsView
@@ -513,10 +463,6 @@ struct WhisperKitView: View {
                                     Label("Reset", systemImage: "arrow.clockwise")
                                 }
                                 .buttonStyle(.borderless)
-
-                                Spacer()
-
-                                audioDevicesView
 
                                 Spacer()
 
@@ -614,10 +560,6 @@ struct WhisperKitView: View {
 
                                 Spacer()
 
-                                audioDevicesView
-
-                                Spacer()
-
                                 VStack {
                                     Button {
                                         showAdvancedOptions.toggle()
@@ -709,12 +651,6 @@ struct WhisperKitView: View {
                     .font(.system(.body))
                     .lineLimit(1)
                 Spacer()
-                #if os(macOS)
-                Text(effectiveSpeedFactor.formatted(.number.precision(.fractionLength(1))) + " Speed Factor")
-                    .font(.system(.body))
-                    .lineLimit(1)
-                Spacer()
-                #endif
                 Text(tokensPerSecond.formatted(.number.precision(.fractionLength(0))) + " tok/s")
                     .font(.system(.body))
                     .lineLimit(1)
@@ -1173,19 +1109,6 @@ struct WhisperKitView: View {
                 }
 
                 var deviceId: DeviceID?
-                #if os(macOS)
-                if self.selectedAudioInput != "No Audio Input",
-                   let devices = self.audioDevices,
-                   let device = devices.first(where: { $0.name == selectedAudioInput })
-                {
-                    deviceId = device.id
-                }
-
-                // There is no built-in microphone
-                if deviceId == nil {
-                    throw WhisperError.microphoneUnavailable()
-                }
-                #endif
 
                 try? audioProcessor.startRecordingLive(inputDeviceID: deviceId) { _ in
                     DispatchQueue.main.async {
@@ -1635,7 +1558,4 @@ struct WhisperKitView: View {
 
 #Preview {
     WhisperKitView()
-    #if os(macOS)
-        .frame(width: 800, height: 500)
-    #endif
 }
