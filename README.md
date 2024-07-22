@@ -156,3 +156,9 @@ On-Device Speech Recognition using [WhisperKit](https://github.com/argmaxinc/Whi
 - Other Whisper models
   - whisper.cpp
   - MLX
+- Google Gemini ([iOS SDK](https://github.com/google-gemini/generative-ai-swift))
+- Other Stable Diffusion models
+- iOS 18 / Apple Intelligence
+  - Genmoji
+  - Writing Tools
+  - Image Playground
