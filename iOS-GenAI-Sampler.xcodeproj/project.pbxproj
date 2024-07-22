@@ -30,7 +30,7 @@
 		8A524F622C4D2C7C00C53ADB /* Utils_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F612C4D2C7C00C53ADB /* Utils_iOS.swift */; };
 		8A524F642C4D53EE00C53ADB /* StableDiffusionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F632C4D53EE00C53ADB /* StableDiffusionView.swift */; };
 		8A524F672C4E1CE400C53ADB /* WhisperKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8A524F662C4E1CE400C53ADB /* WhisperKit */; };
-		8A524F6A2C4E31B000C53ADB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F682C4E31B000C53ADB /* ContentView.swift */; };
+		8A524F6A2C4E31B000C53ADB /* WhisperKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A524F682C4E31B000C53ADB /* WhisperKitView.swift */; };
 		8A6A401F2BF6CA380027DBB9 /* InputImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */; };
 		8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */; };
 		8A6A402D2BF7458D0027DBB9 /* wwdc_test_60s.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */; };
@@ -90,7 +90,7 @@
 		8A524F5F2C4D2C3300C53ADB /* DiffusionImage+iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DiffusionImage+iOS.swift"; sourceTree = "<group>"; };
 		8A524F612C4D2C7C00C53ADB /* Utils_iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils_iOS.swift; sourceTree = "<group>"; };
 		8A524F632C4D53EE00C53ADB /* StableDiffusionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StableDiffusionView.swift; sourceTree = "<group>"; };
-		8A524F682C4E31B000C53ADB /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8A524F682C4E31B000C53ADB /* WhisperKitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhisperKitView.swift; sourceTree = "<group>"; };
 		8A6A401E2BF6CA380027DBB9 /* InputImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputImageView.swift; sourceTree = "<group>"; };
 		8A6A40202BF6CCD50027DBB9 /* InputVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputVideoView.swift; sourceTree = "<group>"; };
 		8A6A402A2BF7458C0027DBB9 /* wwdc_test_60s.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wwdc_test_60s.mp4; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		8A524F692C4E31B000C53ADB /* WhisperKit */ = {
 			isa = PBXGroup;
 			children = (
-				8A524F682C4E31B000C53ADB /* ContentView.swift */,
+				8A524F682C4E31B000C53ADB /* WhisperKitView.swift */,
 			);
 			path = WhisperKit;
 			sourceTree = "<group>";
@@ -461,7 +461,7 @@
 				8A524F552C4D218400C53ADB /* ModelInfo.swift in Sources */,
 				8A3F569F2C09F3A600E182AA /* LlamaCppState.swift in Sources */,
 				8A6A403A2BFB0BF90027DBB9 /* VideoCameraType.swift in Sources */,
-				8A524F6A2C4E31B000C53ADB /* ContentView.swift in Sources */,
+				8A524F6A2C4E31B000C53ADB /* WhisperKitView.swift in Sources */,
 				8A524F522C4D218400C53ADB /* Pipeline.swift in Sources */,
 				8A36F9642C0EB8B300956E7E /* Phi3View.swift in Sources */,
 				8A6A402E2BF7458D0027DBB9 /* VideoUtils.swift in Sources */,

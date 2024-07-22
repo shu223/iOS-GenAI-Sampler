@@ -11,7 +11,7 @@ import AppKit
 import AVFoundation
 import CoreML
 
-struct ContentView: View {
+struct WhisperKitView: View {
     @State var whisperKit: WhisperKit? = nil
     #if os(macOS)
     @State var audioDevices: [AudioDevice]? = nil
@@ -1653,7 +1653,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    WhisperKitView()
     #if os(macOS)
         .frame(width: 800, height: 500)
     #endif
