@@ -59,6 +59,9 @@ struct ContentView: View {
                     NavigationLinkWithTitle("Stable Diffusion v2.1", destination: StableDiffusionView(model: ModelInfo.v21Palettized))
                     NavigationLinkWithTitle("Stable Diffusion XL", destination: StableDiffusionView(model: ModelInfo.xlmbpChunked))
                 }
+                Section(header: SectionHeaderView(title: "🎤 Speech Recognition - Whisper")) {
+                    NavigationLinkWithTitle("WhisperKit", destination: WhisperKitView())
+                }
             }
             .listStyle(.insetGrouped)
             .navigationTitle("GenAI Sampler")
