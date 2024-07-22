@@ -171,8 +171,6 @@ struct WhisperKitView: View {
                 .disabled(modelState != .loaded)
                 .foregroundColor(modelState != .loaded ? .secondary : .primary)
             }
-            .navigationTitle("WhisperAX")
-            .navigationSplitViewColumnWidth(min: 300, ideal: 350)
             .padding(.horizontal)
             Spacer()
         }
