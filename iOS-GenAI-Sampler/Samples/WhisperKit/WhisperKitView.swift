@@ -184,6 +184,7 @@ struct WhisperKitView: View {
             Spacer()
         }
         .onAppear {
+            selectedCategoryId = nil
             fetchModels()
         }
     }
