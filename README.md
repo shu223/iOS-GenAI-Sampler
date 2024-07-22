@@ -104,6 +104,20 @@ Showing translation availabilities for each language pair using `LanguageAvailab
 
 <img src="images/translation-availabilities.jpg" width="300">
 
+### Core ML Stable Diffusion Examples
+
+#### Stable Diffusion v2.1
+
+On-Device Image Generation using Stable Diffusion v2.1.
+
+<img src="images/IMG_7413.jpg" width="300">
+
+#### Stable Diffusion XL
+
+On-Device Image Generation using Stable Diffusion XL.
+
+
+
 ### TBD
 
 - Other OpenAI APIs (e.g. Embeddings, Images, Audio, etc.)
