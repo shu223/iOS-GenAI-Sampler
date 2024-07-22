@@ -92,7 +92,6 @@ struct WhisperKitView: View {
 
     // MARK: UI properties
 
-    @State private var columnVisibility: NavigationSplitViewVisibility = .all
     @State private var showComputeUnits: Bool = true
     @State private var showAdvancedOptions: Bool = false
     @State private var transcriptionTask: Task<Void, Never>? = nil
@@ -159,7 +158,7 @@ struct WhisperKitView: View {
     }
 
     var body: some View {
-        NavigationSplitView(columnVisibility: $columnVisibility) {
+        NavigationStack {
             VStack(alignment: .leading) {
                 modelSelectorView
                     .padding(.vertical)
@@ -168,11 +167,13 @@ struct WhisperKitView: View {
                     .padding(.bottom)
 
                 List(menu, selection: $selectedCategoryId) { item in
-                    HStack {
-                        Image(systemName: item.image)
-                        Text(item.name)
-                            .font(.system(.title3))
-                            .bold()
+                    NavigationLink(destination: detailView(item: item)) {
+                        HStack {
+                            Image(systemName: item.image)
+                            Text(item.name)
+                                .font(.system(.title3))
+                                .bold()
+                        }
                     }
                 }
                 .onChange(of: selectedCategoryId) {
@@ -185,54 +186,37 @@ struct WhisperKitView: View {
             .navigationSplitViewColumnWidth(min: 300, ideal: 350)
             .padding(.horizontal)
             Spacer()
-        } detail: {
-            VStack {
-                #if os(iOS)
-                modelSelectorView
-                    .padding()
-                transcriptionView
-                #elseif os(macOS)
-                VStack(alignment: .leading) {
-                    transcriptionView
-                }
-                .padding()
-                #endif
-                controlsView
-            }
-            .toolbar(content: {
-                ToolbarItem {
-                    Button {
-                        if (!enableEagerDecoding) {
-                            let fullTranscript = formatSegments(confirmedSegments + unconfirmedSegments, withTimestamps: enableTimestamps).joined(separator: "\n")
-                            #if os(iOS)
-                            UIPasteboard.general.string = fullTranscript
-                            #elseif os(macOS)
-                            NSPasteboard.general.clearContents()
-                            NSPasteboard.general.setString(fullTranscript, forType: .string)
-                            #endif
-                        } else {
-                            #if os(iOS)
-                            UIPasteboard.general.string = confirmedText + hypothesisText
-                            #elseif os(macOS)
-                            NSPasteboard.general.clearContents()
-                            NSPasteboard.general.setString(confirmedText + hypothesisText, forType: .string)
-                            #endif
-                        }
-                    } label: {
-                        Label("Copy Text", systemImage: "doc.on.doc")
-                    }
-                    .keyboardShortcut("c", modifiers: .command)
-                    .foregroundColor(.primary)
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                }
-            })
         }
         .onAppear {
-            #if os(macOS)
-            selectedCategoryId = menu.first(where: { $0.name == selectedTab })?.id
-            #endif
             fetchModels()
         }
+    }
+
+    @ViewBuilder
+    private func detailView(item: MenuItem) -> some View {
+        VStack {
+            modelSelectorView
+                .padding()
+            transcriptionView
+            controlsView
+        }
+        .toolbar(content: {
+            ToolbarItem {
+                Button {
+                    if (!enableEagerDecoding) {
+                        let fullTranscript = formatSegments(confirmedSegments + unconfirmedSegments, withTimestamps: enableTimestamps).joined(separator: "\n")
+                        UIPasteboard.general.string = fullTranscript
+                    } else {
+                        UIPasteboard.general.string = confirmedText + hypothesisText
+                    }
+                } label: {
+                    Label("Copy Text", systemImage: "doc.on.doc")
+                }
+                .keyboardShortcut("c", modifiers: .command)
+                .foregroundColor(.primary)
+                .frame(minWidth: 0, maxWidth: .infinity)
+            }
+        })
     }
 
     // MARK: - Transcription
