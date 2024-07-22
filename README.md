@@ -72,9 +72,7 @@ The frames collectively depict a segment from an Apple developer session, where 
 A multimodal example that provides a description of a video in realtime by GPT-4o.
 
 <p align="center">
-
-![](images/realtime1.gif)
-
+<img src="images/realtime1.gif">
 </p>
 
 https://www.youtube.com/watch?v=bF5CW3b47Ss
@@ -146,9 +144,7 @@ On-Device Image Generation using Stable Diffusion XL.
 On-Device Speech Recognition using [WhisperKit](https://github.com/argmaxinc/WhisperKit).
 
 <p align="center">
-
-![](images/whisperkit.gif)
-
+<img src="images/whisperkit.gif">
 </p>
 
 ### TBD
