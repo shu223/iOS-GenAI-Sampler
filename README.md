@@ -146,8 +146,7 @@ On-Device Speech Recognition using [WhisperKit](https://github.com/argmaxinc/Whi
 <p align="center">
 <img src="images/whisperkit.gif">
 </p>
-
-### TBD
+### Upcoming Features
 
 - Other OpenAI APIs (e.g. Embeddings, Images, Audio, etc.)
 - Local LLMs
