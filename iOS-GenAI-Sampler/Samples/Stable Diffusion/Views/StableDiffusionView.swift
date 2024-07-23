@@ -60,6 +60,9 @@ struct StableDiffusionView: View {
                     }
                 }
                 do {
+                    if let prompt = model.placeholderPrompt {
+                        generation.positivePrompt = prompt
+                    }
                     generation.pipeline = try await loader.prepare()
                     self.currentView = .textToImage
                 } catch {

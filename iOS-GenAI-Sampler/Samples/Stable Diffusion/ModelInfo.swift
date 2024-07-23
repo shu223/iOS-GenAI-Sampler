@@ -24,16 +24,16 @@ extension AttentionVariant {
 struct ModelInfo {
     /// Hugging Face model Id that contains .zip archives with compiled Core ML models
     let modelId: String
-    
+
     /// Arbitrary string for presentation purposes. Something like "2.1-base"
     let modelVersion: String
-    
+
     /// Suffix of the archive containing the ORIGINAL attention variant. Usually something like "original_compiled"
     let originalAttentionSuffix: String
 
     /// Suffix of the archive containing the SPLIT_EINSUM attention variant. Usually something like "split_einsum_compiled"
     let splitAttentionSuffix: String
-    
+
     /// Suffix of the archive containing the SPLIT_EINSUM_V2 attention variant. Usually something like "split_einsum_v2_compiled"
     let splitAttentionV2Suffix: String
 
@@ -42,16 +42,18 @@ struct ModelInfo {
 
     /// Whether the archive contains the VAE Encoder (for image to image tasks). Not yet in use.
     let supportsEncoder: Bool
-    
+
     /// Is attention v2 supported? (Ideally, we should know by looking at the repo contents)
     let supportsAttentionV2: Bool
-    
+
     /// Are weights quantized? This is only used to decide whether to use `reduceMemory`
     let quantized: Bool
-    
+
     /// Whether this is a Stable Diffusion XL model
     // TODO: retrieve from remote config
     let isXL: Bool
+
+    let placeholderPrompt: String?
 
     //TODO: refactor all these properties
     init(modelId: String, modelVersion: String,
@@ -62,7 +64,8 @@ struct ModelInfo {
          supportsEncoder: Bool = false,
          supportsAttentionV2: Bool = false,
          quantized: Bool = false,
-         isXL: Bool = false) {
+         isXL: Bool = false,
+         placeholderPrompt: String? = nil) {
         self.modelId = modelId
         self.modelVersion = modelVersion
         self.originalAttentionSuffix = originalAttentionSuffix
@@ -73,6 +76,7 @@ struct ModelInfo {
         self.supportsAttentionV2 = supportsAttentionV2
         self.quantized = quantized
         self.isXL = isXL
+        self.placeholderPrompt = placeholderPrompt
     }
 }
 
@@ -86,15 +90,15 @@ extension ModelInfo {
         return .splitEinsum
         #endif
     }
-    
+
     static var defaultComputeUnits: MLComputeUnits { defaultAttention.defaultComputeUnits }
-    
+
     var bestAttention: AttentionVariant {
         if supportsAttentionV2 { return .splitEinsumV2 }
         return ModelInfo.defaultAttention
     }
     var defaultComputeUnits: MLComputeUnits { bestAttention.defaultComputeUnits }
-    
+
     func modelURL(for variant: AttentionVariant) -> URL {
         // Pattern: https://huggingface.co/pcuenq/coreml-stable-diffusion/resolve/main/coreml-stable-diffusion-v1-5_original_compiled.zip
         let suffix: String
@@ -106,11 +110,11 @@ extension ModelInfo {
         let repo = modelId.split(separator: "/").last!
         return URL(string: "https://huggingface.co/\(modelId)/resolve/main/\(repo)_\(suffix).zip")!
     }
-    
+
     /// Best variant for the current platform.
     /// Currently using `split_einsum` for iOS and simple performance heuristics for macOS.
     var bestURL: URL { modelURL(for: bestAttention) }
-    
+
     var reduceMemory: Bool {
         // Enable on iOS devices, except when using quantization
         if isXL { return !deviceHas8GBOrMore }
@@ -136,7 +140,7 @@ extension ModelInfo {
         modelId: "pcuenq/coreml-stable-diffusion-v1-5",
         modelVersion: "RunwayML SD 1.5"
     )
-    
+
     static let v15Palettized = ModelInfo(
         modelId: "apple/coreml-stable-diffusion-v1-5-palettized",
         modelVersion: "RunwayML SD 1.5 [6 bit]",
@@ -144,13 +148,13 @@ extension ModelInfo {
         supportsAttentionV2: true,
         quantized: true
     )
-    
+
     static let v2Base = ModelInfo(
         modelId: "pcuenq/coreml-stable-diffusion-2-base",
         modelVersion: "StabilityAI SD 2.0",
         supportsEncoder: true
     )
-    
+
     static let v2Palettized = ModelInfo(
         modelId: "apple/coreml-stable-diffusion-2-base-palettized",
         modelVersion: "StabilityAI SD 2.0 [6 bit]",
@@ -164,27 +168,28 @@ extension ModelInfo {
         modelVersion: "StabilityAI SD 2.1",
         supportsEncoder: true
     )
-    
+
     static let v21Palettized = ModelInfo(
         modelId: "apple/coreml-stable-diffusion-2-1-base-palettized",
         modelVersion: "StabilityAI SD 2.1 [6 bit]",
         supportsEncoder: true,
         supportsAttentionV2: true,
-        quantized: true
+        quantized: true,
+        placeholderPrompt: DEFAULT_PROMPT
     )
-        
+
     static let ofaSmall = ModelInfo(
         modelId: "pcuenq/coreml-small-stable-diffusion-v0",
         modelVersion: "OFA-Sys/small-stable-diffusion-v0"
     )
-    
+
     static let xl = ModelInfo(
         modelId: "apple/coreml-stable-diffusion-xl-base",
         modelVersion: "SDXL base (1024, macOS)",
         supportsEncoder: true,
         isXL: true
     )
-    
+
     static let xlWithRefiner = ModelInfo(
         modelId: "apple/coreml-stable-diffusion-xl-base-with-refiner",
         modelVersion: "SDXL with refiner (1024, macOS)",
@@ -199,13 +204,14 @@ extension ModelInfo {
         quantized: true,
         isXL: true
     )
-    
+
     static let xlmbpChunked = ModelInfo(
         modelId: "apple/coreml-stable-diffusion-xl-base-ios",
         modelVersion: "SDXL base (768, iOS) [4 bit]",
         supportsEncoder: false,
         quantized: true,
-        isXL: true
+        isXL: true,
+        placeholderPrompt: "an adorable and fluffy baby dinosaur with big color eyes, with soft feathers and wings, in the desert with cactus, with blur background, high quality, 8k"
     )
 
     static let MODELS: [ModelInfo] = [
@@ -223,7 +229,7 @@ extension ModelInfo {
     static func from(modelVersion: String) -> ModelInfo? {
         ModelInfo.MODELS.first(where: {$0.modelVersion == modelVersion})
     }
-    
+
     static func from(modelId: String) -> ModelInfo? {
         ModelInfo.MODELS.first(where: {$0.modelId == modelId})
     }

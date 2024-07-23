@@ -146,9 +146,11 @@ class Settings {
 
     var prompt: String {
         set {
+            print("hoge1")
             defaults.set(newValue, forKey: Keys.prompt.rawValue)
         }
         get {
+            print("hoge2")
             return defaults.string(forKey: Keys.prompt.rawValue) ?? DEFAULT_PROMPT
         }
     }
