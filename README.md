@@ -130,7 +130,7 @@ Showing translation availabilities for each language pair using `LanguageAvailab
 On-Device Image Generation using Stable Diffusion v2.1.
 
 <p align="center">
-<img src="images/IMG_7413.jpg" width="300">
+<img src="images/IMG_7413.jpg" width="300"> <img src="images/IMG_7411.jpg" width="300">
 </p>
 
 #### Stable Diffusion XL
