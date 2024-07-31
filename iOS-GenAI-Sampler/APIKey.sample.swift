@@ -7,4 +7,4 @@
 
 import Foundation
 
-let apiKey = "sk-xxxx"
+let apiKeyOpenAI = "sk-xxxx"
