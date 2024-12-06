@@ -2,6 +2,15 @@
 
 A collection of Generative AI examples on iOS.
 
+<hr/>
+You can support this project by giving a star on GitHub ⭐️ or by buying me a coffee ☕️
+
+[![GitHub](https://img.shields.io/github/stars/shu223/iOS-GenAI-Sampler?style=social)](https://github.com/shu223/iOS-GenAI-Sampler)
+[![Github Sponsors](https://img.shields.io/badge/Github%20Sponsors-%E2%9D%A4-red?style=flat&logo=github)](https://github.com/sponsors/shu223)
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee%20-%E2%9D%A4-red?style=flat&logo=buy-me-a-coffee&link=https%3A%2F%2Fgithub.com%2Fsponsors%2Fshu223)](https://www.buymeacoffee.com/shu223)
+
+<hr/>
+
 <p align="center">
 <img src="images/contents.png" width="300">
 </p>
