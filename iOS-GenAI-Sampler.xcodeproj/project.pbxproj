@@ -814,8 +814,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ggerganov/llama.cpp";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = revision;
+				revision = 0541f06296753dbc59a57379eb54cec865a4c9f9;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
