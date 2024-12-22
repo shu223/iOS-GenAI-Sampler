@@ -1,12 +1,11 @@
 {
-  "originHash" : "a2413795800e9f7d23f5a6d8cc66d18e2e5f50d3238bf66f0f6272dc824a88cb",
+  "originHash" : "a85e1834c3c19b765e5c50d3ecbdf36e51eb2e6bbe94a308197369dff3eded6e",
   "pins" : [
     {
       "identity" : "llama.cpp",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ggerganov/llama.cpp",
       "state" : {
-        "branch" : "master",
         "revision" : "0541f06296753dbc59a57379eb54cec865a4c9f9"
       }
     },
@@ -42,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/huggingface/swift-transformers.git",
       "state" : {
-        "revision" : "74b94211bdc741694ed7e700a1104c72e5ba68fe",
-        "version" : "0.1.7"
+        "revision" : "fc6543263e4caed9bf6107466d625cfae9357f08",
+        "version" : "0.1.8"
       }
     },
     {
@@ -51,8 +50,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/argmaxinc/WhisperKit",
       "state" : {
-        "branch" : "main",
-        "revision" : "c93d613c8c6fc3ec5b9d1d9da5d1f4206183c5e4"
+        "revision" : "63d955bc99e4dce9ba3e733f2f8815b9a9f53eee",
+        "version" : "0.10.1"
       }
     },
     {

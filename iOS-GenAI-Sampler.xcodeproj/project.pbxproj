@@ -790,8 +790,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/argmaxinc/WhisperKit";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
 			};
 		};
 		8AC92E412C4CE1EC008CC0B9 /* XCRemoteSwiftPackageReference "ml-stable-diffusion" */ = {
