@@ -64,7 +64,7 @@ struct InputVideoView: View {
         Task {
             do {
                 let images = try await VideoSummarizeHelper.extractFrames(from: videoURL)
-                for try await result in OpenAIClient().sendMessage(text: "These are video frames.", images: images, systemMessage: promptText) {
+                for try await result in OpenAIClient().send(userMessage: "These are video frames.", images: images, systemMessage: promptText) {
                     guard let choice = result.choices.first else { return }
                     let message = choice.delta.content ?? ""
                     Task.detached { @MainActor in

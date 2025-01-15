@@ -119,7 +119,7 @@ class RealtimeCameraManager: ObservableObject {
         let startTime = CFAbsoluteTimeGetCurrent()
         let userPrompt = videoNarratingPrompt(with: prevText)
         print("num accumlated: \(accumulatedFrames.count)")
-        let stream = openAI.sendMessage(text: userPrompt, images: accumulatedFrames.suffix(RealtimeCameraManager.maxFrames), detail: .low, maxTokens: 80)
+        let stream = openAI.send(userMessage: userPrompt, images: accumulatedFrames.suffix(RealtimeCameraManager.maxFrames), detail: .low, maxTokens: 80)
         accumulatedFrames = []
         do {
             for try await result in stream {

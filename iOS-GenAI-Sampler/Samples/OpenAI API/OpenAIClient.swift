@@ -57,12 +57,12 @@ class OpenAIClient {
         return visionContents
     }
 
-    private static func buildMessages(text: String, image: ImageSource? = nil, systemMessage: String? = nil) -> [ChatQuery.ChatCompletionMessageParam] {
+    private static func buildMessages(userMessage: String, image: ImageSource? = nil, systemMessage: String? = nil) -> [ChatQuery.ChatCompletionMessageParam] {
         var messages: [ChatQuery.ChatCompletionMessageParam] = []
         if let image {
-            messages.append(.init(role: .user, content: OpenAIClient.buildVisionContents(withImage: image, text: text))!)
+            messages.append(.init(role: .user, content: OpenAIClient.buildVisionContents(withImage: image, text: userMessage))!)
         } else {
-            messages.append(.init(role: .user, content: text)!)
+            messages.append(.init(role: .user, content: userMessage)!)
         }
         if let systemMessage {
             messages.append(.init(role: .system, content: systemMessage)!)
@@ -70,8 +70,8 @@ class OpenAIClient {
         return messages
     }
 
-    private static func buildMessages(text: String, images: [Data], systemMessage: String? = nil, detail: Detail = .auto) -> [ChatQuery.ChatCompletionMessageParam] {
-        let visionContents = buildVisionContents(withImages: images, text: text, detail: detail)
+    private static func buildMessages(userMessage: String, images: [Data], systemMessage: String? = nil, detail: Detail = .auto) -> [ChatQuery.ChatCompletionMessageParam] {
+        let visionContents = buildVisionContents(withImages: images, text: userMessage, detail: detail)
         var messages: [ChatQuery.ChatCompletionMessageParam] = [.init(role: .user, content: visionContents)!]
         if let systemMessage {
             messages.append(.init(role: .system, content: systemMessage)!)
@@ -81,20 +81,20 @@ class OpenAIClient {
 
     // MARK: - Public Methods
 
-    public func sendMessage(text: String, image: ImageSource? = nil, systemMessage: String? = nil) async throws -> String {
-        let messages = OpenAIClient.buildMessages(text: text, image: image, systemMessage: systemMessage)
+    public func send(userMessage: String, image: ImageSource? = nil, systemMessage: String? = nil) async throws -> String {
+        let messages = OpenAIClient.buildMessages(userMessage: userMessage, image: image, systemMessage: systemMessage)
         return try await send(messages: messages).choices.first?.message.content?.string ?? ""
     }
 
-    public func sendMessage(text: String, image: ImageSource? = nil, systemMessage: String? = nil) -> AsyncThrowingStream<ChatStreamResult, Error> {
+    public func send(userMessage: String, image: ImageSource? = nil, systemMessage: String? = nil) -> AsyncThrowingStream<ChatStreamResult, Error> {
         print("\(type(of: self))/\(#function)")
-        let messages = OpenAIClient.buildMessages(text: text, image: image, systemMessage: systemMessage)
+        let messages = OpenAIClient.buildMessages(userMessage: userMessage, image: image, systemMessage: systemMessage)
         return sendStream(messages: messages)
     }
 
-    public func sendMessage(text: String, images: [Data], systemMessage: String? = nil, detail: Detail = .auto, maxTokens: Int? = nil) -> AsyncThrowingStream<ChatStreamResult, Error> {
+    public func send(userMessage: String, images: [Data], systemMessage: String? = nil, detail: Detail = .auto, maxTokens: Int? = nil) -> AsyncThrowingStream<ChatStreamResult, Error> {
         print("Sending \(images.count) images. Total size: \(images.reduce(0) { $0 + $1.count }) bytes")
-        let messages = OpenAIClient.buildMessages(text: text, images: images, systemMessage: systemMessage, detail: detail)
+        let messages = OpenAIClient.buildMessages(userMessage: userMessage, images: images, systemMessage: systemMessage, detail: detail)
         return sendStream(messages: messages, maxTokens: maxTokens)
     }
 }

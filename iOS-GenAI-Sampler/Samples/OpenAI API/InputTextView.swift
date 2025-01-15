@@ -58,7 +58,7 @@ struct InputTextView: View {
         Task {
             do {
                 if isStreamingEnabled {
-                    for try await result in OpenAIClient().sendMessage(text: inputText) {
+                    for try await result in OpenAIClient().send(userMessage: inputText) {
                         guard let choice = result.choices.first else { return }
                         let message = choice.delta.content ?? ""
                         Task.detached { @MainActor in
@@ -71,7 +71,7 @@ struct InputTextView: View {
                         }
                     }
                 } else {
-                    let chatResult = try await OpenAIClient().sendMessage(text: inputText)
+                    let chatResult = try await OpenAIClient().send(userMessage: inputText)
                     Task.detached { @MainActor in
                         self.resultText = chatResult
                     }

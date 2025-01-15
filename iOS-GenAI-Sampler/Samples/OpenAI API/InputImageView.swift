@@ -100,9 +100,9 @@ struct InputImageView: View {
             do {
                 let chatResult: AsyncThrowingStream<ChatStreamResult, Error>
                 if selectedSegment == 0 {
-                    chatResult = OpenAIClient().sendMessage(text: promptText, image: .data(inputImage.jpegData(compressionQuality: 0.5)!))
+                    chatResult = OpenAIClient().send(userMessage: promptText, image: .data(inputImage.jpegData(compressionQuality: 0.5)!))
                 } else if selectedSegment == 1 {
-                    chatResult = OpenAIClient().sendMessage(text: promptText, image: .url(inputURL))
+                    chatResult = OpenAIClient().send(userMessage: promptText, image: .url(inputURL))
                 } else { fatalError() }
                 try await processChatResult(chatResult)
             } catch {
