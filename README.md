@@ -87,9 +87,9 @@ https://www.youtube.com/watch?v=bF5CW3b47Ss
 
 ### 🤖 Perplexity API Examples
 
-#### Chat
+#### Search
 
-A simple chat implementation using Perplexity AI's API.
+A simple search implementation using Perplexity AI's API.
 
 <p align="center">
 <img src="images/perplexity.png" width="300">
