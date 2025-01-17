@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A2DBDAC2D3AE63400944EE9 /* PerplexityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2DBDA92D3AE63400944EE9 /* PerplexityClient.swift */; };
+		8A2DBDAD2D3AE63400944EE9 /* PerplexityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2DBDAA2D3AE63400944EE9 /* PerplexityView.swift */; };
 		8A36F9642C0EB8B300956E7E /* Phi3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36F9632C0EB8B300956E7E /* Phi3View.swift */; };
 		8A36F9662C0F089000956E7E /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36F9652C0F089000956E7E /* CustomModifiers.swift */; };
 		8A36F9682C10212B00956E7E /* GemmaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36F9672C10212B00956E7E /* GemmaView.swift */; };
@@ -69,6 +71,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A2DBDA92D3AE63400944EE9 /* PerplexityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerplexityClient.swift; sourceTree = "<group>"; };
+		8A2DBDAA2D3AE63400944EE9 /* PerplexityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerplexityView.swift; sourceTree = "<group>"; };
 		8A36F9632C0EB8B300956E7E /* Phi3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phi3View.swift; sourceTree = "<group>"; };
 		8A36F9652C0F089000956E7E /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
 		8A36F9672C10212B00956E7E /* GemmaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemmaView.swift; sourceTree = "<group>"; };
@@ -141,6 +145,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A2DBDAB2D3AE63400944EE9 /* Perplexity */ = {
+			isa = PBXGroup;
+			children = (
+				8A2DBDA92D3AE63400944EE9 /* PerplexityClient.swift */,
+				8A2DBDAA2D3AE63400944EE9 /* PerplexityView.swift */,
+			);
+			path = Perplexity;
+			sourceTree = "<group>";
+		};
 		8A524F452C4CEC5F00C53ADB /* Stable Diffusion */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +213,7 @@
 				8AC92E482C4CEADE008CC0B9 /* Apple */,
 				8A524F452C4CEC5F00C53ADB /* Stable Diffusion */,
 				8A524F692C4E31B000C53ADB /* WhisperKit */,
+				8A2DBDAB2D3AE63400944EE9 /* Perplexity */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -476,6 +490,8 @@
 				8A97C64B2C1CD710001A1C5B /* OverlayTranslationView.swift in Sources */,
 				8A36F9662C0F089000956E7E /* CustomModifiers.swift in Sources */,
 				8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */,
+				8A2DBDAC2D3AE63400944EE9 /* PerplexityClient.swift in Sources */,
+				8A2DBDAD2D3AE63400944EE9 /* PerplexityView.swift in Sources */,
 				8AE11A3A2BFB6905008C269A /* RealtimeCameraManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

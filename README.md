@@ -17,20 +17,19 @@ You can support this project by giving a star on GitHub ⭐️ or by buying me a
 
 ## Usage
 
-1. Rename `APIKey.sample.swift` to `APIKey.swift`, and put your OpenAI API Key into the `apiKeyOpenAI` property's value.
+1. Rename `APIKey.sample.swift` to `APIKey.swift`, and put your keys.
 2. Build and run.
   - Please run on your iPhone or iPad. (The realtime sample doesn't work on simulators.)
 
 ## Contents
 
-### GPT-4o Multimodal Examples
+### OpenAI API Examples
 
 #### Text chat
 
 A basic text chat example.
 
 It shows both of normal and streaming implementations.
-
 
 #### Image understanding
 
@@ -85,6 +84,16 @@ A multimodal example that provides a description of a video in realtime by GPT-4
 </p>
 
 https://www.youtube.com/watch?v=bF5CW3b47Ss
+
+### 🤖 Perplexity API Examples
+
+#### Chat
+
+A simple chat implementation using Perplexity AI's API.
+
+<p align="center">
+<img src="images/perplexity.png" width="300">
+</p>
 
 
 ### Local LLMs Examples

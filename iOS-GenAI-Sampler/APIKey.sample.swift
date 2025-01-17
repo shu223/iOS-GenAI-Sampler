@@ -8,3 +8,4 @@
 import Foundation
 
 let apiKeyOpenAI = "sk-xxxx"
+let apiKeyPerplexity = "pplx-xxxx"
