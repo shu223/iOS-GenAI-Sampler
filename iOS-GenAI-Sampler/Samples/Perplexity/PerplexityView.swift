@@ -96,34 +96,34 @@ struct PerplexityView: View {
         Task {
             do {
                 let messages = [
-                    PerplexityClient.Message(role: "system", content: "Be precise and concise."),
-                    PerplexityClient.Message(role: "user", content: inputText)
+                    PerplexityClient.Message(role: .system, content: "Be precise and concise."),
+                    PerplexityClient.Message(role: .user, content: inputText)
                 ]
                 
                 if isStreamingEnabled {
-                    for try await (text, responseCitations) in client.sendStream(
+                    for try await result in client.sendStream(
                         messages: messages,
                         model: selectedModel,
                         searchRecency: selectedRecency.rawValue.isEmpty ? nil : selectedRecency.rawValue
                     ) {
                         await MainActor.run {
-                            if !text.isEmpty {
-                                resultText += text
+                            if !result.content.isEmpty {
+                                resultText += result.content
                             }
-                            if let citations = responseCitations {
+                            if let citations = result.citations {
                                 self.citations = citations
                             }
                         }
                     }
                 } else {
-                    let (response, responseCitations) = try await client.send(
+                    let result = try await client.send(
                         messages: messages,
                         model: selectedModel,
                         searchRecency: selectedRecency.rawValue.isEmpty ? nil : selectedRecency.rawValue
                     )
                     await MainActor.run {
-                        resultText = response
-                        citations = responseCitations ?? []
+                        resultText = result.content
+                        citations = result.citations ?? []
                     }
                 }
             } catch {

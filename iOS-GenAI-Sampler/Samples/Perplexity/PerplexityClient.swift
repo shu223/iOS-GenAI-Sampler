@@ -13,13 +13,19 @@ class PerplexityClient {
         self.apiKey = apiKey
     }
     
+    enum Role: String, Codable {
+        case system
+        case user
+        case assistant
+    }
+    
     struct Message: Codable {
-        let role: String
+        let role: Role
         let content: String
     }
     
     struct Delta: Codable {
-        let role: String?
+        let role: Role?
         let content: String?
     }
     
@@ -62,7 +68,7 @@ class PerplexityClient {
         struct Choice: Codable {
             let index: Int
             let message: Message
-            let finishReason: String?
+            let finishReason: FinishReason?
             let delta: Delta?
             
             enum CodingKeys: String, CodingKey {
@@ -95,7 +101,7 @@ class PerplexityClient {
         struct StreamChoice: Codable {
             let index: Int?
             let delta: Delta
-            let finishReason: String?
+            let finishReason: FinishReason?
             
             enum CodingKeys: String, CodingKey {
                 case index, delta
@@ -175,6 +181,22 @@ class PerplexityClient {
         }
     }
     
+    enum FinishReason: String, Codable {
+        case stop = "stop"
+        case length = "length"
+    }
+    
+    struct ChatResult {
+        let content: String
+        let citations: [String]?
+    }
+    
+    struct StreamResult {
+        let content: String
+        let citations: [String]?
+        let isFinished: Bool
+    }
+    
     private func createRequest(
         messages: [Message],
         model: Model,
@@ -231,7 +253,7 @@ class PerplexityClient {
         }
     }
     
-    private func processStreamLine(_ line: String, citations: inout [String]?) throws -> (String, [String]?, Bool)? {
+    private func processStreamLine(_ line: String, citations: inout [String]?) throws -> StreamResult? {
         guard !line.isEmpty else { return nil }
         guard line.hasPrefix("data: ") else {
             throw PerplexityError.streamError("Invalid stream format")
@@ -241,23 +263,22 @@ class PerplexityClient {
         guard json != "[DONE]" else { return nil }
         
         let streamResponse = try JSONDecoder().decode(StreamResponse.self, from: json.data(using: .utf8)!)
-        let isFinished = streamResponse.choices.first?.finishReason != nil
-        
+
         if let responseCitations = streamResponse.citations {
             citations = responseCitations
         }
-        
-        if isFinished {
-            print("Stream finished with reason: \(streamResponse.choices.first?.finishReason ?? "unknown")")
-            return ("", citations, true)
+
+        if let finishReason = streamResponse.choices.first?.finishReason {
+            print("Stream finished with reason: \(finishReason)")
+            return StreamResult(content: "", citations: citations, isFinished: true)
         }
         
         if let content = streamResponse.choices.first?.delta.content {
-            return (content, citations, false)
+            return StreamResult(content: content, citations: citations, isFinished: false)
         }
         
         if citations != nil {
-            return ("", citations, false)
+            return StreamResult(content: "", citations: citations, isFinished: false)
         }
         
         return nil
@@ -268,7 +289,7 @@ class PerplexityClient {
         model: Model = .sonarSmall,
         temperature: Double = 0.2,
         searchRecency: String? = nil
-    ) async throws -> (String, [String]?) {
+    ) async throws -> ChatResult {
         let request = try createRequest(
             messages: messages,
             model: model,
@@ -285,7 +306,10 @@ class PerplexityClient {
         }
         
         let chatResponse = try JSONDecoder().decode(ChatResponse.self, from: data)
-        return (chatResponse.choices.first?.message.content ?? "", chatResponse.citations)
+        return ChatResult(
+            content: chatResponse.choices.first?.message.content ?? "",
+            citations: chatResponse.citations
+        )
     }
     
     func sendStream(
@@ -293,7 +317,7 @@ class PerplexityClient {
         model: Model = .sonarSmall,
         temperature: Double = 0.2,
         searchRecency: String? = nil
-    ) -> AsyncThrowingStream<(String, [String]?), Error> {
+    ) -> AsyncThrowingStream<StreamResult, Error> {
         AsyncThrowingStream { continuation in
             activeTask?.cancel()
             
@@ -317,10 +341,10 @@ class PerplexityClient {
                     var citations: [String]?
                     
                     for try await line in result.lines {
-                        if let (content, cits, isFinished) = try processStreamLine(line, citations: &citations) {
-                            continuation.yield((content, cits))
+                        if let streamResult = try processStreamLine(line, citations: &citations) {
+                            continuation.yield(streamResult)
                             
-                            if isFinished {
+                            if streamResult.isFinished {
                                 break
                             }
                         }
