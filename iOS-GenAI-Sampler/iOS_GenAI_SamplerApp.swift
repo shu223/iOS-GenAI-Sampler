@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct iOS_OpenAI_SamplerApp: App {
+struct iOS_GenAI_SamplerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
