@@ -83,7 +83,7 @@ class OpenAIClient {
 
     public func send(userMessage: String, image: ImageSource? = nil, systemMessage: String? = nil) async throws -> String {
         let messages = OpenAIClient.buildMessages(userMessage: userMessage, image: image, systemMessage: systemMessage)
-        return try await send(messages: messages).choices.first?.message.content?.string ?? ""
+        return try await send(messages: messages).choices.first?.message.content ?? ""
     }
 
     public func send(userMessage: String, image: ImageSource? = nil, systemMessage: String? = nil) -> AsyncThrowingStream<ChatStreamResult, Error> {
