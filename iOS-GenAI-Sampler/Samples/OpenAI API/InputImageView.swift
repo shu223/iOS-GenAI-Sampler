@@ -95,6 +95,7 @@ struct InputImageView: View {
     }
 
     private func sendMessage() {
+        resultText = ""
         isLoading = true
         Task {
             do {
