@@ -10,8 +10,10 @@ import OpenAI
 
 class OpenAIClient {
     typealias Message = ChatQuery.ChatCompletionMessageParam
-    typealias Content = Message.UserMessageParam.Content
-    typealias Detail = Content.VisionContent.ChatCompletionContentPartImageParam.ImageURL.Detail
+    typealias UserContent = Message.UserMessageParam.Content
+    typealias ContentPart = UserContent.ContentPart
+    typealias TextContent = Message.TextContent
+    typealias Detail = Message.ContentPartImageParam.ImageURL.Detail
 
     enum ImageSource {
         case data(Data)
@@ -23,58 +25,59 @@ class OpenAIClient {
     // MARK: - Private Methods
 
     private func send(messages: [ChatQuery.ChatCompletionMessageParam], maxTokens: Int? = nil) async throws -> ChatResult {
-        let query = ChatQuery(messages: messages, model: .gpt4_o, maxTokens: maxTokens)
+        let query = ChatQuery(messages: messages, model: .gpt4_o, maxCompletionTokens: maxTokens)
         return try await openAI.chats(query: query)
     }
 
     private func sendStream(messages: [ChatQuery.ChatCompletionMessageParam], maxTokens: Int? = nil) -> AsyncThrowingStream<ChatStreamResult, Error> {
-        let query = ChatQuery(messages: messages, model: .gpt4_o, maxTokens: maxTokens)
+        let query = ChatQuery(messages: messages, model: .gpt4_o, maxCompletionTokens: maxTokens)
         return openAI.chatsStream(query: query)
     }
 
-    private static func buildVisionContents(withImages images: [Data], text: String, detail: Detail = .auto) -> [Content.VisionContent] {
-        var visionContents: [Content.VisionContent] = [.init(chatCompletionContentPartTextParam: .init(text: text))]
+    private static func buildVisionContents(withImages images: [Data], text: String, detail: Detail = .auto) -> UserContent {
+        var contentParts: [ContentPart] = [.text(.init(text: text))]
         for data in images {
-            visionContents.append(
-                .init(chatCompletionContentPartImageParam: .init(imageUrl: .init(url: data, detail: detail)))
+            contentParts.append(
+                .image(.init(imageUrl: .init(imageData: data, detail: detail)))
             )
         }
-        return visionContents
+        return .contentParts(contentParts)
     }
 
-    private static func buildVisionContents(withImage imageSource: ImageSource, text: String, detail: Detail = .auto) -> [Content.VisionContent] {
-        var visionContents: [Content.VisionContent] = [.init(chatCompletionContentPartTextParam: .init(text: text))]
+    private static func buildVisionContents(withImage imageSource: ImageSource, text: String, detail: Detail = .auto) -> UserContent {
+        var contentParts: [ContentPart] = [.text(.init(text: text))]
         switch imageSource {
         case let .data(imageData):
-            visionContents.append(
-                .init(chatCompletionContentPartImageParam: .init(imageUrl: .init(url: imageData, detail: detail)))
+            contentParts.append(
+                .image(.init(imageUrl: .init(imageData: imageData, detail: detail)))
             )
         case let .url(imageURL):
-            visionContents.append(
-                .init(chatCompletionContentPartImageParam: .init(imageUrl: .init(url: imageURL.path, detail: detail)))
+            contentParts.append(
+                .image(.init(imageUrl: .init(url: imageURL.absoluteString, detail: detail)))
             )
         }
-        return visionContents
+        return .contentParts(contentParts)
     }
 
     private static func buildMessages(userMessage: String, image: ImageSource? = nil, systemMessage: String? = nil) -> [ChatQuery.ChatCompletionMessageParam] {
         var messages: [ChatQuery.ChatCompletionMessageParam] = []
         if let image {
-            messages.append(.init(role: .user, content: OpenAIClient.buildVisionContents(withImage: image, text: userMessage))!)
+            let content = OpenAIClient.buildVisionContents(withImage: image, text: userMessage)
+            messages.append(.user(.init(content: content)))
         } else {
-            messages.append(.init(role: .user, content: userMessage)!)
+            messages.append(.user(.init(content: .string(userMessage))))
         }
         if let systemMessage {
-            messages.append(.init(role: .system, content: systemMessage)!)
+            messages.append(.system(.init(content: .textContent(systemMessage))))
         }
         return messages
     }
 
     private static func buildMessages(userMessage: String, images: [Data], systemMessage: String? = nil, detail: Detail = .auto) -> [ChatQuery.ChatCompletionMessageParam] {
-        let visionContents = buildVisionContents(withImages: images, text: userMessage, detail: detail)
-        var messages: [ChatQuery.ChatCompletionMessageParam] = [.init(role: .user, content: visionContents)!]
+        let content = buildVisionContents(withImages: images, text: userMessage, detail: detail)
+        var messages: [ChatQuery.ChatCompletionMessageParam] = [.user(.init(content: content))]
         if let systemMessage {
-            messages.append(.init(role: .system, content: systemMessage)!)
+            messages.append(.system(.init(content: .textContent(systemMessage))))
         }
         return messages
     }

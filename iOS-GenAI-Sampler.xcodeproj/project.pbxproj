@@ -823,7 +823,7 @@
 			repositoryURL = "https://github.com/MacPaw/OpenAI";
 			requirement = {
 				kind = exactVersion;
-				version = 0.4.0;
+				version = 0.4.4;
 			};
 		};
 		8AF9CFF32C098EC00050F693 /* XCRemoteSwiftPackageReference "llama" */ = {
