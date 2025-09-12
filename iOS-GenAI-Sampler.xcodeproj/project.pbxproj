@@ -822,8 +822,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MacPaw/OpenAI";
 			requirement = {
-				kind = exactVersion;
-				version = 0.4.4;
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.6;
 			};
 		};
 		8AF9CFF32C098EC00050F693 /* XCRemoteSwiftPackageReference "llama" */ = {
