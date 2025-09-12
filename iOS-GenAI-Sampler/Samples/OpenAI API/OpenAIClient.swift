@@ -10,7 +10,7 @@ import OpenAI
 
 class OpenAIClient {
     typealias Message = ChatQuery.ChatCompletionMessageParam
-    typealias Content = Message.ChatCompletionUserMessageParam.Content
+    typealias Content = Message.UserMessageParam.Content
     typealias Detail = Content.VisionContent.ChatCompletionContentPartImageParam.ImageURL.Detail
 
     enum ImageSource {
