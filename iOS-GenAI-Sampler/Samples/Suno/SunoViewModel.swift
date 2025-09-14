@@ -101,12 +101,12 @@ class SunoViewModel {
             // Poll for completion
             for attempt in 1...60 {
                 await MainActor.run {
-                    taskStatus = "Checking status... (Attempt \(attempt)/60)"
+                    taskStatus = "Checking status... (Attempt \(attempt))"
                 }
 
                 let taskData = try await client.checkTaskStatus(taskId)
                 let status = taskData.status.uppercased()
-                print("[SunoViewModel] Status check \(attempt)/60: \(status)")
+                print("[SunoViewModel] Status check \(attempt): \(status)")
 
                 switch status {
                 case "SUCCESS":

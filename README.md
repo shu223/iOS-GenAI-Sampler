@@ -85,7 +85,7 @@ A multimodal example that provides a description of a video in realtime by GPT-4
 
 https://www.youtube.com/watch?v=bF5CW3b47Ss
 
-### 🤖 Perplexity API Examples
+### 🤖 Perplexity API Example
 
 #### Search
 
@@ -95,6 +95,12 @@ A simple search implementation using Perplexity AI's API.
 <img src="images/perplexity.png" width="300">
 </p>
 
+
+### 🎵 Music Generation Example - Suno API
+
+<p align="center">
+<img src="images/suno.jpg" width="300">
+</p>
 
 ### Local LLMs Examples
 

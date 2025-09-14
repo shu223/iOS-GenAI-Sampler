@@ -50,6 +50,9 @@ struct ContentView: View {
                 Section(header: SectionHeaderView(title: "🕵 Perplexity API")) {
                     NavigationLinkWithTitle("Search", destination: PerplexityView())
                 }
+                Section(header: SectionHeaderView(title: "🎵 Music Generation - Suno")) {
+                    NavigationLinkWithTitle("Suno Music Generator", destination: SunoView())
+                }
                 Section(header: SectionHeaderView(title: "🦙 Local LLM - llama.cpp")) {
                     NavigationLinkWithTitle("Phi-3", destination: Phi3View())
                     NavigationLinkWithTitle("Gemma", destination: GemmaView())
@@ -64,9 +67,6 @@ struct ContentView: View {
                 }
                 Section(header: SectionHeaderView(title: "🎤 Speech Recognition - Whisper")) {
                     NavigationLinkWithTitle("WhisperKit", destination: WhisperKitView())
-                }
-                Section(header: SectionHeaderView(title: "🎵 Music Generation - Suno")) {
-                    NavigationLinkWithTitle("Suno Music Generator", destination: SunoView())
                 }
             }
             .listStyle(.insetGrouped)
