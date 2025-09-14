@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		8A2DBDAC2D3AE63400944EE9 /* PerplexityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2DBDA92D3AE63400944EE9 /* PerplexityClient.swift */; };
 		8A2DBDAD2D3AE63400944EE9 /* PerplexityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2DBDAA2D3AE63400944EE9 /* PerplexityView.swift */; };
+		8A2DBDAE2D3AE63500944EE9 /* SunoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2DBDAF2D3AE63500944EE9 /* SunoClient.swift */; };
+		8A2DBDB02D3AE63500944EE9 /* SunoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2DBDB12D3AE63500944EE9 /* SunoView.swift */; };
 		8A36F9642C0EB8B300956E7E /* Phi3View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36F9632C0EB8B300956E7E /* Phi3View.swift */; };
 		8A36F9662C0F089000956E7E /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36F9652C0F089000956E7E /* CustomModifiers.swift */; };
 		8A36F9682C10212B00956E7E /* GemmaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A36F9672C10212B00956E7E /* GemmaView.swift */; };
@@ -73,6 +75,8 @@
 /* Begin PBXFileReference section */
 		8A2DBDA92D3AE63400944EE9 /* PerplexityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerplexityClient.swift; sourceTree = "<group>"; };
 		8A2DBDAA2D3AE63400944EE9 /* PerplexityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerplexityView.swift; sourceTree = "<group>"; };
+		8A2DBDAF2D3AE63500944EE9 /* SunoClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunoClient.swift; sourceTree = "<group>"; };
+		8A2DBDB12D3AE63500944EE9 /* SunoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunoView.swift; sourceTree = "<group>"; };
 		8A36F9632C0EB8B300956E7E /* Phi3View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phi3View.swift; sourceTree = "<group>"; };
 		8A36F9652C0F089000956E7E /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
 		8A36F9672C10212B00956E7E /* GemmaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemmaView.swift; sourceTree = "<group>"; };
@@ -154,6 +158,15 @@
 			path = Perplexity;
 			sourceTree = "<group>";
 		};
+		8A2DBDB22D3AE63500944EE9 /* Suno */ = {
+			isa = PBXGroup;
+			children = (
+				8A2DBDAF2D3AE63500944EE9 /* SunoClient.swift */,
+				8A2DBDB12D3AE63500944EE9 /* SunoView.swift */,
+			);
+			path = Suno;
+			sourceTree = "<group>";
+		};
 		8A524F452C4CEC5F00C53ADB /* Stable Diffusion */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +227,7 @@
 				8A524F452C4CEC5F00C53ADB /* Stable Diffusion */,
 				8A524F692C4E31B000C53ADB /* WhisperKit */,
 				8A2DBDAB2D3AE63400944EE9 /* Perplexity */,
+				8A2DBDB22D3AE63500944EE9 /* Suno */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -492,6 +506,8 @@
 				8A6A40212BF6CCD50027DBB9 /* InputVideoView.swift in Sources */,
 				8A2DBDAC2D3AE63400944EE9 /* PerplexityClient.swift in Sources */,
 				8A2DBDAD2D3AE63400944EE9 /* PerplexityView.swift in Sources */,
+				8A2DBDAE2D3AE63500944EE9 /* SunoClient.swift in Sources */,
+				8A2DBDB02D3AE63500944EE9 /* SunoView.swift in Sources */,
 				8AE11A3A2BFB6905008C269A /* RealtimeCameraManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

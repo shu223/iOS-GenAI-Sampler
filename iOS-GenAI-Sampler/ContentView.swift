@@ -65,6 +65,9 @@ struct ContentView: View {
                 Section(header: SectionHeaderView(title: "🎤 Speech Recognition - Whisper")) {
                     NavigationLinkWithTitle("WhisperKit", destination: WhisperKitView())
                 }
+                Section(header: SectionHeaderView(title: "🎵 Music Generation - Suno")) {
+                    NavigationLinkWithTitle("Suno Music Generator", destination: SunoView())
+                }
             }
             .listStyle(.insetGrouped)
             .navigationTitle("GenAI Sampler")
