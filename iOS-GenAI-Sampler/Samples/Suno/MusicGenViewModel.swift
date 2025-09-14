@@ -1,5 +1,5 @@
 //
-//  SunoViewModel.swift
+//  MusicGenViewModel.swift
 //  iOS-GenAI-Sampler
 //
 //  Created by Shuichi Tsutsumi on 2025/09/15.
@@ -10,7 +10,7 @@ import AVKit
 import Observation
 
 @Observable
-class SunoViewModel {
+class MusicGenViewModel {
     // MARK: - Input Properties
     var prompt = "A peaceful acoustic guitar melody with soft vocals, folk style"
     var style = "Folk, Acoustic, Peaceful"
@@ -18,12 +18,12 @@ class SunoViewModel {
     var negativeTags = ""
     var customMode = false
     var instrumental = false
-    var selectedModel: SunoClient.Model = .v3_5
-    var selectedVocalGender: SunoClient.VocalGender = .none
+    var selectedModel: MusicAPIClient.Model = .v3_5
+    var selectedVocalGender: MusicAPIClient.VocalGender = .none
 
     // MARK: - State Properties
     var isGenerating = false
-    var generatedMusic: [SunoClient.GeneratedMusic] = []
+    var generatedMusic: [MusicAPIClient.GeneratedMusic] = []
     var errorMessage: String?
     var showError = false
     var taskStatus = ""
@@ -41,7 +41,7 @@ class SunoViewModel {
     var downloadingIndex: Int?
 
     // MARK: - Client
-    private let client = SunoClient()
+    private let client = MusicAPIClient()
 
     // MARK: - Computed Properties
 
@@ -73,8 +73,8 @@ class SunoViewModel {
         }
 
         do {
-            print("[SunoViewModel] Starting music generation...")
-            print("[SunoViewModel] Parameters:")
+            print("[MusicGenViewModel] Starting music generation...")
+            print("[MusicGenViewModel] Parameters:")
             print("  - Prompt: \(customMode ? (instrumental ? "N/A" : prompt) : prompt)")
             print("  - Style: \(customMode ? style : "N/A")")
             print("  - Title: \(customMode ? title : "N/A")")
@@ -96,7 +96,7 @@ class SunoViewModel {
             await MainActor.run {
                 taskStatus = "Task created: \(taskId)\nWaiting for completion..."
             }
-            print("[SunoViewModel] Task created: \(taskId)")
+            print("[MusicGenViewModel] Task created: \(taskId)")
 
             // Poll for completion
             for attempt in 1...60 {
@@ -106,15 +106,15 @@ class SunoViewModel {
 
                 let taskData = try await client.checkTaskStatus(taskId)
                 let status = taskData.status.uppercased()
-                print("[SunoViewModel] Status check \(attempt): \(status)")
+                print("[MusicGenViewModel] Status check \(attempt): \(status)")
 
                 switch status {
                 case "SUCCESS":
-                    if let audioDataArray = taskData.response?.sunoData,
+                    if let audioDataArray = taskData.response?.audioData,
                        !audioDataArray.isEmpty {
-                        let music: [SunoClient.GeneratedMusic] = audioDataArray.compactMap { audioData in
+                        let music: [MusicAPIClient.GeneratedMusic] = audioDataArray.compactMap { audioData in
                             guard let audioUrl = audioData.audioUrl else { return nil }
-                            return SunoClient.GeneratedMusic(
+                            return MusicAPIClient.GeneratedMusic(
                                 id: audioData.id,
                                 audioUrl: audioUrl,
                                 title: audioData.title ?? "Untitled",
@@ -129,31 +129,31 @@ class SunoViewModel {
                             isGenerating = false
                         }
 
-                        print("[SunoViewModel] SUCCESS: Generated \(music.count) tracks")
+                        print("[MusicGenViewModel] SUCCESS: Generated \(music.count) tracks")
                         for item in music {
-                            print("[SunoViewModel]   - \(item.title): \(item.audioUrl)")
+                            print("[MusicGenViewModel]   - \(item.title): \(item.audioUrl)")
                         }
                         return
                     } else {
-                        print("[SunoViewModel] ERROR: No audio data in response")
-                        throw SunoClient.SunoError.invalidResponse("No audio data in response")
+                        print("[MusicGenViewModel] ERROR: No audio data in response")
+                        throw MusicAPIClient.MusicAPIError.invalidResponse("No audio data in response")
                     }
 
                 case "FAILED", "ERROR":
-                    print("[SunoViewModel] ERROR: Task failed with status: \(taskData.status)")
-                    throw SunoClient.SunoError.taskFailed(taskData.status)
+                    print("[MusicGenViewModel] ERROR: Task failed with status: \(taskData.status)")
+                    throw MusicAPIClient.MusicAPIError.taskFailed(taskData.status)
 
                 default:
                     try await Task.sleep(nanoseconds: 10_000_000_000) // 10 seconds
                 }
             }
 
-            print("[SunoViewModel] ERROR: Task timed out")
-            throw SunoClient.SunoError.timeout
+            print("[MusicGenViewModel] ERROR: Task timed out")
+            throw MusicAPIClient.MusicAPIError.timeout
 
         } catch {
-            print("[SunoViewModel] ERROR: \(error)")
-            print("[SunoViewModel] Error Details: \(error.localizedDescription)")
+            print("[MusicGenViewModel] ERROR: \(error)")
+            print("[MusicGenViewModel] Error Details: \(error.localizedDescription)")
 
             await MainActor.run {
                 errorMessage = error.localizedDescription
@@ -242,9 +242,9 @@ class SunoViewModel {
     func handleExportResult(_ result: Result<URL, Error>) {
         switch result {
         case .success(let url):
-            print("[SunoViewModel] File saved to: \(url)")
+            print("[MusicGenViewModel] File saved to: \(url)")
         case .failure(let error):
-            print("[SunoViewModel] Failed to save file: \(error)")
+            print("[MusicGenViewModel] Failed to save file: \(error)")
             errorMessage = "Failed to save file: \(error.localizedDescription)"
             showError = true
         }

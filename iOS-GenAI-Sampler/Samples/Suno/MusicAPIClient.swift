@@ -1,5 +1,5 @@
 //
-//  SunoClient.swift
+//  MusicAPIClient.swift
 //  iOS-GenAI-Sampler
 //
 //  Created by Shuichi Tsutsumi on 2025/09/15.
@@ -7,12 +7,12 @@
 
 import Foundation
 
-class SunoClient {
+class MusicAPIClient {
     private let apiKey: String
     private let baseURL = "https://api.sunoapi.org"
     private var activeTask: URLSessionDataTask?
 
-    init(apiKey: String = apiKeySuno) {
+    init(apiKey: String = apiKeyMusic) {
         self.apiKey = apiKey
     }
 
@@ -103,7 +103,7 @@ class SunoClient {
 
             struct TaskResponse: Codable {
                 let taskId: String?
-                let sunoData: [AudioData]?
+                let audioData: [AudioData]?
 
                 struct AudioData: Codable {
                     let id: String
@@ -121,7 +121,7 @@ class SunoClient {
         }
     }
 
-    enum SunoError: LocalizedError {
+    enum MusicAPIError: LocalizedError {
         case invalidResponse(String)
         case decodingError(Error)
         case apiError(Int, String)
@@ -174,12 +174,12 @@ class SunoClient {
         vocalGender: VocalGender = .none
     ) async throws -> String {
         let endpoint = "\(baseURL)/api/v1/generate"
-        print("[SunoClient] Generating music with endpoint: \(endpoint)")
-        print("[SunoClient] Parameters - customMode: \(customMode), instrumental: \(instrumental), model: \(model.rawValue)")
+        print("[MusicAPIClient] Generating music with endpoint: \(endpoint)")
+        print("[MusicAPIClient] Parameters - customMode: \(customMode), instrumental: \(instrumental), model: \(model.rawValue)")
 
         guard let url = URL(string: endpoint) else {
-            print("[SunoClient] ERROR: Invalid URL - \(endpoint)")
-            throw SunoError.invalidURL
+            print("[MusicAPIClient] ERROR: Invalid URL - \(endpoint)")
+            throw MusicAPIError.invalidURL
         }
 
         var request = URLRequest(url: url)
@@ -204,56 +204,56 @@ class SunoClient {
             audioWeight: nil,
             callBackUrl: callBackUrl
         )
-        print("[SunoClient] Using callback URL: \(callBackUrl) (will poll for status)")
+        print("[MusicAPIClient] Using callback URL: \(callBackUrl) (will poll for status)")
 
         request.httpBody = try JSONEncoder().encode(generateRequest)
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
         guard let httpResponse = response as? HTTPURLResponse else {
-            print("[SunoClient] ERROR: Not an HTTP response")
-            throw SunoError.invalidResponse("Not an HTTP response")
+            print("[MusicAPIClient] ERROR: Not an HTTP response")
+            throw MusicAPIError.invalidResponse("Not an HTTP response")
         }
 
-        print("[SunoClient] Response status code: \(httpResponse.statusCode)")
+        print("[MusicAPIClient] Response status code: \(httpResponse.statusCode)")
 
         if httpResponse.statusCode == 401 {
-            print("[SunoClient] ERROR: Invalid API key")
-            throw SunoError.invalidAPIKey
+            print("[MusicAPIClient] ERROR: Invalid API key")
+            throw MusicAPIError.invalidAPIKey
         }
 
         if !(200...299).contains(httpResponse.statusCode) {
             let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
-            print("[SunoClient] ERROR: API error (\(httpResponse.statusCode)): \(errorMessage)")
-            throw SunoError.apiError(httpResponse.statusCode, errorMessage)
+            print("[MusicAPIClient] ERROR: API error (\(httpResponse.statusCode)): \(errorMessage)")
+            throw MusicAPIError.apiError(httpResponse.statusCode, errorMessage)
         }
 
         let responseString = String(data: data, encoding: .utf8) ?? "Unable to decode"
-        print("[SunoClient] Raw response: \(responseString)")
+        print("[MusicAPIClient] Raw response: \(responseString)")
 
         let generateResponse = try JSONDecoder().decode(GenerateResponse.self, from: data)
 
         if generateResponse.code != 200 {
-            print("[SunoClient] ERROR: Response code \(generateResponse.code): \(generateResponse.msg)")
-            throw SunoError.apiError(generateResponse.code, generateResponse.msg)
+            print("[MusicAPIClient] ERROR: Response code \(generateResponse.code): \(generateResponse.msg)")
+            throw MusicAPIError.apiError(generateResponse.code, generateResponse.msg)
         }
 
         guard let taskId = generateResponse.data?.taskId else {
-            print("[SunoClient] ERROR: No task ID in response")
-            throw SunoError.invalidResponse("No task ID in response")
+            print("[MusicAPIClient] ERROR: No task ID in response")
+            throw MusicAPIError.invalidResponse("No task ID in response")
         }
 
-        print("[SunoClient] Task created successfully with ID: \(taskId)")
+        print("[MusicAPIClient] Task created successfully with ID: \(taskId)")
         return taskId
     }
 
     func checkTaskStatus(_ taskId: String) async throws -> TaskStatusResponse.TaskData {
         let endpoint = "\(baseURL)/api/v1/generate/record-info?taskId=\(taskId)"
-        print("[SunoClient] Checking task status: \(endpoint)")
+        print("[MusicAPIClient] Checking task status: \(endpoint)")
 
         guard let url = URL(string: endpoint) else {
-            print("[SunoClient] ERROR: Invalid URL - \(endpoint)")
-            throw SunoError.invalidURL
+            print("[MusicAPIClient] ERROR: Invalid URL - \(endpoint)")
+            throw MusicAPIError.invalidURL
         }
 
         var request = URLRequest(url: url)
@@ -263,54 +263,54 @@ class SunoClient {
         let (data, response) = try await URLSession.shared.data(for: request)
 
         guard let httpResponse = response as? HTTPURLResponse else {
-            print("[SunoClient] ERROR: Not an HTTP response")
-            throw SunoError.invalidResponse("Not an HTTP response")
+            print("[MusicAPIClient] ERROR: Not an HTTP response")
+            throw MusicAPIError.invalidResponse("Not an HTTP response")
         }
 
         if httpResponse.statusCode == 401 {
-            print("[SunoClient] ERROR: Invalid API key")
-            throw SunoError.invalidAPIKey
+            print("[MusicAPIClient] ERROR: Invalid API key")
+            throw MusicAPIError.invalidAPIKey
         }
 
         if !(200...299).contains(httpResponse.statusCode) {
             let errorMessage = String(data: data, encoding: .utf8) ?? "Unknown error"
-            print("[SunoClient] ERROR: Status check failed (\(httpResponse.statusCode)): \(errorMessage)")
-            throw SunoError.apiError(httpResponse.statusCode, errorMessage)
+            print("[MusicAPIClient] ERROR: Status check failed (\(httpResponse.statusCode)): \(errorMessage)")
+            throw MusicAPIError.apiError(httpResponse.statusCode, errorMessage)
         }
 
         let responseString = String(data: data, encoding: .utf8) ?? "Unable to decode"
-        print("[SunoClient] Raw status response: \(responseString)")
+        print("[MusicAPIClient] Raw status response: \(responseString)")
 
         let statusResponse = try JSONDecoder().decode(TaskStatusResponse.self, from: data)
-        print("[SunoClient] Task status: \(statusResponse.data?.status ?? "unknown")")
+        print("[MusicAPIClient] Task status: \(statusResponse.data?.status ?? "unknown")")
 
         if statusResponse.code != 200 {
-            print("[SunoClient] ERROR: Response code \(statusResponse.code): \(statusResponse.msg)")
-            throw SunoError.apiError(statusResponse.code, statusResponse.msg)
+            print("[MusicAPIClient] ERROR: Response code \(statusResponse.code): \(statusResponse.msg)")
+            throw MusicAPIError.apiError(statusResponse.code, statusResponse.msg)
         }
 
         guard let taskData = statusResponse.data else {
-            print("[SunoClient] ERROR: No task data in response")
-            throw SunoError.invalidResponse("No task data in response")
+            print("[MusicAPIClient] ERROR: No task data in response")
+            throw MusicAPIError.invalidResponse("No task data in response")
         }
 
         return taskData
     }
 
     func waitForCompletion(taskId: String, maxAttempts: Int = 30, delaySeconds: UInt64 = 10) async throws -> [GeneratedMusic] {
-        print("[SunoClient] Waiting for task completion: \(taskId)")
+        print("[MusicAPIClient] Waiting for task completion: \(taskId)")
 
         for attempt in 0..<maxAttempts {
             let taskData = try await checkTaskStatus(taskId)
             let status = taskData.status.uppercased()
-            print("[SunoClient] Attempt \(attempt + 1)/\(maxAttempts) - Status: \(status)")
+            print("[MusicAPIClient] Attempt \(attempt + 1)/\(maxAttempts) - Status: \(status)")
 
             switch status {
             case "SUCCESS":
-                guard let audioDataArray = taskData.response?.sunoData,
+                guard let audioDataArray = taskData.response?.audioData,
                       !audioDataArray.isEmpty else {
-                    print("[SunoClient] ERROR: No audio data in completed task")
-                    throw SunoError.invalidResponse("No audio data in completed task")
+                    print("[MusicAPIClient] ERROR: No audio data in completed task")
+                    throw MusicAPIError.invalidResponse("No audio data in completed task")
                 }
 
                 let generatedMusic: [GeneratedMusic] = audioDataArray.compactMap { audioData in
@@ -323,15 +323,15 @@ class SunoClient {
                         duration: audioData.duration ?? 0
                     )
                 }
-                print("[SunoClient] SUCCESS: Generated \(generatedMusic.count) music tracks")
+                print("[MusicAPIClient] SUCCESS: Generated \(generatedMusic.count) music tracks")
                 for music in generatedMusic {
-                    print("[SunoClient]   - \(music.title): \(music.audioUrl)")
+                    print("[MusicAPIClient]   - \(music.title): \(music.audioUrl)")
                 }
                 return generatedMusic
 
             case "FAILED", "ERROR":
-                print("[SunoClient] ERROR: Task failed with status: \(taskData.status)")
-                throw SunoError.taskFailed(taskData.status)
+                print("[MusicAPIClient] ERROR: Task failed with status: \(taskData.status)")
+                throw MusicAPIError.taskFailed(taskData.status)
 
             case "PENDING", "PROCESSING":
                 try await Task.sleep(nanoseconds: delaySeconds * 1_000_000_000)
@@ -343,8 +343,8 @@ class SunoClient {
             }
         }
 
-        print("[SunoClient] ERROR: Task timed out after \(maxAttempts) attempts")
-        throw SunoError.timeout
+        print("[MusicAPIClient] ERROR: Task timed out after \(maxAttempts) attempts")
+        throw MusicAPIError.timeout
     }
 
     func generateAndWaitForMusic(

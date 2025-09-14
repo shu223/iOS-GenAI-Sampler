@@ -96,7 +96,9 @@ A simple search implementation using Perplexity AI's API.
 </p>
 
 
-### 🎵 Music Generation Example - Suno API
+### 🎵 Music Generation Example
+
+Using [sunoapi.org](https://sunoapi.org/)
 
 <p align="center">
 <img src="images/suno.jpg" width="300">

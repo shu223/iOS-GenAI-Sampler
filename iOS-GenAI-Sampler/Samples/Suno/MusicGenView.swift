@@ -1,5 +1,5 @@
 //
-//  SunoView.swift
+//  MusicGenView.swift
 //  iOS-GenAI-Sampler
 //
 //  Created by Shuichi Tsutsumi on 2025/09/15.
@@ -9,8 +9,8 @@ import SwiftUI
 import AVKit
 import UniformTypeIdentifiers
 
-struct SunoView: View {
-    @State private var viewModel = SunoViewModel()
+struct MusicGenView: View {
+    @State private var viewModel = MusicGenViewModel()
 
     var body: some View {
         ScrollView {
@@ -31,7 +31,7 @@ struct SunoView: View {
             }
             .padding()
         }
-        .navigationBarTitle("Suno Music Generator", displayMode: .inline)
+        .navigationBarTitle("Music Generator", displayMode: .inline)
         .alert("Error", isPresented: $viewModel.showError) {
             Button("OK") { }
         } message: {
@@ -55,7 +55,7 @@ struct SunoView: View {
                 .font(.headline)
 
             Picker("Model", selection: $viewModel.selectedModel) {
-                ForEach(SunoClient.Model.allCases) { model in
+                ForEach(MusicAPIClient.Model.allCases) { model in
                     Text(model.displayName).tag(model)
                 }
             }
@@ -147,7 +147,7 @@ struct SunoView: View {
                 Text("Vocal Gender")
                 Spacer()
                 Picker("Vocal Gender", selection: $viewModel.selectedVocalGender) {
-                    ForEach(SunoClient.VocalGender.allCases) { gender in
+                    ForEach(MusicAPIClient.VocalGender.allCases) { gender in
                         Text(gender.displayName).tag(gender)
                     }
                 }
