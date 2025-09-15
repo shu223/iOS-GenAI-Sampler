@@ -9,4 +9,4 @@ import Foundation
 
 let apiKeyOpenAI = "sk-xxxx"
 let apiKeyPerplexity = "pplx-xxxx"
-let apiKeySuno = "xxxx"
+let apiKeyMusic = "xxxx"
