@@ -105,6 +105,11 @@ class MusicAPIClient {
                 let taskId: String?
                 let audioData: [AudioData]?
 
+                enum CodingKeys: String, CodingKey {
+                    case taskId
+                    case audioData = "sunoData"
+                }
+
                 struct AudioData: Codable {
                     let id: String
                     let audioUrl: String?
