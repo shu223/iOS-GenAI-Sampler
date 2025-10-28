@@ -257,7 +257,8 @@ struct MusicGenView: View {
 
                                 Button(action: {
                                     Task {
-                                        await viewModel.prepareDownload(index: index, url: music.audioUrl, title: music.title)
+                                        let downloadUrl = music.downloadUrl ?? music.audioUrl
+                                        await viewModel.prepareDownload(index: index, url: downloadUrl, title: music.title)
                                     }
                                 }) {
                                     HStack {
@@ -273,10 +274,10 @@ struct MusicGenView: View {
                                 }
                                 .padding(.horizontal, 12)
                                 .padding(.vertical, 8)
-                                .background(Color.green)
+                                .background(music.downloadUrl != nil ? Color.green : Color.gray)
                                 .foregroundColor(.white)
                                 .cornerRadius(8)
-                                .disabled(viewModel.isDownloading)
+                                .disabled(viewModel.isDownloading || music.downloadUrl == nil)
 
                                 if let url = URL(string: music.audioUrl) {
                                     ShareLink(item: url) {

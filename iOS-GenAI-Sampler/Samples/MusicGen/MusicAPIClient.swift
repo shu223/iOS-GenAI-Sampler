@@ -161,6 +161,7 @@ class MusicAPIClient {
     struct GeneratedMusic {
         let id: String
         let audioUrl: String
+        let downloadUrl: String?
         let title: String
         let tags: String
         let duration: Double

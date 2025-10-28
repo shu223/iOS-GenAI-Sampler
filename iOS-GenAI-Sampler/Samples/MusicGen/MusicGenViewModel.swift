@@ -112,26 +112,56 @@ class MusicGenViewModel {
                 case "SUCCESS":
                     if let audioDataArray = taskData.response?.audioData,
                        !audioDataArray.isEmpty {
-                        let music: [MusicAPIClient.GeneratedMusic] = audioDataArray.compactMap { audioData in
-                            guard let audioUrl = audioData.audioUrl else { return nil }
-                            return MusicAPIClient.GeneratedMusic(
-                                id: audioData.id,
-                                audioUrl: audioUrl,
-                                title: audioData.title ?? "Untitled",
-                                tags: audioData.tags ?? "",
-                                duration: audioData.duration ?? 0
-                            )
+                        if generatedMusic.isEmpty {
+                            // If not yet added (no stream URL was available), add everything now
+                            let music: [MusicAPIClient.GeneratedMusic] = audioDataArray.compactMap { audioData in
+                                let streamUrl = audioData.streamAudioUrl ?? audioData.audioUrl
+                                guard let playUrl = streamUrl else { return nil }
+                                return MusicAPIClient.GeneratedMusic(
+                                    id: audioData.id,
+                                    audioUrl: playUrl,
+                                    downloadUrl: audioData.audioUrl,
+                                    title: audioData.title ?? "Untitled",
+                                    tags: audioData.tags ?? "",
+                                    duration: audioData.duration ?? 0
+                                )
+                            }
+
+                            await MainActor.run {
+                                generatedMusic = music
+                                taskStatus = "Music generated successfully!"
+                                isGenerating = false
+                            }
+
+                            print("[MusicGenViewModel] SUCCESS: Generated \(music.count) tracks")
+                        } else {
+                            // Already added with stream URL, now update with download URL
+                            let updatedMusic: [MusicAPIClient.GeneratedMusic] = generatedMusic.map { existing in
+                                if let audioData = audioDataArray.first(where: { $0.id == existing.id }) {
+                                    // Update with download URL
+                                    return MusicAPIClient.GeneratedMusic(
+                                        id: existing.id,
+                                        audioUrl: existing.audioUrl,
+                                        downloadUrl: audioData.audioUrl,
+                                        title: existing.title,
+                                        tags: existing.tags,
+                                        duration: existing.duration
+                                    )
+                                }
+                                return existing
+                            }
+
+                            await MainActor.run {
+                                generatedMusic = updatedMusic
+                                taskStatus = "Music generated successfully!"
+                                isGenerating = false
+                            }
+
+                            print("[MusicGenViewModel] SUCCESS: Updated download URLs for \(updatedMusic.count) tracks")
                         }
 
-                        await MainActor.run {
-                            generatedMusic = music
-                            taskStatus = "Music generated successfully!"
-                            isGenerating = false
-                        }
-
-                        print("[MusicGenViewModel] SUCCESS: Generated \(music.count) tracks")
-                        for item in music {
-                            print("[MusicGenViewModel]   - \(item.title): \(item.audioUrl)")
+                        for item in generatedMusic {
+                            print("[MusicGenViewModel]   - \(item.title): stream=\(item.audioUrl), download=\(item.downloadUrl ?? "nil")")
                         }
                         return
                     } else {
@@ -144,6 +174,42 @@ class MusicGenViewModel {
                     throw MusicAPIClient.MusicAPIError.taskFailed(taskData.status)
 
                 default:
+                    // Check if stream URL is available even in intermediate status
+                    if let audioDataArray = taskData.response?.audioData,
+                       !audioDataArray.isEmpty {
+                        let hasStreamUrl = audioDataArray.contains { $0.streamAudioUrl != nil }
+
+                        if hasStreamUrl && generatedMusic.isEmpty {
+                            // Stream URL is now available - add to music list
+                            let music: [MusicAPIClient.GeneratedMusic] = audioDataArray.compactMap { audioData in
+                                let url = audioData.streamAudioUrl ?? audioData.audioUrl
+                                guard let audioUrl = url else { return nil }
+                                return MusicAPIClient.GeneratedMusic(
+                                    id: audioData.id,
+                                    audioUrl: audioUrl,
+                                    downloadUrl: nil, // Not available yet
+                                    title: audioData.title ?? "Untitled",
+                                    tags: audioData.tags ?? "",
+                                    duration: audioData.duration ?? 0
+                                )
+                            }
+
+                            await MainActor.run {
+                                generatedMusic = music
+                                taskStatus = "Streaming ready! Waiting for full download..."
+                            }
+
+                            // Auto-play the first track
+                            if let firstMusic = music.first {
+                                await MainActor.run {
+                                    playAudio(index: 0, url: firstMusic.audioUrl)
+                                }
+                            }
+
+                            print("[MusicGenViewModel] Stream URL ready: Generated \(music.count) tracks")
+                        }
+                    }
+
                     try await Task.sleep(nanoseconds: 10_000_000_000) // 10 seconds
                 }
             }
